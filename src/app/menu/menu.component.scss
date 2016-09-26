@@ -14,6 +14,10 @@ nav {
 
   }
 
+  [hidden]{
+    display: none !important;
+  }
+
   &.stickyheader {
     position: absolute;
     top: 0;
@@ -94,6 +98,7 @@ nav {
     .sticky-header--layout {
 
       ul {
+        padding: 0;
 
         li {
 

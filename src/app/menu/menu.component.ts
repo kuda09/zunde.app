@@ -12,7 +12,7 @@ export class MenuComponent implements OnInit {
 
   homePageClass: string;
   hiddenItems: boolean  = false;
-  secureViews: string[] = ['sign-in'];
+  secureViews: string[] = ['sign-in', 'apply-now'];
 
   constructor(private _currentViewService: CurrentViewService) { }
 
