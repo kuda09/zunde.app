@@ -1,0 +1,141 @@
+@import "../../main";
+
+nav {
+
+  &.affix {
+    border-color: #e0e0e0;
+    background: #fff;
+    color: #000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 8000 !important;
+
+  }
+
+  &.stickyheader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: transparent;
+    color: #fff;
+    overflow: hidden;
+    width: 100%;
+    z-index: 2;
+    margin: 0;
+    height: 74px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    list-style: none;
+    border-bottom: 1px solid transparent;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-transition: background-color .3s ease, border-color .3s ease;
+    transition: background-color .3s ease, border-color .3s ease;
+
+    &.remove-hero{
+
+      position: static;
+      background-color: $white;
+
+       .sticky-header--layout {
+
+         ul {
+
+           li {
+
+             a {
+
+               color: $darkgrey;
+               cursor: pointer;
+               padding-bottom: 5px;
+
+               &.active {
+
+                 border-bottom: none;
+               }
+
+               &:link {
+
+                 color: $darkgrey;
+               }
+
+               &:hover {
+
+                 color: lighten($darkgrey, 10);
+               }
+             }
+
+             .button {
+
+               @extend .btn;
+               color: $white !important;
+             }
+           }
+         }
+       }
+    }
+
+    .button {
+
+      padding: 10px 10px !important;
+      border: 1px solid $white;
+      margin-left: 10px;
+
+    }
+
+    .sticky-header--layout {
+
+      ul {
+
+        li {
+
+          list-style: none;
+          display: inline-block;
+          margin: 5px 0;
+          padding: 5px;
+
+          a {
+
+            color: $white;
+            cursor: pointer;
+            padding-bottom: 5px;
+
+            &.active {
+
+              border-bottom: 2px solid $white;
+            }
+
+            &:link {
+
+              color: $white;
+            }
+
+            &:hover {
+
+              color: darken($white, 10);
+            }
+          }
+
+          &:last-child {
+
+            float: right;
+
+            i {
+
+              margin-right: 3px;
+            }
+          }
+        }
+
+      }
+    }
+  }
+}

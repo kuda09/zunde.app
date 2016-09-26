@@ -1,0 +1,39 @@
+$white: #fff;
+$green: #15d245;
+$blue: #488FDD;
+$purple: #F65C8C;
+$darkgrey: #0c1229;
+$darkBlue: #0e52a2;
+$lightBlue: #4f9dcc;
+$lightgrey: #b5b5b5;
+$lightergrey: #f1f2f2;
+
+.content-holder {
+
+  .col-md-9 {
+
+    background-color: $lightergrey;
+    padding: 12px;
+  }
+
+  .options {
+
+    text-align: center;
+    .btn {
+      margin: 20px;
+    }
+  }
+
+  h4 {
+
+    margin-bottom: 10px;
+  }
+
+  a {
+
+    color: $blue;
+  }
+
+}
+
+

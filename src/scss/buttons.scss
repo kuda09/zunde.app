@@ -1,0 +1,25 @@
+
+.btn {
+
+  background: $blue;
+  background-color: $darkBlue;
+  background-image: -webkit-linear-gradient(top, $lightBlue 0, $darkBlue 100%);
+  background-image: -moz-linear-gradient(top, $lightBlue 0, $darkBlue 100%);
+  background-image: -o-linear-gradient(top, $lightBlue 0, $darkBlue 100%);
+  background-image: linear-gradient(to bottom, $lightBlue 0%, $darkBlue 100%);
+  border: 1px solid $blue;
+  border-bottom-color: $lightBlue;
+  border-radius: 5px;
+  color: #fff;
+  font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+  font-size: 1em;
+  font-weight: normal;
+  line-height: 1.25rem;
+  margin-bottom: 20px;
+  padding: 9px 25px 11px;
+  position: relative;
+  text-decoration: none;
+  z-index: 1;
+  display: inline-block;
+  text-align: center;
+}

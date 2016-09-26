@@ -1,3 +1,17 @@
-<h1>
-  {{title}}
-</h1>
+
+<main>
+  <div class="{{homePageClass}}">
+    <app-menu></app-menu>
+    <div class="headline-hero">
+      <div class="container" *ngIf="homePageClass == 'business-loans'">
+        <h1>Zunde business loans help you manage your cashflow</h1>
+        <p>Decision in minutes - no obligation</p>
+      </div>
+    </div>
+
+
+
+  </div>
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
+</main>

@@ -1,0 +1,46 @@
+@import "../main";
+
+.hero {
+
+  background-image: url('https://www.ondeck.com/images/hero-home.jpg');
+  background-position-x: 0;
+  background-size: cover;
+  min-height: 500px;
+  background-color: $lightergrey;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: $white;
+  width: 100%;
+  background-position: top;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  
+  
+  &.business-loans {
+
+    background-image: url('../assets/img/products-hero.jpg');
+  }
+
+  &.why-us {
+
+    background-image: url('../assets/img/hero-about-us.jpg');
+  }
+
+}
+
+.remove-hero {
+
+  background-color: $white;
+  color: $darkgrey;
+}
