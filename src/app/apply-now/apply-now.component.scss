@@ -1,0 +1,95 @@
+@import "../../main";
+
+
+
+.header {
+
+  border-top: 1px solid $lightergrey;
+  border-bottom: 1px solid $lightergrey;
+  padding: 25px 0;
+  text-align: right;
+
+  a {
+
+    color: $blue;
+    text-align: right;
+
+    &:hover {
+
+      text-decoration: underline;
+    }
+  }
+}
+
+.page-content {
+
+  background-color: $lightergrey;
+  margin-bottom: 20px;
+
+  .breadcrumb-box {
+
+    border-top: 1px solid $lightgrey;
+    border-bottom: 1px solid $lightgrey;
+    background-color: $lightergrey;
+    overflow: hidden;
+    padding: 12px 0 12px 48px;
+
+
+    > div {
+      display: inline-block;
+      margin: 0 20px;
+
+      &:first-child {
+
+        margin-left: 0;
+      }
+    }
+  }
+
+  .pageHeader--inner {
+
+    padding: 12px;
+  }
+
+  .applyComponent {
+
+    padding: 12px;
+
+    .form-control {
+
+      width: 50%;
+    }
+
+    .checkboxes {
+
+      font-size: 0;
+
+      > div {
+
+        display: inline-block;
+        width: 33.333%;
+        font-size: 16px;
+
+        label {
+
+          padding-left: 10px;
+        }
+      }
+    }
+
+    hr {
+
+      margin-bottom: 20px;
+    }
+  ;
+  }
+}
+
+.terms {
+
+  font-size: 14px;
+  margin: 20px 0px 10px 0px;
+  max-width: 720px;
+  color: #888;
+  line-height: 120%;
+}

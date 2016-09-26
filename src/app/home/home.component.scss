@@ -1,0 +1,124 @@
+$white: #fff;
+$lightergrey: #ccc;
+$green: #15d245;
+$blue: #488FDD;
+$purple: #F65C8C;
+
+.values {
+
+  padding: 30px 0;
+
+  .col-md-4 {
+
+    font-size: 0;
+    > div {
+
+      display: inline-block;
+      font-size: 16px;
+
+      &:first-child {
+
+        width: 30%;
+      }
+
+      &:last-child {
+
+        width: 70%;
+      }
+    }
+  }
+
+  .fa-container {
+
+    i {
+
+      font-size: 78px;
+      color: $blue;
+    }
+  }
+}
+
+.options {
+
+  padding: 30px 0;
+
+  .container > div {
+
+    color: $white;
+    text-align: center;
+
+    font-size: 22px;
+
+    .box {
+      margin: 40px 10px;
+      padding: 50px;
+
+    }
+
+    &:first-child {
+
+      .box {
+        background-color: $blue;
+
+      }
+    }
+
+    &:last-child {
+
+      .box {
+        background-color: $purple;
+      }
+    }
+  }
+}
+
+.what-we-do {
+
+  background-image: url('https://www.ondeck.com/images/baker.png');
+  background-position-x: 0;
+  background-size: cover;
+  min-height: 500px;
+  background-color: $lightergrey;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: $white;
+  width: 100%;
+  background-position: top;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+
+  h2 {
+
+    margin: 30px 0;
+    text-align: center;
+  }
+}
+
+.decision-steps {
+
+  padding: 30px 0;
+
+  h1 {
+
+    margin: 30px;
+    font-weight: 900;
+  }
+
+  i {
+
+    font-size: 78px;
+    text-align: center;
+    color: $blue;
+    margin: 10px 0;
+  }
+}
