@@ -8,6 +8,9 @@ import {SignInComponent} from "./sign-in/sign-in.component";
 import {WhyUsComponent} from "./why-us/why-us.component";
 import {HomeComponent} from "./home/home.component";
 import {ApplyNowComponent} from "./apply-now/apply-now.component";
+import {YourBusinessDetailsComponent} from "./your-business-details/your-business-details.component";
+import {YourPersonalDetailsComponent} from "./your-personal-details/your-personal-details.component";
+import {BankStatementsComponent} from "./bank-statements/bank-statements.component";
 
 const appRoutes: Routes = [
     {
@@ -40,6 +43,18 @@ const appRoutes: Routes = [
     {
         path: 'apply-now',
         component: ApplyNowComponent
+    },
+    {
+        path: 'apply-now/your-business-details',
+        component: YourBusinessDetailsComponent
+    },
+    {
+        path: 'apply-now/your-personal-details',
+        component: YourPersonalDetailsComponent
+    },
+    {
+        path: 'apply-now/bank-statements',
+        component: BankStatementsComponent
     },
     {
         path: '',

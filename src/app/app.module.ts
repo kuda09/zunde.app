@@ -15,6 +15,9 @@ import {routing, appRoutingProviders} from "./app.routing";
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { ApplyNowComponent } from './apply-now/apply-now.component';
+import { YourBusinessDetailsComponent } from './your-business-details/your-business-details.component';
+import { YourPersonalDetailsComponent } from './your-personal-details/your-personal-details.component';
+import { BankStatementsComponent } from './bank-statements/bank-statements.component';
 
 
 @NgModule({
@@ -29,7 +32,10 @@ import { ApplyNowComponent } from './apply-now/apply-now.component';
         RegisterComponent,
         HomeComponent,
         FooterComponent,
-        ApplyNowComponent
+        ApplyNowComponent,
+        YourBusinessDetailsComponent,
+        YourPersonalDetailsComponent,
+        BankStatementsComponent
     ],
     imports: [
         BrowserModule,

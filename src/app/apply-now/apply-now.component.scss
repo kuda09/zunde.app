@@ -34,6 +34,17 @@
     overflow: hidden;
     padding: 12px 0 12px 48px;
 
+    i {
+
+      margin-right: 10px;
+    }
+
+    .active {
+      color: $blue;
+    }
+
+
+
 
     > div {
       display: inline-block;
