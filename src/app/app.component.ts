@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {MenuComponent} from './components/shared/menu/menu.component';
 import 'rxjs/add/operator/filter';
 import {CurrentViewService} from "./services/current-view.service";
+import {AuthServiceService} from "./services/auth-service.service";
+import {UserServiceService} from "./services/user-service.service";
 
 
 @Component({
@@ -9,7 +11,7 @@ import {CurrentViewService} from "./services/current-view.service";
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss', './app.component.css'],
     directives: [MenuComponent],
-    providers: [CurrentViewService]
+    providers: [CurrentViewService, AuthServiceService, UserServiceService]
 })
 export class AppComponent implements OnInit {
 
@@ -24,7 +26,9 @@ export class AppComponent implements OnInit {
         this._currentViewService.getView()
             .subscribe((_event: Event) => {
 
-                this.homePageClass = this._currentViewService.addHeroClassToHomePage(_event.url);
+                let url: string = _event.url;
+
+                this.homePageClass = this._currentViewService.addHeroClassToHomePage(url);
             });
 
 

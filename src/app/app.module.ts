@@ -3,6 +3,12 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 
+// used to create fake backend
+import { fakeBackendProvider } from './helpers/index';
+import { MockBackend, MockConnection } from '@angular/http/testing';
+import { BaseRequestOptions } from '@angular/http';
+
+
 import {AppComponent} from './app.component';
 import {MenuComponent} from './components/shared/menu/menu.component';
 import {BusinessLoansComponent} from './components/business/business-loans/business-loans.component';
@@ -12,12 +18,16 @@ import {PartnerWithUsComponent} from './components/business/partner-with-us/part
 import {SignInComponent} from './components/business/sign-in/sign-in.component';
 import {RegisterComponent} from './components/business/register/register.component';
 import {routing, appRoutingProviders} from "./app.routing";
-import { HomeComponent } from './components/shared/home/home.component';
-import { FooterComponent } from './components/shared/footer/footer.component';
-import { ApplyNowComponent } from './components/business/apply-now/apply-now.component';
-import { YourBusinessDetailsComponent } from './components/your-business-details/your-business-details.component';
-import { YourPersonalDetailsComponent } from './components/your-personal-details/your-personal-details.component';
-import { BankStatementsComponent } from './components/bank-statements/bank-statements.component';
+import {HomeComponent} from './components/shared/home/home.component';
+import {FooterComponent} from './components/shared/footer/footer.component';
+import {ApplyNowComponent} from './components/business/apply-now/apply-now.component';
+import {YourBusinessDetailsComponent} from './components/business/your-business-details/your-business-details.component';
+import {YourPersonalDetailsComponent} from './components/business/your-personal-details/your-personal-details.component';
+import {BankStatementsComponent} from './components/business/bank-statements/bank-statements.component';
+import {InvestorsComponent} from './components/investors/investors/investors.component';
+import {AuthGuardService} from "./guards/auth-guard.service";
+import {AuthServiceService} from "./services/auth-service.service";
+import {UserServiceService} from "./services/user-service.service";
 
 
 @NgModule({
@@ -35,7 +45,8 @@ import { BankStatementsComponent } from './components/bank-statements/bank-state
         ApplyNowComponent,
         YourBusinessDetailsComponent,
         YourPersonalDetailsComponent,
-        BankStatementsComponent
+        BankStatementsComponent,
+        InvestorsComponent
     ],
     imports: [
         BrowserModule,
@@ -43,7 +54,7 @@ import { BankStatementsComponent } from './components/bank-statements/bank-state
         HttpModule,
         routing
     ],
-    providers: [appRoutingProviders],
+    providers: [appRoutingProviders, AuthGuardService, AuthServiceService, UserServiceService, fakeBackendProvider, MockBackend, BaseRequestOptions],
     bootstrap: [AppComponent]
 })
 export class AppModule {

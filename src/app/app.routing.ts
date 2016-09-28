@@ -8,9 +8,10 @@ import {SignInComponent} from "./components/business/sign-in/sign-in.component";
 import {WhyUsComponent} from "./components/business/why-us/why-us.component";
 import {HomeComponent} from "./components/shared/home/home.component";
 import {ApplyNowComponent} from "./components/business/apply-now/apply-now.component";
-import {YourBusinessDetailsComponent} from "./your-business-details/your-business-details.component";
-import {YourPersonalDetailsComponent} from "./your-personal-details/your-personal-details.component";
-import {BankStatementsComponent} from "./bank-statements/bank-statements.component";
+import {YourBusinessDetailsComponent} from "./components/business/your-business-details/your-business-details.component";
+import {YourPersonalDetailsComponent} from "./components/business/your-personal-details/your-personal-details.component";
+import {BankStatementsComponent} from "./components/business/bank-statements/bank-statements.component";
+import {InvestorsComponent} from "./components/investors/investors/investors.component";
 
 const appRoutes: Routes = [
   {
@@ -55,6 +56,10 @@ const appRoutes: Routes = [
   {
     path: 'apply-now/bank-statements',
     component: BankStatementsComponent
+  },
+  {
+    path: 'investors',
+    component: InvestorsComponent
   },
   {
     path: '',

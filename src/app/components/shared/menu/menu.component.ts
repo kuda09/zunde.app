@@ -2,20 +2,23 @@ import {Component, OnInit} from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 import {CurrentViewService} from "../../../services/current-view.service";
+import {UserServiceService} from "../../../services/user-service.service";
+import {User} from "../../../models/user";
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
-  providers: [CurrentViewService]
+  providers: [CurrentViewService, UserServiceService]
 })
 export class MenuComponent implements OnInit {
 
   homePageClass: string;
   hiddenItems: boolean = false;
   secureViews: string[] = ['sign-in', 'apply-now'];
+  users: User[] = [];
 
-  constructor(private _currentViewService: CurrentViewService) {
+  constructor(private _currentViewService: CurrentViewService, private _userService: UserServiceService) {
   }
 
   ngOnInit() {
@@ -34,6 +37,15 @@ export class MenuComponent implements OnInit {
             self.hiddenItems = true;
           })
       });
+
+    self._userService.getUsers()
+        .subscribe(users => {
+
+          this.users = users;
+        })
+
+
+
   }
 
 }
