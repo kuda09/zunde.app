@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {MenuComponent} from './menu/menu.component';
+import {MenuComponent} from './components/shared/menu/menu.component';
 import 'rxjs/add/operator/filter';
-import {CurrentViewService} from "./current-view.service";
+import {CurrentViewService} from "./services/current-view.service";
 
 
 @Component({
