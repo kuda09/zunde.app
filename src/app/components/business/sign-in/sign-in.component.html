@@ -7,17 +7,23 @@
 
       <div class="row">
         <div class="col-md-6">
-          <div class="form-group">
-            <label for="email_address">Email Address</label>
-            <input type="password" id="email_address" name="email_address" class="form-control">
-          </div>
-          <div class="form-group">
-            <label for="confirm_email_address">Confirm Email address</label>
-            <input type="password" id="confirm_email_address" name="confirm_email_address" class="form-control">
-          </div>
-          <div class="form-group">
-            <button class="btn" role="submit" type="submit">Sign in </button>
-          </div>
+
+          <form (ngSubmit)="f.form.valid && login()" novalidate name="SignInForm" #f="ngForm">
+            <div class="form-group">
+              <label for="email_address">Email Address</label>
+              <input type="text" id="email_address" name="email_address" class="form-control" [(ngModel)]="model.username" #username="ngModel" required>
+              <div *ngIf="f.submitted && !username.valid" class="has-error">Username is required</div>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required >
+              <div *ngIf="f.submitted && !password.valid" class="has-error">Password is required</div>
+            </div>
+            <div class="form-group">
+              <button class="btn" role="submit" type="submit">Sign in </button>
+            </div>
+            <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+          </form>
         </div>
         <div class="col-md-6 options">
 

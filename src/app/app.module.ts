@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 
 // used to create fake backend
-import { FakeBackendService } from './helpers/index';
+import { fakeBackendProvider } from './helpers/index';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
 
@@ -54,7 +54,7 @@ import {UserServiceService} from "./services/user-service.service";
         HttpModule,
         routing
     ],
-    providers: [appRoutingProviders, AuthGuardService, AuthServiceService, UserServiceService, FakeBackendService, MockBackend, BaseRequestOptions],
+    providers: [appRoutingProviders, AuthGuardService, AuthServiceService, UserServiceService, fakeBackendProvider, MockBackend, BaseRequestOptions],
     bootstrap: [AppComponent]
 })
 export class AppModule {
