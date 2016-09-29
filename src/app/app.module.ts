@@ -4,9 +4,9 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 
 // used to create fake backend
-import { fakeBackendProvider } from './helpers/index';
-import { MockBackend, MockConnection } from '@angular/http/testing';
-import { BaseRequestOptions } from '@angular/http';
+import {fakeBackendProvider} from './helpers/index';
+import {MockBackend, MockConnection} from '@angular/http/testing';
+import {BaseRequestOptions} from '@angular/http';
 
 
 import {AppComponent} from './app.component';
@@ -23,39 +23,45 @@ import {FooterComponent} from './components/shared/footer/footer.component';
 import {ApplyNowComponent} from './components/business/apply-now/apply-now.component';
 import {YourBusinessDetailsComponent} from './components/business/your-business-details/your-business-details.component';
 import {YourPersonalDetailsComponent} from './components/business/your-personal-details/your-personal-details.component';
+import {BusinessProfileComponent} from './components/business/business-profile/business-profile.component';
 import {BankStatementsComponent} from './components/business/bank-statements/bank-statements.component';
 import {InvestorsComponent} from './components/investors/investors/investors.component';
 import {AuthGuardService} from "./guards/auth-guard.service";
 import {AuthServiceService} from "./services/auth-service.service";
 import {UserServiceService} from "./services/user-service.service";
+import {Ng2BootstrapModule} from "ng2-bootstrap";
+import {ModalModule} from "ng2-modal";
 
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        MenuComponent,
-        BusinessLoansComponent,
-        WhyUsComponent,
-        AboutUsComponent,
-        PartnerWithUsComponent,
-        SignInComponent,
-        RegisterComponent,
-        HomeComponent,
-        FooterComponent,
-        ApplyNowComponent,
-        YourBusinessDetailsComponent,
-        YourPersonalDetailsComponent,
-        BankStatementsComponent,
-        InvestorsComponent
-    ],
-    imports: [
-        BrowserModule,
-        FormsModule,
-        HttpModule,
-        routing
-    ],
-    providers: [appRoutingProviders, AuthGuardService, AuthServiceService, UserServiceService, fakeBackendProvider, MockBackend, BaseRequestOptions],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    MenuComponent,
+    BusinessLoansComponent,
+    WhyUsComponent,
+    AboutUsComponent,
+    PartnerWithUsComponent,
+    SignInComponent,
+    RegisterComponent,
+    HomeComponent,
+    FooterComponent,
+    ApplyNowComponent,
+    YourBusinessDetailsComponent,
+    YourPersonalDetailsComponent,
+    BankStatementsComponent,
+    InvestorsComponent,
+    BusinessProfileComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    Ng2BootstrapModule,
+    ModalModule,
+    HttpModule,
+    routing
+  ],
+  providers: [appRoutingProviders, AuthGuardService, AuthServiceService, UserServiceService, fakeBackendProvider, MockBackend, BaseRequestOptions],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }

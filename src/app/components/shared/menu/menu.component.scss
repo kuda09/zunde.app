@@ -14,7 +14,7 @@ nav {
 
   }
 
-  [hidden]{
+  [hidden] {
     display: none !important;
   }
 
@@ -44,47 +44,53 @@ nav {
     -webkit-transition: background-color .3s ease, border-color .3s ease;
     transition: background-color .3s ease, border-color .3s ease;
 
-    &.remove-hero{
+    &.remove-hero {
 
       position: static;
       background-color: $white;
 
-       .sticky-header--layout {
+      .sticky-header--layout {
 
-         ul {
+        ul {
 
-           li {
+          li {
 
-             a {
+            a {
 
-               color: $darkgrey;
-               cursor: pointer;
-               padding-bottom: 5px;
+              color: $darkgrey;
+              cursor: pointer;
+              padding-bottom: 5px;
 
-               &.active {
+              .logout {
 
-                 border-bottom: none;
-               }
+                color: $lightgrey;
+                font-size: 12px;
+              }
 
-               &:link {
+              &.active {
 
-                 color: $darkgrey;
-               }
+                border-bottom: none;
+              }
 
-               &:hover {
+              &:link {
 
-                 color: lighten($darkgrey, 10);
-               }
-             }
+                color: $darkgrey;
+              }
 
-             .button {
+              &:hover {
 
-               @extend .btn;
-               color: $white !important;
-             }
-           }
-         }
-       }
+                color: lighten($darkgrey, 10);
+              }
+            }
+
+            .button {
+
+              @extend .btn;
+              color: $white !important;
+            }
+          }
+        }
+      }
     }
 
     .button {

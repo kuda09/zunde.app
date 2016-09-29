@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {AuthServiceService} from "../../../services/auth-service.service";
+import {ModalModule} from "ng2-bootstrap/components/modal";
 
 @Component({
   selector: 'app-sign-in',
@@ -15,10 +16,10 @@ export class SignInComponent implements OnInit {
 
   constructor(private router: Router, private authService: AuthServiceService) {
 
-    console.log('some message');
   }
 
   ngOnInit() {
+
   }
 
   login() {
@@ -30,7 +31,6 @@ export class SignInComponent implements OnInit {
         .subscribe(result => {
 
           if (result) {
-
             this.router.navigate(['/']);
           } else {
 

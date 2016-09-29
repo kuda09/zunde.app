@@ -2,48 +2,72 @@ import {Injectable} from '@angular/core';
 import {Http, Headers, Response} from '@angular/http';
 import {Observable} from 'rxjs';
 import 'rxjs/add/operator/map';
+import {Router} from "@angular/router";
 
 @Injectable()
 export class AuthServiceService {
 
-    public token: string;
+  public token: string;
+  loggedIn: boolean = false;
+  currentUser: Object = null;
 
-    constructor(private http: Http) {
+  constructor(private http: Http, private router: Router) {
 
-        //set token if save in local storage
-        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        this.token = currentUser && currentUser.token;
+    //set token if save in local storage
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.token = this.currentUser && this.currentUser.token;
 
+    if(this.token){
+
+      this.loggedIn = true;
     }
 
-    login(username, password): Observable<boolean> {
+  }
 
-        var body = JSON.stringify({username: username, password: password});
+  login(username, password): Observable<boolean> {
 
-        return this.http.post('/api,authenticate', body)
-            .map((response: Response) => {
+    var body = JSON.stringify({username: username, password: password});
 
-                let token = response.json() && response.json().token;
+    return this.http.post('/api/authenticate', body)
+      .map((response: Response) => {
 
-                if(token) {
+        let token = response.json() && response.json().token;
 
-                    this.token = token;
-                    localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token }));
+        if (token) {
 
-                    return true;
-                } else {
+          this.token = token;
+          localStorage.setItem('currentUser', JSON.stringify({username: username, token: token}));
 
-                    return false;
-                }
+          this.loggedIn = true;
 
-            })
-    }
+          window.location.reload();
 
-    logout() : void {
+          return true;
+        } else {
 
-        //clear the token from the localstorage to log the user out
-        this.token = null;
-        localStorage.removeItem('currentUser');
-    }
+          return false;
+
+        }
+
+      })
+  }
+
+  logout(): void {
+
+    //clear the token from the localstorage to log the user out
+    this.token = null;
+    localStorage.removeItem('currentUser');
+    window.location.reload();
+  }
+
+  getUser(): Object  {
+
+    return this.currentUser;
+  }
+
+  isLoggedIn():boolean {
+
+    return this.loggedIn;
+  }
 
 }

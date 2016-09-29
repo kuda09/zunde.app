@@ -4,12 +4,13 @@ import 'rxjs/add/operator/filter';
 import {CurrentViewService} from "../../../services/current-view.service";
 import {UserServiceService} from "../../../services/user-service.service";
 import {User} from "../../../models/user";
+import {AuthServiceService} from "../../../services/auth-service.service";
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
-  providers: [CurrentViewService, UserServiceService]
+  providers: [CurrentViewService, UserServiceService,]
 })
 export class MenuComponent implements OnInit {
 
@@ -17,8 +18,9 @@ export class MenuComponent implements OnInit {
   hiddenItems: boolean = false;
   secureViews: string[] = ['sign-in', 'apply-now'];
   users: User[] = [];
+  showUser: boolean = false;
 
-  constructor(private _currentViewService: CurrentViewService, private _userService: UserServiceService) {
+  constructor(private _currentViewService: CurrentViewService, private _userService: UserServiceService, private _authService: AuthServiceService) {
   }
 
   ngOnInit() {
@@ -38,14 +40,19 @@ export class MenuComponent implements OnInit {
           })
       });
 
-    self._userService.getUsers()
-        .subscribe(users => {
 
-          this.users = users;
-        })
+    if (this._authService.isLoggedIn()) {
 
-
+      this.users = this._authService.getUser();
+      this.showUser = self._authService.loggedIn;
+    }
 
   }
+
+  logOut() {
+
+    this._authService.logout();
+  }
+
 
 }

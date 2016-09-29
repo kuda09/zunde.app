@@ -16,11 +16,11 @@
             </div>
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" id="password" name="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required >
+              <input type="password" id="password" name="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required>
               <div *ngIf="f.submitted && !password.valid" class="has-error">Password is required</div>
             </div>
             <div class="form-group">
-              <button class="btn" role="submit" type="submit">Sign in </button>
+              <button class="btn" role="submit" type="submit">Sign in</button>
             </div>
             <div *ngIf="error" class="alert alert-danger">{{error}}</div>
           </form>
@@ -30,7 +30,7 @@
           <p>Having trouble?</p>
 
           <hr>
-          <button class="btn btn-alt btn-success">Forgot Password</button>
+          <button class="btn btn-alt btn-success" (click)="forgotPasswordModal.open()">Forgot Password</button>
           <button class="btn btn-alt btn-success">Register now</button>
         </div>
       </div>
@@ -45,4 +45,16 @@
     </div>
   </div>
 </div>
+
+<modal #forgotPasswordModal>
+  <modal-header>
+    <h1>Modal header</h1>
+  </modal-header>
+  <modal-content>
+    Hello Modal!
+  </modal-content>
+  <modal-footer>
+    <button class="btn btn-primary" (click)="forgotPasswordModal.close()">close</button>
+  </modal-footer>
+</modal>
 

@@ -11,8 +11,8 @@
                     <a routerLink="/investors" routerLinkActive="active">Investors</a>
                 </li>
                 <li>
-                    <a routerLink="/sign-in" routerLinkActive="active"><i class="fa fa-unlock-alt" aria-hidden="true"></i>
-                        Sign in</a>
+                    <a routerLink="/sign-in" routerLinkActive="active" *ngIf="!showUser"><i class="fa fa-unlock-alt" aria-hidden="true" ></i>Sign in</a>
+                    <a routerLink="/business-profile" routerLinkActive="active" *ngIf="showUser">{{users.username}} <span class="logout" (click)="logOut()">(logout)</span></a>
 
                     <a routerLink="/apply-now" class="button">Apply Now</a>
                 </li>
@@ -23,4 +23,3 @@
 
 </nav>
 
-{{users}}
