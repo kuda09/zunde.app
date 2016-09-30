@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
-import {AuthServiceService} from "./auth-service.service";
+import {AuthService} from "./auth-service.service";
 import {User} from "../models/user";
 
 
@@ -11,7 +11,7 @@ import {User} from "../models/user";
 export class UserServiceService {
   private token: string;
 
-  constructor(private http: Http, private authService: AuthServiceService) { }
+  constructor(private http: Http, private authService: AuthService) { }
 
   getUsers(): Observable<User[]> {
 

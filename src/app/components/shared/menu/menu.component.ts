@@ -4,7 +4,7 @@ import 'rxjs/add/operator/filter';
 import {CurrentViewService} from "../../../services/current-view.service";
 import {UserServiceService} from "../../../services/user-service.service";
 import {User} from "../../../models/user";
-import {AuthServiceService} from "../../../services/auth-service.service";
+import {AuthService} from "../../../services/auth-service.service";
 
 @Component({
   selector: 'app-menu',
@@ -20,7 +20,7 @@ export class MenuComponent implements OnInit {
   users: User[] = [];
   showUser: boolean = false;
 
-  constructor(private _currentViewService: CurrentViewService, private _userService: UserServiceService, private _authService: AuthServiceService) {
+  constructor(private _currentViewService: CurrentViewService, private _userService: UserServiceService, private _authService: AuthService) {
   }
 
   ngOnInit() {

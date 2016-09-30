@@ -8,19 +8,19 @@
       <div class="row">
         <div class="col-md-6">
 
-          <form (ngSubmit)="f.form.valid && login()" novalidate name="SignInForm" #f="ngForm">
+          <form (ngSubmit)="f.form.valid && login(username.value, password.value)" novalidate name="SignInForm" #f="ngForm">
             <div class="form-group">
-              <label for="email_address">Email Address</label>
-              <input type="text" id="email_address" name="email_address" class="form-control" [(ngModel)]="model.username" #username="ngModel" required>
+              <label for="username">Username</label>
+              <input type="text" id="username" name="username" class="form-control" #username required placeholder="yours@example.com">
               <div *ngIf="f.submitted && !username.valid" class="has-error">Username is required</div>
             </div>
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" id="password" name="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required>
+              <input type="password" id="password" name="password" class="form-control" #password required placeholder="your password">
               <div *ngIf="f.submitted && !password.valid" class="has-error">Password is required</div>
             </div>
             <div class="form-group">
-              <button class="btn" role="submit" type="submit">Sign in</button>
+              <button class="btn" role="submit" type="submit" >Sign in</button>
             </div>
             <div *ngIf="error" class="alert alert-danger">{{error}}</div>
           </form>
@@ -31,7 +31,7 @@
 
           <hr>
           <button class="btn btn-alt btn-success" (click)="forgotPasswordModal  .open()">Forgot Password</button>
-          <button class="btn btn-alt btn-success">Register now</button>
+          <button class="btn btn-alt btn-success" (click)="goToRegisterView()">Register now</button>
         </div>
       </div>
     </div>

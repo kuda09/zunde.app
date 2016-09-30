@@ -16,7 +16,7 @@ import {WhyUsComponent} from './components/business/why-us/why-us.component';
 import {AboutUsComponent} from './components/business/about-us/about-us.component';
 import {PartnerWithUsComponent} from './components/business/partner-with-us/partner-with-us.component';
 import {SignInComponent} from './components/business/sign-in/sign-in.component';
-import {RegisterComponent} from './components/business/register/register.component';
+import {BusinessRegisterComponent} from './components/business/register/register.component';
 import {routing, appRoutingProviders} from "./app.routing";
 import {HomeComponent} from './components/shared/home/home.component';
 import {FooterComponent} from './components/shared/footer/footer.component';
@@ -27,7 +27,7 @@ import {BusinessProfileComponent} from './components/business/business-profile/b
 import {BankStatementsComponent} from './components/business/bank-statements/bank-statements.component';
 import {InvestorsComponent} from './components/investors/investors/investors.component';
 import {AuthGuardService} from "./guards/auth-guard.service";
-import {AuthServiceService} from "./services/auth-service.service";
+import {AuthService} from "./services/auth-service.service";
 import {UserServiceService} from "./services/user-service.service";
 import {Ng2BootstrapModule} from "ng2-bootstrap";
 import {ModalModule} from "ng2-modal";
@@ -42,7 +42,7 @@ import {ModalModule} from "ng2-modal";
     AboutUsComponent,
     PartnerWithUsComponent,
     SignInComponent,
-    RegisterComponent,
+    BusinessRegisterComponent,
     HomeComponent,
     FooterComponent,
     ApplyNowComponent,
@@ -60,7 +60,7 @@ import {ModalModule} from "ng2-modal";
     HttpModule,
     routing
   ],
-  providers: [appRoutingProviders, AuthGuardService, AuthServiceService, UserServiceService, fakeBackendProvider, MockBackend, BaseRequestOptions],
+  providers: [appRoutingProviders, AuthGuardService, AuthService, UserServiceService, fakeBackendProvider, MockBackend, BaseRequestOptions],
   bootstrap: [AppComponent]
 })
 export class AppModule {

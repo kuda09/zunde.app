@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {AuthServiceService} from "../../../services/auth-service.service";
+import {AuthService} from "../../../services/auth-service.service";
 import {ModalModule} from "ng2-bootstrap/components/modal";
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss'],
-  providers:[AuthServiceService]
+  providers:[AuthService]
 })
 export class SignInComponent implements OnInit {
   model: any = {};
   loading: boolean = false;
-  error: string = '';
+  error: string;
 
-  constructor(private router: Router, private authService: AuthServiceService) {
+  constructor(private router: Router, private authService: AuthService) {
 
   }
 
@@ -22,22 +22,24 @@ export class SignInComponent implements OnInit {
 
   }
 
-  login() {
-    this.loading = true;
+  login(username,password) {
 
-    console.log(this.model);
+    var self = this;
 
-    this.authService.login(this.model.username, this.model.password)
-        .subscribe(result => {
+    this.authService.login(username, password,  function (err) {
 
-          if (result) {
-            this.router.navigate(['/']);
-          } else {
+      if (err) {
 
-            this.error = 'Username or password is incorrect';
-            this.loading = false;
-          }
-        })
+        self.error = err.message;
+      }
+
+    });
+  }
+
+
+  goToRegisterView(){
+
+    this.router.navigate(['/business/register'])
   }
 
 }

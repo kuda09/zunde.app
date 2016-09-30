@@ -2,8 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {MenuComponent} from './components/shared/menu/menu.component';
 import 'rxjs/add/operator/filter';
 import {CurrentViewService} from "./services/current-view.service";
-import {AuthServiceService} from "./services/auth-service.service";
+import {AuthService} from "./services/auth-service.service";
 import {UserServiceService} from "./services/user-service.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -11,13 +12,13 @@ import {UserServiceService} from "./services/user-service.service";
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss', './app.component.css'],
     directives: [MenuComponent],
-    providers: [CurrentViewService, AuthServiceService, UserServiceService]
+    providers: [CurrentViewService, AuthService, UserServiceService]
 })
 export class AppComponent implements OnInit {
 
     homePageClass: string;
 
-    constructor(private _currentViewService: CurrentViewService) {
+    constructor(private _currentViewService: CurrentViewService, private router: Router) {
 
     }
 
@@ -33,5 +34,7 @@ export class AppComponent implements OnInit {
 
 
     }
+
+
 }
 

@@ -3,7 +3,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {BusinessLoansComponent} from "./components/business/business-loans/business-loans.component";
 import {AboutUsComponent} from "./components/business/about-us/about-us.component";
 import {PartnerWithUsComponent} from "./components/business/partner-with-us/partner-with-us.component";
-import {RegisterComponent} from "./components/business/register/register.component";
+import {BusinessRegisterComponent} from "./components/business/register/register.component";
 import {SignInComponent} from "./components/business/sign-in/sign-in.component";
 import {WhyUsComponent} from "./components/business/why-us/why-us.component";
 import {HomeComponent} from "./components/shared/home/home.component";
@@ -32,8 +32,8 @@ const appRoutes: Routes = [
     component: PartnerWithUsComponent
   },
   {
-    path: 'register',
-    component: RegisterComponent
+    path: 'business/register',
+    component: BusinessRegisterComponent
   },
   {
     path: 'sign-in',
