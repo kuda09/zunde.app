@@ -4,7 +4,8 @@ import {AuthService} from "../../../services/auth-service.service";
 @Component({
   selector: 'app-business-profile',
   templateUrl: './business-profile.component.html',
-  styleUrls: ['./business-profile.component.scss']
+  styleUrls: ['./business-profile.component.scss'],
+  providers: [AuthService]
 })
 export class BusinessProfileComponent implements OnInit {
 

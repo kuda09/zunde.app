@@ -10,17 +10,16 @@ import {AuthService} from "../../../services/auth-service.service";
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
-  providers: [CurrentViewService, UserServiceService,]
+  providers: [CurrentViewService,]
 })
 export class MenuComponent implements OnInit {
 
   homePageClass: string;
   hiddenItems: boolean = false;
   secureViews: string[] = ['sign-in', 'apply-now'];
-  users: User[] = [];
   showUser: boolean = false;
 
-  constructor(private _currentViewService: CurrentViewService, private _userService: UserServiceService, private _authService: AuthService) {
+  constructor(private _currentViewService: CurrentViewService, private _authService: AuthService) {
   }
 
   ngOnInit() {
@@ -43,7 +42,6 @@ export class MenuComponent implements OnInit {
 
     if (this._authService.isLoggedIn()) {
 
-      this.users = this._authService.getUser();
       this.showUser = self._authService.loggedIn;
     }
 

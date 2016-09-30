@@ -64,7 +64,7 @@ const appRoutes: Routes = [
     component: InvestorsComponent
   },
   {
-    path: 'business-profile',
+    path: 'business/business-profile',
     component: BusinessProfileComponent,
     canActivate: [AuthGuardService]
   },

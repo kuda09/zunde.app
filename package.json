@@ -22,6 +22,7 @@
     "@angular/router": "3.0.0",
     "@types/auth0": "^2.3.32",
     "@types/firebase": "^2.4.30",
+    "angular2-jwt": "^0.1.23",
     "auth0-lock": "^10.4.0",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",

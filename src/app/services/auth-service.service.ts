@@ -3,19 +3,13 @@ import {Http, Headers, Response} from '@angular/http';
 import {Observable} from 'rxjs';
 import 'rxjs/add/operator/map';
 import {Router} from "@angular/router";
-import {tokenNotExpired} from 'angular2-jwt';
+import { tokenNotExpired} from 'angular2-jwt';
 
 
 // Avoid name not found warnings
 declare var Auth0Lock: any;
 
 
-var config = {
-  domain: 'zunde.eu.auth0.com',
-  clientID: 'HEqIwQhIWpDgdCXlU7Rinh8RrfN5ulYZ',
-  responseType: 'token',
-  callbackURL: 'http://localhost:4200/business-profile',
-};
 
 @Injectable()
 export class AuthService {
@@ -29,11 +23,9 @@ export class AuthService {
 
   userProfile: Object;
 
-  auth0 = new Auth0(config);
 
   constructor(private http: Http, private router: Router) {
 
-    var result = this.auth0.parseHash(window.location.hash);
     this.token = localStorage.getItem('id_token');
 
     // Set userProfile attribute of already saved profile
@@ -43,7 +35,7 @@ export class AuthService {
 
   public login(username, password, cb) {
 
-    return this.auth0.login({
+    return this.lock.login({
       connection: 'Username-Password-Authentication',
       responseType: 'token',
       email: username,
@@ -53,7 +45,7 @@ export class AuthService {
 
   public register (username, password) {
 
-    this.auth0.signup({
+    this.lock.signup({
       connection: 'Username-Password-Authentication',
       responseType: 'token',
       email: username,
@@ -73,13 +65,12 @@ export class AuthService {
     this.lock.getProfile(this.token, cb)
   }
 
-  public logout(userProfile): void {
+  public logout(): void {
 
     //clear the token from the localstorage to log the user out
     // Remove token and profile from localStorage
     localStorage.removeItem('id_token');
     localStorage.removeItem('profile');
-    userProfile = undefined;
   }
 
   getUser(): Object {

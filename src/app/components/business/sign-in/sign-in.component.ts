@@ -14,9 +14,7 @@ export class SignInComponent implements OnInit {
   loading: boolean = false;
   error: string;
 
-  constructor(private router: Router, private authService: AuthService) {
-
-  }
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit() {
 
@@ -35,7 +33,6 @@ export class SignInComponent implements OnInit {
 
     });
   }
-
 
   goToRegisterView(){
 

@@ -11,7 +11,6 @@ import {Router} from "@angular/router";
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss', './app.component.css'],
-    directives: [MenuComponent],
     providers: [CurrentViewService, AuthService, UserServiceService]
 })
 export class AppComponent implements OnInit {
