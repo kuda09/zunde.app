@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {UserService} from "../../../services/user-service.service";
+import {AuthService} from "../../../services/auth-service.service";
 
 @Component({
   selector: 'app-apply-now',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ApplyNowComponent implements OnInit {
 
-  constructor() { }
+  details: Object = {};
+
+  constructor(private _userService: UserService, private _authService: AuthService) { }
 
   ngOnInit() {
+
+  }
+
+  applyNow(details){
+
+    console.log(details);
+
   }
 
 }

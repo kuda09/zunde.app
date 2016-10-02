@@ -10,14 +10,19 @@ import {AuthService} from "../../../services/auth-service.service";
 export class BusinessProfileComponent implements OnInit {
 
   userProfile: Object = null;
+  name: string = 'kuda';
 
-  constructor(private  _authService: AuthService) { }
+  constructor(private _authService: AuthService) {
+
+
+    console.log('yh man how are youa')
+  }
 
   ngOnInit() {
 
     var self = this;
 
-    this._authService.getProfile((error, profile) => {
+    /*this._authService.getProfile((error, profile) => {
 
       if (error) {
         // Handle error
@@ -28,7 +33,7 @@ export class BusinessProfileComponent implements OnInit {
       localStorage.setItem('profile', JSON.stringify(profile));
       self.userProfile = profile;
 
-    })
+    })*/
   }
 
   isLoggedIn() {

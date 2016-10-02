@@ -3,14 +3,19 @@
   <div class="{{homePageClass}}">
     <app-menu></app-menu>
     <div class="headline-hero">
-      <div class="container" *ngIf="homePageClass == 'business-loans'">
+      <div class="container" *ngIf="homePageClass == 'hero'">
         <h1>Zunde business loans help you manage your cashflow</h1>
         <p>Decision in minutes - no obligation</p>
+
+        <a routerLink="/apply-now" class="btn btn-primary">Apply now</a>
+
+
+      </div>
+
+      <div class="container" *ngIf="homePageClass == 'hero business-loans'">
+        <h1>Business loans to take you forward.</h1>
       </div>
     </div>
-
-
-
   </div>
   <router-outlet></router-outlet>
   <app-footer></app-footer>

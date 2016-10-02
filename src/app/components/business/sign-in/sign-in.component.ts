@@ -1,42 +1,61 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule} from '@angular/forms';
 import {AuthService} from "../../../services/auth-service.service";
 import {ModalModule} from "ng2-bootstrap/components/modal";
 
+import {SiginInModel} from '../../../models/sign-in';
+
+
 @Component({
-  selector: 'app-sign-in',
-  templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.scss'],
-  providers:[AuthService]
+    selector: 'app-sign-in',
+    templateUrl: './sign-in.component.html',
+    styleUrls: ['./sign-in.component.scss'],
+    providers: [AuthService]
 })
 export class SignInComponent implements OnInit {
-  model: any = {};
-  loading: boolean = false;
-  error: string;
+    loading: boolean = false;
+    error: string;
 
-  constructor(private router: Router, private authService: AuthService) {}
+    public SignInForm: FormGroup; //our model driven form
+    public submitted: boolean; //keep track whether the form is submitted
+    public events: any[] = []; //use later to display form events
 
-  ngOnInit() {
+    constructor(private router: Router,
+                private authService: AuthService,
+                private _fb: FormBuilder) {
+    }
 
-  }
+    ngOnInit() {
 
-  login(username,password) {
+        this.SignInForm = new FormGroup({
+            username: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
+            password: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)])
+        })
 
-    var self = this;
+    }
 
-    this.authService.login(username, password,  function (err) {
+    login(model: SiginInModel, isValid: boolean) {
 
-      if (err) {
+        var self = this;
 
-        self.error = err.message;
-      }
+        if (isValid) {
 
-    });
-  }
+            this.authService.login(model.username, model.password, function (err) {
 
-  goToRegisterView(){
+                if (err) {
+                    self.error = err.message;
 
-    this.router.navigate(['/business/register'])
-  }
+                }
+
+            });
+        }
+
+    }
+
+    goToRegisterView() {
+
+        this.router.navigate(['/business/register'])
+    }
 
 }

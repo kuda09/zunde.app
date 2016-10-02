@@ -8,19 +8,19 @@ import {User} from "../models/user";
 
 
 @Injectable()
-export class UserServiceService {
+export class UserService {
   private token: string;
 
   constructor(private http: Http, private authService: AuthService) { }
 
-  getUsers(): Observable<User[]> {
+  public getUser() {
 
-    let headers = new Headers({ 'Authorization': 'Bearer ' + this.authService.token });
-    let options = new RequestOptions({ headers: headers });
+    if(this.authService.isLoggedIn()) {
 
+      return JSON.parse(localStorage.getItem('profile'));
+    }
 
-    return this.http.get('/api/users', options)
-        .map((response: Response) => response.json());
+    return null;
   }
 
 

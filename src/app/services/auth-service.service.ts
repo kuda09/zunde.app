@@ -8,6 +8,7 @@ import { tokenNotExpired} from 'angular2-jwt';
 
 // Avoid name not found warnings
 declare var Auth0Lock: any;
+declare var Auth0: any;
 
 
 
@@ -23,19 +24,39 @@ export class AuthService {
 
   userProfile: Object;
 
+  auth0 = new Auth0({
+    domain: 'zunde.eu.auth0.com',
+    clientID: 'HEqIwQhIWpDgdCXlU7Rinh8RrfN5ulYZ',
+    responseType: 'token',
+    callbackURL: 'http://localhost:4200/business/business-profile',
+  });
+
 
   constructor(private http: Http, private router: Router) {
 
     this.token = localStorage.getItem('id_token');
+    var result = this.auth0.parseHash(window.location.hash);
 
     // Set userProfile attribute of already saved profile
-    this.userProfile = JSON.parse(localStorage.getItem('profile'));
+    //this.userProfile = JSON.parse(localStorage.getItem('profile'));
+
+    if (result && result.idToken) {
+
+      localStorage.setItem('id_token', result.idToken);
+
+      this.router.navigate(['business/business-profile']);
+
+    } else if (result && result.error) {
+
+      console.log('error: ' + result.error);
+    }
+
 
   }
 
   public login(username, password, cb) {
 
-    return this.lock.login({
+    return this.auth0.login({
       connection: 'Username-Password-Authentication',
       responseType: 'token',
       email: username,
@@ -45,7 +66,7 @@ export class AuthService {
 
   public register (username, password) {
 
-    this.lock.signup({
+    this.auth0.signup({
       connection: 'Username-Password-Authentication',
       responseType: 'token',
       email: username,
@@ -58,11 +79,16 @@ export class AuthService {
 
   };
 
-  public getProfile (cb) {
+  public getProfile () {
 
-    if(this.token.length < 5)  return false;
+    if(this.token === null)  return false;
 
-    this.lock.getProfile(this.token, cb)
+    this.lock.getProfile(this.token, (error, profile) => {
+
+      if(error === null) {
+        localStorage.setItem('profile', JSON.stringify(profile));
+      }
+    });
   }
 
   public logout(): void {
@@ -71,6 +97,7 @@ export class AuthService {
     // Remove token and profile from localStorage
     localStorage.removeItem('id_token');
     localStorage.removeItem('profile');
+    window.location.reload();
   }
 
   getUser(): Object {
@@ -79,8 +106,7 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-
-    return !!localStorage.getItem('id_token');
+    return tokenNotExpired();
   }
 
 }

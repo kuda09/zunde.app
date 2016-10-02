@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 
 // used to create fake backend
@@ -28,7 +28,7 @@ import {BankStatementsComponent} from './components/business/bank-statements/ban
 import {InvestorsComponent} from './components/investors/investors/investors.component';
 import {AuthGuardService} from "./guards/auth-guard.service";
 import {AuthService} from "./services/auth-service.service";
-import {UserServiceService} from "./services/user-service.service";
+import {UserService} from "./services/user-service.service";
 import {Ng2BootstrapModule} from "ng2-bootstrap";
 import {ModalModule} from "ng2-modal";
 
@@ -55,12 +55,13 @@ import {ModalModule} from "ng2-modal";
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     Ng2BootstrapModule,
     ModalModule,
     HttpModule,
     routing
   ],
-  providers: [appRoutingProviders, AuthGuardService, AuthService, UserServiceService, fakeBackendProvider, MockBackend, BaseRequestOptions],
+  providers: [appRoutingProviders, AuthGuardService, AuthService, UserService, fakeBackendProvider, MockBackend, BaseRequestOptions],
   bootstrap: [AppComponent]
 })
 export class AppModule {

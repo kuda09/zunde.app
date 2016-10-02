@@ -16,7 +16,13 @@
             </div>
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" id="password" name="password" class="form-control" name="password" #password required placeholder="your password">
+              <input type="password" id="password" name="password" class="form-control" name="password" #password required placeholder="Enter Password">
+              <div *ngIf="f.submitted && !password.valid" class="has-error">Password is required</div>
+            </div>
+
+            <div class="form-group">
+              <label for="confirm_password">Confirm Password</label>
+              <input type="confirm_password" id="confirm_password" name="confirm_password" class="form-control" #confirm_password required placeholder="Confirm password">
               <div *ngIf="f.submitted && !password.valid" class="has-error">Password is required</div>
             </div>
             <div class="form-group">
@@ -26,18 +32,21 @@
           </form>
         </div>
         <div class="col-md-6 options">
-
-          <hr>
         </div>
       </div>
     </div>
     <div class="col-md-3">
 
-      <h4>Questions?</h4>
-      <p>We're here to help answer your questions or take your application over the phone.</p>
-      <span>(888) 828-5717</span>
-      <p><a href="email-support">Email support</a></p>
-      <p><a href="click-to-chat">Click to Chat</a></p>
+
+      <div class="questions">
+        <h4>Questions?</h4>
+        <p>We're here to help answer your questions or take your application over the phone.</p>
+        <span>(888) 828-5717</span>
+        <p><a href="email-support">Email support</a></p>
+        <p><a href="click-to-chat">Click to Chat</a></p>
+
+      </div>
+
     </div>
   </div>
 </div>

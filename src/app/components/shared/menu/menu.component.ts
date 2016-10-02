@@ -2,55 +2,64 @@ import {Component, OnInit} from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 import {CurrentViewService} from "../../../services/current-view.service";
-import {UserServiceService} from "../../../services/user-service.service";
+import {UserService} from "../../../services/user-service.service";
 import {User} from "../../../models/user";
 import {AuthService} from "../../../services/auth-service.service";
 
 @Component({
-  selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss'],
-  providers: [CurrentViewService,]
+    selector: 'app-menu',
+    templateUrl: './menu.component.html',
+    styleUrls: ['./menu.component.scss'],
+    providers: [CurrentViewService,]
 })
 export class MenuComponent implements OnInit {
 
-  homePageClass: string;
-  hiddenItems: boolean = false;
-  secureViews: string[] = ['sign-in', 'apply-now'];
-  showUser: boolean = false;
+    homePageClass: string;
+    hiddenItems: boolean = false;
+    secureViews: string[] = ['sign-in', 'apply-now'];
+    showUser: boolean = false;
+    user: Object = {};
 
-  constructor(private _currentViewService: CurrentViewService, private _authService: AuthService) {
-  }
-
-  ngOnInit() {
-
-    var self = this;
-
-    self._currentViewService.getView()
-      .subscribe((_event: Event) => {
-
-        self.homePageClass = self._currentViewService.addHeroClassToHomePage(_event.url);
-
-        self.secureViews
-          .filter(view => this.homePageClass.indexOf(view) !== -1)
-          .map((view) => {
-
-            self.hiddenItems = true;
-          })
-      });
-
-
-    if (this._authService.isLoggedIn()) {
-
-      this.showUser = self._authService.loggedIn;
+    constructor(private _currentViewService: CurrentViewService,
+                private _authService: AuthService,
+                private _userService: UserService) {
     }
 
-  }
+    ngOnInit() {
 
-  logOut() {
+        var self = this;
 
-    this._authService.logout();
-  }
+        self._currentViewService.getView()
+            .subscribe((_event) => {
+
+
+
+                self.homePageClass = self._currentViewService.addHeroClassToHomePage(_event.url);
+
+                self.secureViews
+                    .filter(view => this.homePageClass.indexOf(view) !== -1)
+                    .map((view) => {
+
+                        self.hiddenItems = true;
+                    })
+            });
+
+
+        if (self._authService.isLoggedIn()) {
+
+            if(self._userService.getUser() !== null) {
+
+                self.user = self._userService.getUser();
+            }
+
+        }
+
+    }
+
+    logOut() {
+
+        this._authService.logout();
+    }
 
 
 }

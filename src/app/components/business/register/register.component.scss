@@ -1,0 +1,27 @@
+@import "../../../../main";
+
+
+.container {
+
+  margin-bottom: 50px;
+
+}
+.content-holder {
+
+  .col-md-9 {
+
+    padding: 30px;
+  }
+
+}
+
+
+.has-error {
+
+  color: $red;
+}
+
+.questions {
+
+  padding: 15px;
+}
