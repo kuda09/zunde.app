@@ -38,10 +38,10 @@
       </div>
     </div>
     <div class="applyComponent">
-      <form (ngSubmit)="applyNow(ApplyNowForm.value, ApplyNowForm.valid) && ApplyNowForm.valid" novalidate name="ApplyNowForm" #f="ngForm" [formGroup]="ApplyNowForm">
+      <form (ngSubmit)="applyNow(ApplyNowForm.value, ApplyNowForm.valid)" name="ApplyNowForm" [formGroup]="ApplyNowForm" method="post">
 
         <fieldset formGroupName="loan_details">
-          <div class="form-group">
+          <div class="form-group" [ngClass]="{'has-error': !ApplyNowForm.controls.loan_details.controls.desired_amount.valid && submitted}">
             <label for="desired_amount">How much would you like to borrow</label>
             <select class="form-control" id="desired_amount" name="desired_amount" tabindex="1" data-validate="true" formControlName="desired_amount" required>
               <option value="$5000_to_$10000">$5,000-$10,000</option>

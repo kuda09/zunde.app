@@ -20,3 +20,16 @@ export interface loan_details {
   loan_use: string;
 
 }
+
+export interface business_details {
+  legal_name: string,
+  other_legal_name: boolean;
+  business_address: string;
+  post_code: string;
+  business_phone: number;
+  business_trading_date: Date;
+  legal_entity_type: string;
+  business_tax_id: string;
+  annual_revenue: string;
+  bank_balance: number;
+}
