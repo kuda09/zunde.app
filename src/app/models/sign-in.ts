@@ -1,4 +1,4 @@
-export class SiginInModel {
+export interface SiginInModel {
     username: string;
     password: string;
 }

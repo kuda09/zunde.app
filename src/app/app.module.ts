@@ -23,7 +23,6 @@ import {FooterComponent} from './components/shared/footer/footer.component';
 import {ApplyNowComponent} from './components/business/apply-now/apply-now.component';
 import {YourBusinessDetailsComponent} from './components/business/your-business-details/your-business-details.component';
 import {YourPersonalDetailsComponent} from './components/business/your-personal-details/your-personal-details.component';
-import {BusinessProfileComponent} from './components/business/business-profile/business-profile.component';
 import {BankStatementsComponent} from './components/business/bank-statements/bank-statements.component';
 import {InvestorsComponent} from './components/investors/investors/investors.component';
 import {AuthGuardService} from "./guards/auth-guard.service";
@@ -31,6 +30,7 @@ import {AuthService} from "./services/auth-service.service";
 import {UserService} from "./services/user-service.service";
 import {Ng2BootstrapModule} from "ng2-bootstrap";
 import {ModalModule} from "ng2-modal";
+import {ProfileComponent} from "./components/business/profile/profile.component";
 
 
 @NgModule({
@@ -50,7 +50,7 @@ import {ModalModule} from "ng2-modal";
     YourPersonalDetailsComponent,
     BankStatementsComponent,
     InvestorsComponent,
-    BusinessProfileComponent
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -10,16 +10,24 @@ import {AuthService} from "../../../services/auth-service.service";
 })
 export class BusinessRegisterComponent implements OnInit {
 
+  error: string = '';
+
   constructor(private _router: Router, private _authService: AuthService) { }
 
   ngOnInit() {
   }
 
 
-  register(username, password) {
+  /*register(username, password) {
 
-    this._authService.register(username,password);
-  }
+    var self = this;
+
+    this._authService.register(username,password, (err) => {
+
+      if(err) if (err) self.error = err.message;
+
+    });
+  }*/
 
 
 

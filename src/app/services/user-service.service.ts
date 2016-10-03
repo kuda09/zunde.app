@@ -17,7 +17,9 @@ export class UserService {
 
     if(this.authService.isLoggedIn()) {
 
-      return JSON.parse(localStorage.getItem('profile'));
+      var profile = JSON.parse(localStorage.getItem('profile'));
+      console.log(profile);
+      return profile;
     }
 
     return null;

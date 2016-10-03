@@ -3,16 +3,14 @@
     <div class="container">
         <div class="sticky-header--layout">
             <ul>
-                <!--<li><a routerLink="">Home</a></li>-->
+                <li><a routerLink="">Home</a></li>
                 <li [hidden]="hiddenItems"><a routerLink="/business-loans" routerLinkActive="active">Business Loans</a></li>
                 <li [hidden]="hiddenItems"><a routerLink="/why-us" routerLinkActive="active">Why Zunde</a></li>
                 <li [hidden]="hiddenItems"><a routerLink="/about-us" routerLinkActive="active">About Us</a></li>
-                <li [hidden]="hiddenItems">
-                    <a routerLink="/investors" routerLinkActive="active">Investors</a>
-                </li>
+                <li [hidden]="hiddenItems"><a routerLink="/investors" routerLinkActive="active">Investors</a></li>
                 <li>
                     <a routerLink="/sign-in" routerLinkActive="active" *ngIf="!_authService.isLoggedIn()"><i class="fa fa-unlock-alt" aria-hidden="true" ></i>Sign in</a>
-                    <a routerLink="business/business-profile" routerLinkActive="active" *ngIf="_authService.isLoggedIn()"> {{user.email}}<span class="logout" (click)="logOut()">(logout)</span></a>
+                    <a routerLink="/business/profile" routerLinkActive="active"  *ngIf="_authService.isLoggedIn()"> {{user.email}}<span class="logout" (click)="logOut()">(logout)</span></a>
 
                     <a routerLink="/apply-now" class="button">Apply Now</a>
                 </li>

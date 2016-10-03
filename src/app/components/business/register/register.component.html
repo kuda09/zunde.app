@@ -8,7 +8,7 @@
       <div class="row">
         <div class="col-md-6">
 
-          <form (ngSubmit)="f.form.valid && register(username.value, password.value)" novalidate name="SignInForm" #f="ngForm">
+          <form (ngSubmit)="f.form.valid && register(username.value, password.value)" novalidate name="RegisterForm" #f="ngForm">
             <div class="form-group">
               <label for="username">Username</label>
               <input type="text" id="username" name="username" class="form-control" #username required placeholder="yours@example.com">

@@ -12,8 +12,8 @@ import {YourBusinessDetailsComponent} from "./components/business/your-business-
 import {YourPersonalDetailsComponent} from "./components/business/your-personal-details/your-personal-details.component";
 import {BankStatementsComponent} from "./components/business/bank-statements/bank-statements.component";
 import {InvestorsComponent} from "./components/investors/investors/investors.component";
-import {BusinessProfileComponent} from "./components/business/business-profile/business-profile.component";
 import {AuthGuardService} from "./guards/auth-guard.service";
+import {ProfileComponent} from "./components/business/profile/profile.component";
 
 const appRoutes: Routes = [
   {
@@ -64,14 +64,13 @@ const appRoutes: Routes = [
     component: InvestorsComponent
   },
   {
-    path: 'business/business-profile',
-    component: BusinessProfileComponent,
-    canActivate: [AuthGuardService]
+    path: 'business/profile',
+    component: ProfileComponent
   },
   {
     path: '',
     component: HomeComponent
-  },
+  }
 ];
 
 export const appRoutingProviders: any[] = [];

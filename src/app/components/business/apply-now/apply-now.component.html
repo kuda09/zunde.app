@@ -1,135 +1,141 @@
 <div class="container">
-    <!--<section class="progress">
-        <div class="row">
-            <progress id="progress-bar" min="1" max="100" value="0"></progress>
-            <span class="first border-change"></span>
-            <span class="second"></span>
-            <span class="third"></span>
-            <span class="fourth"></span>
-            <p class="percent">0% Complete</p>
+  <!--<section class="progress">
+      <div class="row">
+          <progress id="progress-bar" min="1" max="100" value="0"></progress>
+          <span class="first border-change"></span>
+          <span class="second"></span>
+          <span class="third"></span>
+          <span class="fourth"></span>
+          <p class="percent">0% Complete</p>
+      </div>
+  </section>-->
+  <section class="page-content">
+    <div class="breadcrumb-box">
+      <div class="blueArrowCrumb">
+        <div class="active"><i class="fa fa-caret-right" aria-hidden="true"></i>Basics</div>
+      </div>
+      <div class="greyArrowCrumb">
+        <div><i class="fa fa-caret-right" aria-hidden="true"></i>Your Business</div>
+      </div>
+      <div class="greyArrowCrumb">
+        <div><i class="fa fa-caret-right" aria-hidden="true"></i>About You</div>
+      </div>
+      <div class="greyArrowCrumb">
+        <div><i class="fa fa-caret-right" aria-hidden="true"></i>Bank Statements</div>
+      </div>
+    </div>
+    <div class="pageHeader--inner">
+
+      <div class="hero">
+        <h1>
+          Small Business Financing from Zunde!
+        </h1>
+        <p>Get approved today and have money in your account within 48 hours</p>
+      </div>
+
+      <div class="country-selector">
+
+      </div>
+    </div>
+    <div class="applyComponent">
+      <form (ngSubmit)="applyNow(ApplyNowForm.value, ApplyNowForm.valid) && ApplyNowForm.valid" novalidate name="ApplyNowForm" #f="ngForm" [formGroup]="ApplyNowForm">
+
+        <fieldset formGroupName="loan_details">
+          <div class="form-group">
+            <label for="desired_amount">How much would you like to borrow</label>
+            <select class="form-control" id="desired_amount" name="desired_amount" tabindex="1" data-validate="true" formControlName="desired_amount" required>
+              <option value="$5000_to_$10000">$5,000-$10,000</option>
+              <option value="$10000_to_$15000">$10,000-$15,000</option>
+              <option value="$15000_to_$20000">$15,000-$20,000</option>
+              <option value="$20000_to_$25000">$20,000-$25,000</option>
+              <option value="$25000_to_$30000">$25,000-$30,000</option>
+              <option value="$30000_to_$35000">$30,000-$35,000</option>
+              <option value="$35000_to_$50000">$35,000-$50,000</option>
+              <option value="$50000_to_$75000">$50,000-$75,000</option>
+              <option value="$75000_to_$150000">$75,000-$150,000</option>
+              <option value="$150000_to_$250000">$150,000-$250,000</option>
+              <option value="$250000_plus">More than $250,000</option>
+            </select>
+            <!--<small [hidden]="ApplyNowForm.controls.loan_details.controls.desired_amount.valid || (ApplyNowForm.controls.loan_details.controls.desired_amount.pristine && !submitted)" class="has-error">Please select how much would you like to borrow!</small>-->
+          </div>
+          <div class="form-group">
+            <label for="date_required">How soon do you need the money?</label>
+            <select class="form-control" id="date_required" include_blank="false" name="date_required" tabindex="2" data-validate="true" formControlName="date_required" required>
+              <option value="IMMEDIATLEY">Immediately</option>
+              <option value="ONE_WEEK">1 week</option>
+              <option value="THIRTY_DAYS">30 days</option>
+              <option value="MORE_THAN_THIRTY_DAYS">More than 30 days</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="loan_use">How will you use the loan?</label>
+            <div class="checkboxes">
+              <div class="media">
+                <input name="loan_use" tabindex="3" type="radio" value="BUYING_EQUIPMENT" data-validate="true" formControlName="loan_use">
+                <label>Buying equipment</label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <hr>
+        <fieldset formGroupName="person_details">
+          <div class="form-group">
+            <label for="first_name">First Name</label>
+            <input type="text" id="first_name" name="first_name" class="form-control" formControlName="first_name" required>
+          </div>
+          <div class="form-group">
+            <label for="last_name">Last Name</label>
+            <input type="text" id="last_name" name="last_name" class="form-control" formControlName="last_name" required>
+          </div>
+          <div class="form-group">
+            <label for="best_contact_number">Contact Number</label>
+            <input type="text" id="best_contact_number" name="best_contact_number" class="form-control" formControlName="contact_number" required>
+          </div>
+          <div class="form-group">
+            <label for="email_address">Email Address</label>
+            <input type="text" id="email_address" name="email_address" class="form-control" formControlName="email_address" required>
+          </div>
+        </fieldset>
+        <hr>
+        <div class="form-group">
+          <label for="how_did_you_hear_about_us">How did you hear about us?</label>
+          <input type="text" id="how_did_you_hear_about_us" name="how_did_you_hear_about_us" class="form-control" formControlName="how_did_you_hear_about_us">
+          <small [hidden]="ApplyNowForm.controls.how_did_you_hear_about_us.valid || (ApplyNowForm.controls.how_did_you_hear_about_us.pristine && !submitted)" class="has-error">Please tell us who did you here about us!</small>
         </div>
-    </section>-->
-    <section class="page-content">
-        <div class="breadcrumb-box">
-            <div class="blueArrowCrumb">
-                <div class="active"><i class="fa fa-caret-right" aria-hidden="true"></i>Basics</div>
-            </div>
-            <div class="greyArrowCrumb">
-                <div><i class="fa fa-caret-right" aria-hidden="true"></i>Your Business</div>
-            </div>
-            <div class="greyArrowCrumb">
-                <div><i class="fa fa-caret-right" aria-hidden="true"></i>About You</div>
-            </div>
-            <div class="greyArrowCrumb">
-                <div><i class="fa fa-caret-right" aria-hidden="true"></i>Bank Statements</div>
-            </div>
+        <!--<hr>
+        <div class="form-group">
+          <label for="first_name">First Name</label>
+          <input type="text" id="first_name" name="first_name" class="form-control" [(ngModel)]="details.first_name" required>
         </div>
-        <div class="pageHeader--inner">
-
-            <div class="hero">
-                <h1>
-                    Small Business Financing from Zunde!
-                </h1>
-                <p>Get approved today and have money in your account within 48 hours</p>
-            </div>
-
-            <div class="country-selector">
-
-            </div>
+        <div class="form-group">
+          <label for="last_name">Last Name</label>
+          <input type="text" id="last_name" name="last_name" class="form-control" [(ngModel)]="details.last_name" required>
         </div>
-        <div class="applyComponent">
-            <form (ngSubmit)="f.form.valid && applyNow(details)" novalidate name="ApplyNowForm" #f="ngForm">
-                <div class="form-group">
-                    <label for="desired_amount">How much would you like to borrow</label>
-                    <select class="form-control" id="desired_amount" include_blank="false" name="desired_amount" tabindex="1" data-validate="true"  [(ngModel)]="details.desired_amount" required>
-                        <option value="$5000_to_$10000">$5,000-$10,000</option>
-                        <option value="$10000_to_$15000">$10,000-$15,000</option>
-                        <option value="$15000_to_$20000">$15,000-$20,000</option>
-                        <option value="$20000_to_$25000">$20,000-$25,000</option>
-                        <option value="$25000_to_$30000">$25,000-$30,000</option>
-                        <option value="$30000_to_$35000">$30,000-$35,000</option>
-                        <option value="$35000_to_$50000">$35,000-$50,000</option>
-                        <option value="$50000_to_$75000">$50,000-$75,000</option>
-                        <option value="$75000_to_$150000">$75,000-$150,000</option>
-                        <option value="$150000_to_$250000">$150,000-$250,000</option>
-                        <option value="$250000_plus">More than $250,000</option>
-                    </select>
-                    <small *ngIf="!f.form.details.desired_amount.valid" class="text-danger">
-                        Please enter how much money you need.
-                    </small>
-                </div>
-                <div class="form-group">
-                    <label for="date_required">How soon do you need the money?</label>
-                    <select class="form-control" id="date_required" include_blank="false" name="date_required" tabindex="2" data-validate="true" [(ngModel)]="details.date_required" required>
-                        <option value="IMMEDIATLEY">Immediately</option>
-                        <option value="ONE_WEEK">1 week</option>
-                        <option value="THIRTY_DAYS">30 days</option>
-                        <option value="MORE_THAN_THIRTY_DAYS">More than 30 days</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="borrow_amout">How will you use the loan?</label>
-                    <div class="checkboxes">
-                        <div class="media ">
-                            <input class="loan-intent loan_intent_option option has-follow-up" data-follow-up="equipment_intent,equipment_revenue" id="signup_questionnaire_loan_intent_Buying equipment" name="questionnaire[loan_intent][]" tabindex="3" type="checkbox" value="BUYING_EQUIPMENT" data-validate="true">
-                            <label for="signup_questionnaire_loan_intent_Buying equipment">Buying equipment</label>
-                        </div>
-                        <div class="media ">
-                            <input class="loan-intent loan_intent_option option has-follow-up" data-follow-up="equipment_intent,equipment_revenue" id="signup_questionnaire_loan_intent_Buying equipment" name="questionnaire[loan_intent][]" tabindex="3" type="checkbox" value="BUYING_EQUIPMENT" data-validate="true">
-                            <label for="signup_questionnaire_loan_intent_Buying equipment">Marketing</label>
-                        </div>
-                        <div class="media ">
-                            <input class="loan-intent loan_intent_option option has-follow-up" data-follow-up="equipment_intent,equipment_revenue" id="signup_questionnaire_loan_intent_Buying equipment" name="questionnaire[loan_intent][]" tabindex="3" type="checkbox" value="BUYING_EQUIPMENT" data-validate="true">
-                            <label for="signup_questionnaire_loan_intent_Buying equipment">Remodelling/Expansion</label>
-                        </div>
-                        <div class="media ">
-                            <input class="loan-intent loan_intent_option option has-follow-up" data-follow-up="equipment_intent,equipment_revenue" id="signup_questionnaire_loan_intent_Buying equipment" name="questionnaire[loan_intent][]" tabindex="3" type="checkbox" value="BUYING_EQUIPMENT" data-validate="true">
-                            <label for="signup_questionnaire_loan_intent_Buying equipment">Refinancing debt</label>
-                        </div>
-                        <div class="media ">
-                            <input class="loan-intent loan_intent_option option has-follow-up" data-follow-up="equipment_intent,equipment_revenue" id="signup_questionnaire_loan_intent_Buying equipment" name="questionnaire[loan_intent][]" tabindex="3" type="checkbox" value="BUYING_EQUIPMENT" data-validate="true">
-                            <label for="signup_questionnaire_loan_intent_Buying equipment">Hiring Employees</label>
-                        </div>
-                        <div class="media ">
-                            <input class="loan-intent loan_intent_option option has-follow-up" data-follow-up="equipment_intent,equipment_revenue" id="signup_questionnaire_loan_intent_Buying equipment" name="questionnaire[loan_intent][]" tabindex="3" type="checkbox" value="BUYING_EQUIPMENT" data-validate="true">
-                            <label for="signup_questionnaire_loan_intent_Buying equipment">Buying equipment</label>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="form-group">
-                    <label for="first_name">First Name</label>
-                    <input type="text" id="first_name" name="first_name" class="form-control" [(ngModel)]="details.first_name" required>
-                </div>
-                <div class="form-group">
-                    <label for="last_name">Last Name</label>
-                    <input type="text" id="last_name" name="last_name" class="form-control" [(ngModel)]="details.last_name" required>
-                </div>
-                <div class="form-group">
-                    <label for="best_contact_number">Contact Number</label>
-                    <input type="text" id="best_contact_number" name="best_contact_number" class="form-control" [(ngModel)]="details.best_contact_number" required>
-                </div>
-                <hr>
-                <div class="form-group">
-                    <label for="how_did_you_hear_about_this">How did you hear about us?</label>
-                    <input type="text" id="how_did_you_hear_about_this" name="how_did_you_hear_about_this" class="form-control" [(ngModel)]="details.how_did_you_hear_about_this">
-                </div>
-                <hr>
-                <div class="form-group">
-                    <label for="email_address">Email Address</label>
-                    <input type="password" id="email_address" name="email_address" class="form-control" [(ngModel)]="details.email_address" required>
-                </div>
-                <div class="form-group">
-                    <label for="confirm_email_address">Confirm Email address</label>
-                    <input type="password" id="confirm_email_address" name="confirm_email_address" class="form-control" [(ngModel)]="details.confirm_email_address" required>
-                </div>
-
-                <div class="form-group">
-                    <button class="btn" role="submit" type="submit">Continue</button>
-                </div>
-            </form>
-
-            <p class="terms">By clicking “Continue”, you (i) consent to receiving calls and messages, including autodialed calls for marketing purposes, from Zunde or its representatives or agents at the telephone number provided above (including mobile telephone number), and acknowledge that no purchase of credit or services is contingent upon such consent; and (ii) acknowledge that you have read Zunde’s Application Agreement and Zunde’s Privacy Policy and understand that you may opt out of receiving communications of your choice from Zunde as provided in the Privacy Policy.</p>
+        <div class="form-group">
+          <label for="best_contact_number">Contact Number</label>
+          <input type="text" id="best_contact_number" name="best_contact_number" class="form-control" [(ngModel)]="details.best_contact_number" required>
         </div>
-    </section>
+        <hr>
+        <div class="form-group">
+          <label for="how_did_you_hear_about_this">How did you hear about us?</label>
+          <input type="text" id="how_did_you_hear_about_this" name="how_did_you_hear_about_this" class="form-control" [(ngModel)]="details.how_did_you_hear_about_this">
+        </div>
+        <hr>
+        <div class="form-group">
+          <label for="email_address">Email Address</label>
+          <input type="password" id="email_address" name="email_address" class="form-control" [(ngModel)]="details.email_address" required>
+        </div>
+        <div class="form-group">
+          <label for="confirm_email_address">Confirm Email address</label>
+          <input type="password" id="confirm_email_address" name="confirm_email_address" class="form-control" [(ngModel)]="details.confirm_email_address" required>
+        </div>-->
+
+        <div class="form-group">
+          <button class="btn" role="submit" type="submit">Continue</button>
+        </div>
+      </form>
+
+      <p class="terms">By clicking “Continue”, you (i) consent to receiving calls and messages, including autodialed calls for marketing purposes, from Zunde or its representatives or agents at the telephone number provided above (including mobile telephone number), and acknowledge that no purchase of credit or services is contingent upon such consent; and (ii) acknowledge that you have read Zunde’s Application Agreement and Zunde’s Privacy Policy and understand that you may opt out of receiving communications of your choice from Zunde as provided in the Privacy Policy.</p>
+    </div>
+  </section>
 </div>
