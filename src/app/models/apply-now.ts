@@ -10,6 +10,13 @@ export interface person_details {
   last_name: string;
   contact_number: number;
   email_address: string;
+  home_address: string;
+  post_code: string;
+  home_phone: string;
+  dob: string;
+  share_total: string;
+  national_insurance: string;
+
 
 }
 
@@ -23,7 +30,6 @@ export interface loan_details {
 
 export interface business_details {
   legal_name: string,
-  other_legal_name: boolean;
   business_address: string;
   post_code: string;
   business_phone: number;

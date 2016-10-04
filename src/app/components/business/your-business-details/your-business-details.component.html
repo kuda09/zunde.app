@@ -44,32 +44,24 @@
                     <input type="text" id="legal_name" name="legal_name" class="form-control" formControlName="legal_name">
                 </div>
                 <div class="form-group">
-                    <label for="other_names">Do you do business under a different name?</label>
-                    <br><br>
-                    <span>Yes<input class="other_names" name="other_names" type="radio" value="true"></span>
-                    <span>No<input class="other_names" name="other_names" type="radio" value="no"></span>
-
-                </div>
-                <div class="form-group">
                     <label for="business_address">Business Address</label>
-                    <input type="text" id="business_address" name="business_address" class="form-control">
+                    <input type="text" id="business_address" name="business_address" class="form-control" formControlName="business_address">
                 </div>
                 <div class="form-group">
                     <label for="post_code">Post code</label>
-                    <input type="text" id="post_code" name="post_code" class="form-control">
+                    <input type="text" id="post_code" name="post_code" class="form-control" formControlName="post_code">
                 </div>
                 <div class="form-group">
                     <label for="business_phone">Business Phone</label>
-                    <input type="text" id="business_phone" name="business_phone" class="form-control">
+                    <input type="text" id="business_phone" name="business_phone" class="form-control" formControlName="business_phone">
                 </div>
                 <div class="form-group">
-                    <label for="business_start_date">What year did you start your business?</label>
-                    <input type="text" id="business_start_date" name="business_start_date" class="form-control">
+                    <label for="business_trading_date">What year did you start your business?</label>
+                    <input type="text" id="business_trading_date" name="business_trading_date" class="form-control" formControlName="business_trading_date">
                 </div>
                 <div class="form-group">
                     <label for="legal_type">Legal Entity Type</label>
-                    <select class="form-control" id="legal_type" name="legal_type">
-                        <option value=""></option>
+                    <select class="form-control" id="legal_entity_type" name="legal_type" formControlName="legal_entity_type">
                         <option value="Sole Proprietor">Sole Proprietor</option>
                         <option value="Limited Liability Company (LLC)">Limited Liability Company (LLC)</option>
                         <option value="Corporation">Corporation</option>
@@ -87,26 +79,28 @@
                     <ul>
                         <li>Can be found at the top right of your tax return.</li>
                     </ul>
-                    <input type="text" id="business_tax_id" name="business_tax_id" class="form-control">
+                    <input type="text" id="business_tax_id" name="business_tax_id" class="form-control" formControlName="business_tax_id">
                 </div>
                 <hr>
                 <div class="form-group">
-                    <label for="estimated_gross_revenue">Estimated Gross Annual Revenue</label>
+                    <label for="annual_revenue">Estimated Gross Annual Revenue</label>
                     <p>We use this to determine your overall business performance</p>
-                    <input type="text" id="estimated_gross_revenue" name="estimated_gross_revenue" class="form-control">
+                    <input type="text" id="annual_revenue" name="annual_revenue" class="form-control" formControlName="annual_revenue">
                 </div>
                 <hr>
 
                 <div class="form-group">
-                    <label for="average_bank_balance">Average Bank Balance</label>
+                    <label for="bank_balance">Average Bank Balance</label>
                     <p>We use this to determine what you can afford to pay back.</p>
 
                     <ul>
                         <li>At the end of a typical day, what do you expect to see in your primary business account?</li>
                         <li>One way to estimate this is by looking at the ending balance from your previous bank statement.</li>
                     </ul>
-                    <input type="text" id="average_bank_balance" name="average_bank_balance" class="form-control">
+                    <input type="text" id="bank_balance" name="bank_balance" class="form-control" formControlName="bank_balance">
                 </div>
+
+              <pre>{{ ApplyNowForm.value | json }}</pre>
 
                 <div class="form-group">
                     <button class="btn" role="submit" type="submit">Continue</button>

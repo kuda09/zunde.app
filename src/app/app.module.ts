@@ -31,6 +31,7 @@ import {UserService} from "./services/user-service.service";
 import {Ng2BootstrapModule} from "ng2-bootstrap";
 import {ModalModule} from "ng2-modal";
 import {ProfileComponent} from "./components/business/profile/profile.component";
+import {ApplyNowService} from "./apply-now.service";
 
 
 @NgModule({
@@ -61,7 +62,7 @@ import {ProfileComponent} from "./components/business/profile/profile.component"
     HttpModule,
     routing
   ],
-  providers: [appRoutingProviders, AuthGuardService, AuthService, UserService, fakeBackendProvider, MockBackend, BaseRequestOptions],
+  providers: [appRoutingProviders, AuthGuardService, AuthService, UserService, fakeBackendProvider, MockBackend, BaseRequestOptions, ApplyNowService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
