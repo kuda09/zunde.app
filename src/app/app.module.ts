@@ -31,7 +31,7 @@ import {UserService} from "./services/user-service.service";
 import {Ng2BootstrapModule} from "ng2-bootstrap";
 import {ModalModule} from "ng2-modal";
 import {ProfileComponent} from "./components/business/profile/profile.component";
-import {ApplyNowService} from "./apply-now.service";
+import {ApplyNowService} from "./services/apply-now.service";
 
 
 @NgModule({

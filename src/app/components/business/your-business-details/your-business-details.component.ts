@@ -4,7 +4,7 @@ import {FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule} fr
 import {UserService} from "../../../services/user-service.service";
 import {AuthService} from "../../../services/auth-service.service";
 import {business_details} from '../../../models/apply-now'
-import {ApplyNowService} from "../../../apply-now.service";
+import {ApplyNowService} from "../../../services/apply-now.service";
 
 
 @Component({

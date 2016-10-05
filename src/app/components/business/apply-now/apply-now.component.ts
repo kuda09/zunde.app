@@ -4,7 +4,7 @@ import {FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule} fr
 import {UserService} from "../../../services/user-service.service";
 import {AuthService} from "../../../services/auth-service.service";
 import {ApplyNowModel} from "../../../models/apply-now";
-
+import {ApplyNowService} from "../../../services/apply-now.service";
 
 
 @Component({
@@ -23,7 +23,7 @@ export class ApplyNowComponent implements OnInit {
     constructor(private _userService: UserService,
                 private _authService: AuthService,
                 private _fb: FormBuilder,
-                private router: Router) {
+                private router: Router, private _applyNowService: ApplyNowService) {
     }
 
     ngOnInit() {
@@ -51,6 +51,8 @@ export class ApplyNowComponent implements OnInit {
         this.submitted = true;
 
         console.log(model);
+
+        this._applyNowService.saveInformationToStorage(model);
 
         this.router.navigate(['/apply-now/your-business-details']);
 
