@@ -32,8 +32,6 @@ export class MenuComponent implements OnInit {
         self._currentViewService.getView()
             .subscribe((_event) => {
 
-
-
                 self.homePageClass = self._currentViewService.addHeroClassToHomePage(_event.url);
 
                 self.secureViews
