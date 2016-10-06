@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnChanges} from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 import {CurrentViewService} from "../../../services/current-view.service";
@@ -31,8 +31,6 @@ export class MenuComponent implements OnInit {
 
         self._currentViewService.getView()
             .subscribe((_event) => {
-
-
 
                 self.homePageClass = self._currentViewService.addHeroClassToHomePage(_event.url);
 
