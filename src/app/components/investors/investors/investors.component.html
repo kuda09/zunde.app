@@ -1,3 +1,132 @@
-<p>
-  investors works!
-</p>
+<div class="container">
+
+
+  <h1>Invest with Zunde</h1>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, cupiditate deserunt enim ex ipsa iste omnis veniam. Alias blanditiis consequuntur cupiditate eligendi iste minus neque, non placeat quia rerum ut!</p>
+</div>
+
+
+<div class="investors-hero clearfix">
+  <div class="container">
+    <div class="investorsForm">
+
+      <h2>Sign Up Now</h2>
+
+      <form action="">
+
+
+        <div class="form-group">
+
+          <label for="email_address">Email</label>
+          <input type="text" class="form-control" name="email_address" id="email_address">
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+
+              <label for="first_name">First Name</label>
+              <input type="text" class="form-control" name="first_name" id="first_name">
+            </div>
+
+          </div>
+          <div class="col-md-6">
+
+            <div class="form-group">
+
+              <label for="last_name">Last Name</label>
+              <input type="text" class="form-control" name="last_name" id="last_name">
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="phone">Phone</label>
+          <input type="text" class="form-control" name="phone" id="phone">
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="password">Create Password</label>
+          <input type="text" class="form-control" name="password" id="password">
+        </div>
+
+
+        <hr>
+
+        <div class="form-group">
+
+          <label for="investment_type">Type of Investment</label>
+          <select type="text" class="form-control" name="investment_type" id="investment_type">
+            <option value="corporation">Corporation</option>
+            <option value="individual">Individual</option>
+          </select>
+        </div>
+        <hr>
+        <div class="form">
+          <button role="submit" type="submit" class="btn">Sign up</button>
+        </div>
+        <p>Have an account? <a (click)="investorSignin.open()">Login</a></p>
+      </form>
+
+
+    </div>
+  </div>
+</div>
+
+<div class="investors-info clearfix">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <i class="fa fa-balance-scale" aria-hidden="true"></i>
+        <h3>Better Returns than the market</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus aliquam consequuntur corporis distinctio dolorum earum excepturi laudantium nihil obcaecati optio, ratione rerum soluta tenetur veniam! </p>
+      </div>
+      <div class="col-md-4">
+        <i class="fa fa-certificate" aria-hidden="true"></i>
+        <h3>Better Returns than the market</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus aliquam consequuntur corporis distinctio dolorum earum excepturi laudantium nihil obcaecati optio, ratione rerum soluta tenetur veniam! </p>
+      </div>
+      <div class="col-md-4">
+        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+        <h3>Better Returns than the market</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus aliquam consequuntur corporis distinctio dolorum earum excepturi laudantium nihil obcaecati optio, ratione rerum soluta tenetur veniam! </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<modal #investorSignin>
+  <modal-header>
+    <h3>Partner Login</h3>
+  </modal-header>
+  <modal-content>
+    <!--<form (ngSubmit)="login(SignInForm.value, SignInForm.valid)" name="SignInForm"  [formGroup]="SignInForm">
+      <div class="form-group">
+        <small *ngIf="error" class="alert alert-danger">{{error}}</small>
+      </div>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" class="form-control" formControlName="username" required placeholder="yours@example.com">
+        <small [hidden]="SignInForm.controls.username.valid || (SignInForm.controls.username.pristine && !submitted)" class="has-error">Username is required</small>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" class="form-control" formControlName="password" required placeholder="Password">
+        <small [hidden]="SignInForm.controls.password.valid || (SignInForm.controls.password.pristine && !submitted)" class="has-error">Password is required</small>
+      </div>
+      <div class="form-group">
+        <button class="btn" role="submit" type="submit" >Sign in</button>
+      </div>
+
+    </form>-->
+  </modal-content>
+  <modal-footer>
+    <button class="btn btn-primary" (click)="investorSignin.close()">close</button>
+  </modal-footer>
+</modal>
+
+

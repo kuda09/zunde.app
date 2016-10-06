@@ -1,0 +1,55 @@
+@import "../../../../main";
+
+.investors-info {
+
+  margin: 50px 0;
+
+  i {
+
+    font-size: 78px;
+    color: $blue;
+    text-align: center;
+  }
+
+}
+
+.investors-hero {
+
+  min-height: 600px;
+  background-image: url('../../../../assets/img/investors_home.jpg');
+  background-position-x: 0;
+  background-size: cover;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 50px 0;
+  margin-bottom: 100px;
+
+  .container {
+
+    position: relative;
+
+  }
+
+  .investorsForm {
+
+    background-color: $lightergrey;
+    padding: 10px;
+    margin: 10px 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    min-width: 400px;
+
+
+    form {
+
+      margin: 20px;
+    }
+
+    a {
+
+      color: $blue;
+    }
+  }
+}

@@ -16,16 +16,13 @@ export class ApplyNowService {
     } else {
 
       var localStorageData = JSON.parse(localStorage.getItem('applicationInformation'));
-
       data  = _.merge(data, localStorageData);
-
-
       localStorage.setItem('applicationInformation', JSON.stringify(data));
     }
 
   }
 
-  getInformationToStorage () {
+  getInformationFromStorage () {
 
     return JSON.parse(localStorage.getItem('applicationInformation'));
   }

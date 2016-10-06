@@ -10,10 +10,11 @@ import {UserService} from "../../../services/user-service.service";
 export class ProfileComponent implements OnInit {
 
   user: Object = null;
+  show: boolean = false;
 
   constructor(
     private _authService: AuthService,
-    private _userService: UserService) {
+    private _userService: UserService,) {
 
   }
 
@@ -24,5 +25,7 @@ export class ProfileComponent implements OnInit {
       this.user = this._userService.getUser();
     }
   }
+
+
 
 }

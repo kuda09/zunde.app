@@ -1,22 +1,61 @@
-<div class="container">
-  <div class="content-holder">
-    <div class="col-md-9">
-      <h1>Profile</h1>
-
-      <hr>
-      <div class="row">
-        <div class="col-md-6" *ngIf="user !== null">
-
-          {{user.name}}
-
-
-        </div>
-        <div class="col-md-6 options">
-        </div>
-      </div>
-    </div>
+<div class="content-holder">
+  <div class="container">
     <div class="col-md-3">
 
+      <ul class="dashboard_list">
+        <li class="active"><i class="fa fa-tachometer" aria-hidden="true"></i>Overview</li>
+        <li><i class="fa fa-money" aria-hidden="true"></i>Repayments</li>
+        <li><i class="fa fa-building" aria-hidden="true"></i>Company</li>
+        <li><i class="fa fa-users" aria-hidden="true"></i>People</li>
+        <li><i class="fa fa-user-secret" aria-hidden="true"></i>Businesss Verification</li>
+      </ul>
+    </div>
+    <div class="col-md-9">
+
+      <div class="congralulations">
+        <h1>Profile</h1>
+        <h2>Congralulations Your business is approved for up to £50,000</h2>
+      </div>
+
+      <div class="repayments-table">
+        <h1>Draw down funds</h1>
+        <table class="table table-responsive table-bordered">
+          <thead>
+          <tr>
+            <th>Repayment Date</th>
+            <th>Original Loan</th>
+            <th>Interest</th>
+            <th>Monthly Total</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Month 1</td>
+            <td>£5,000</td>
+            <td>£1,200</td>
+            <td>£6,200</td>
+          </tr>
+          <tr>
+            <td>Month 1</td>
+            <td>£5,000</td>
+            <td>£1,200</td>
+            <td>£6,200</td>
+          </tr>
+          <tr>
+            <td>Month 1</td>
+            <td>£5,000</td>
+            <td>£1,200</td>
+            <td>£6,200</td>
+          </tr>
+          <tr>
+            <td>Month 1</td>
+            <td>£5,000</td>
+            <td>£1,200</td>
+            <td>£6,200</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

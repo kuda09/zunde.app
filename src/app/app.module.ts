@@ -67,3 +67,8 @@ import {ApplyNowService} from "./apply-now.service";
 })
 export class AppModule {
 }
+/*todo */
+
+//we need mask js
+//sentry js a library to help you spot errors
+//link business accounts
