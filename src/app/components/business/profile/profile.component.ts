@@ -26,6 +26,13 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  displayTab(tab){
+
+    console.log(tab);
+
+
+  }
+
 
 
 }
