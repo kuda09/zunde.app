@@ -4,58 +4,73 @@ import {FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule} fr
 import {AuthService} from "../../../services/auth-service.service";
 import {ModalModule} from "ng2-bootstrap/components/modal";
 
-import {SiginInModel} from '../../../models/sign-in';
+import {SignInModel} from '../../../models/sign-in';
 
 
 @Component({
-    selector: 'app-sign-in',
-    templateUrl: './sign-in.component.html',
-    styleUrls: ['./sign-in.component.scss'],
-    providers: [AuthService]
+  selector: 'app-sign-in',
+  templateUrl: './sign-in.component.html',
+  styleUrls: ['./sign-in.component.scss'],
+  providers: [AuthService]
 })
 export class SignInComponent implements OnInit {
-    loading: boolean = false;
-    error: string;
+  loading: boolean = false;
+  error: string;
 
-    public SignInForm: FormGroup; //our model driven form
-    public submitted: boolean; //keep track whether the form is submitted
-    public events: any[] = []; //use later to display form events
+  public SignInForm: FormGroup; //our model driven form
+  public ForgotPasswordForm: FormGroup; //our model driven form
+  public submitted: boolean; //keep track whether the form is submitted
+  public events: any[] = []; //use later to display form events
 
-    constructor(private router: Router,
-                private authService: AuthService,
-                private _fb: FormBuilder) {
-    }
+  constructor(private router: Router,
+              private authService: AuthService,
+              private _fb: FormBuilder) {
+  }
 
-    ngOnInit() {
+  ngOnInit() {
 
-        this.SignInForm = new FormGroup({
-            username: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
-            password: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)])
-        })
+    this.SignInForm = new FormGroup({
+      username: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
+      password: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)])
+    })
 
-    }
 
-    login(model: SiginInModel, isValid: boolean) {
+    this.ForgotPasswordForm = this._fb.group({
+      email_address: ['', [Validators.required, Validators.minLength(5)]]
+    })
 
-        var self = this;
+  }
 
-        if (isValid) {
+  login(model: SignInModel, isValid: boolean) {
 
-            this.authService.login(model.username, model.password, function (err) {
+    var self = this;
 
-                if (err) {
-                    self.error = err.message;
+    if (isValid) {
 
-                }
+      this.authService.login(model.username, model.password, function (err) {
 
-            });
+        if (err) {
+          self.error = err.message;
+
         }
 
+      });
     }
 
-    goToRegisterView() {
+  }
 
-        this.router.navigate(['/business/register'])
-    }
+  forgotPassword(model, isValid: boolean) {
+
+    var self = this;
+
+    console.log(model);
+
+
+  }
+
+  goToRegisterView() {
+
+    this.router.navigate(['/business/register'])
+  }
 
 }

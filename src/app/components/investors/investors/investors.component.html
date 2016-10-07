@@ -12,13 +12,13 @@
 
       <h2>Sign Up Now</h2>
 
-      <form action="">
+      <form (ngSubmit)="signup(SignUp.value, SignUp.valid)" name="SignUp" [formGroup]="SignUp" method="post">
 
 
         <div class="form-group">
 
           <label for="email_address">Email</label>
-          <input type="text" class="form-control" name="email_address" id="email_address">
+          <input type="text" class="form-control" name="email_address" id="email_address" formControlName="email_address">
         </div>
 
         <div class="row">
@@ -26,7 +26,7 @@
             <div class="form-group">
 
               <label for="first_name">First Name</label>
-              <input type="text" class="form-control" name="first_name" id="first_name">
+              <input type="text" class="form-control" name="first_name" id="first_name" formControlName="first_name">
             </div>
 
           </div>
@@ -35,7 +35,7 @@
             <div class="form-group">
 
               <label for="last_name">Last Name</label>
-              <input type="text" class="form-control" name="last_name" id="last_name">
+              <input type="text" class="form-control" name="last_name" id="last_name" formControlName="last_name">
             </div>
           </div>
         </div>
@@ -44,14 +44,14 @@
         <div class="form-group">
 
           <label for="phone">Phone</label>
-          <input type="text" class="form-control" name="phone" id="phone">
+          <input type="text" class="form-control" name="phone" id="phone" formControlName="phone">
         </div>
 
 
         <div class="form-group">
 
           <label for="password">Create Password</label>
-          <input type="text" class="form-control" name="password" id="password">
+          <input type="password" class="form-control" name="password" id="password" formControlName="password">
         </div>
 
 
@@ -60,7 +60,7 @@
         <div class="form-group">
 
           <label for="investment_type">Type of Investment</label>
-          <select type="text" class="form-control" name="investment_type" id="investment_type">
+          <select type="text" class="form-control" name="investment_type" id="investment_type" formControlName="type_of_investment">
             <option value="corporation">Corporation</option>
             <option value="individual">Individual</option>
           </select>
@@ -104,7 +104,7 @@
     <h3>Partner Login</h3>
   </modal-header>
   <modal-content>
-    <!--<form (ngSubmit)="login(SignInForm.value, SignInForm.valid)" name="SignInForm"  [formGroup]="SignInForm">
+    <form (ngSubmit)="login(SignInForm.value, SignInForm.valid)" name="SignInForm" [formGroup]="SignInForm">
       <div class="form-group">
         <small *ngIf="error" class="alert alert-danger">{{error}}</small>
       </div>
@@ -119,14 +119,10 @@
         <small [hidden]="SignInForm.controls.password.valid || (SignInForm.controls.password.pristine && !submitted)" class="has-error">Password is required</small>
       </div>
       <div class="form-group">
-        <button class="btn" role="submit" type="submit" >Sign in</button>
+        <button class="btn" role="submit" type="submit">Sign in</button>
       </div>
-
-    </form>-->
+    </form>
   </modal-content>
-  <modal-footer>
-    <button class="btn btn-primary" (click)="investorSignin.close()">close</button>
-  </modal-footer>
 </modal>
 
 

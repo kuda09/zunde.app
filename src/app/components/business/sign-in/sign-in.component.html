@@ -46,13 +46,25 @@
 
 <modal #forgotPasswordModal>
   <modal-header>
-    <h1>Modal header</h1>
+    <h4>Forgot Password</h4>
   </modal-header>
   <modal-content>
-    Hello Modal!
+    <form (ngSubmit)="forgotPassword(ForgotPasswordForm.value, ForgotPasswordForm.valid)" name="ForgotPasswordForm"  [formGroup]="ForgotPasswordForm">
+      <div class="form-group">
+        <small *ngIf="error" class="alert alert-danger">{{error}}</small>
+      </div>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="email_address" name="email_address" class="form-control" formControlName="email_address" required placeholder="yours@example.com">
+        <small [hidden]="ForgotPasswordForm.controls.email_address.valid || (ForgotPasswordForm.controls.email_address.pristine && !submitted)" class="has-error">Username is required</small>
+      </div>
+      <div class="form-group">
+        <button class="btn" role="submit" type="submit" >Verify</button>
+      </div>
+
+    </form>
   </modal-content>
   <modal-footer>
-    <button class="btn btn-primary" (click)="forgotPasswordModal.close()">close</button>
   </modal-footer>
 </modal>
 
