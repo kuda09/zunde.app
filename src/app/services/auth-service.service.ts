@@ -97,13 +97,10 @@ export class AuthService {
     // Remove token and profile from localStorage
     localStorage.removeItem('id_token');
     localStorage.removeItem('profile');
+    this.router.navigate(['sign-in']);
     window.location.reload();
   }
 
-  getUser(): Object {
-
-    return this.currentUser;
-  }
 
   isLoggedIn(): boolean {
     return tokenNotExpired();

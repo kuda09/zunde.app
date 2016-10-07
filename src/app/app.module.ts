@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import { ReactiveFormsModule, FormsModule} from '@angular/forms';
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 
 // used to create fake backend
@@ -8,6 +8,7 @@ import {fakeBackendProvider} from './helpers/index';
 import {MockBackend, MockConnection} from '@angular/http/testing';
 import {BaseRequestOptions} from '@angular/http';
 
+import {AUTH_PROVIDERS} from 'angular2-jwt';
 
 import {AppComponent} from './app.component';
 import {MenuComponent} from './components/shared/menu/menu.component';
@@ -62,7 +63,17 @@ import {ApplyNowService} from "./services/apply-now.service";
     HttpModule,
     routing
   ],
-  providers: [appRoutingProviders, AuthGuardService, AuthService, UserService, fakeBackendProvider, MockBackend, BaseRequestOptions, ApplyNowService],
+  providers: [
+    appRoutingProviders,
+    AuthGuardService,
+    AuthService,
+    UserService,
+    fakeBackendProvider,
+    MockBackend,
+    BaseRequestOptions,
+    ApplyNowService,
+    AUTH_PROVIDERS
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
