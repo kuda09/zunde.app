@@ -86,6 +86,8 @@ export class AuthService {
     this.lock.getProfile(this.token, (error, profile) => {
 
       if(error === null) {
+
+        console.log(profile);
         localStorage.setItem('profile', JSON.stringify(profile));
       }
     });

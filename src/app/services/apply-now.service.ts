@@ -9,14 +9,16 @@ export class ApplyNowService {
 
   saveInformationToStorage (data) {
 
-
     if(localStorage.getItem('applicationInformation') === null) {
 
       localStorage.setItem('applicationInformation', JSON.stringify(data));
+
     } else {
 
       var localStorageData = JSON.parse(localStorage.getItem('applicationInformation'));
+
       data  = _.merge(data, localStorageData);
+
       localStorage.setItem('applicationInformation', JSON.stringify(data));
     }
 

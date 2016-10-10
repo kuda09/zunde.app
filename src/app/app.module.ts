@@ -34,6 +34,13 @@ import {ModalModule} from "ng2-modal";
 import {ProfileComponent} from "./components/business/profile/profile.component";
 import {ApplyNowService} from "./services/apply-now.service";
 
+const config = {
+  apiKey: "AIzaSyAFne6CyxB305-nFXeQtdLzRkWVIQ0tb6A",
+  authDomain: "zunde-cdf89.firebaseapp.com",
+  databaseURL: "https://zunde-cdf89.firebaseio.com",
+  storageBucket: "",
+  messagingSenderId: "704878924305"
+};
 
 @NgModule({
   declarations: [
@@ -60,6 +67,7 @@ import {ApplyNowService} from "./services/apply-now.service";
     ReactiveFormsModule,
     Ng2BootstrapModule,
     ModalModule,
+    //firebase.initializeApp(config),
     HttpModule,
     routing
   ],

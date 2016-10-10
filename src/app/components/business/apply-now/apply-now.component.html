@@ -78,57 +78,39 @@
           </div>
         </fieldset>
         <hr>
-        <fieldset formGroupName="person_details">
-          <div class="form-group">
+        <fieldset formGroupName="person_details" novalidate>
+          <div class="form-group" [ngClass]="{'has-error': !ApplyNowForm.controls.person_details.controls.first_name.errors}">
             <label for="first_name">First Name</label>
-            <input type="text" id="first_name" name="first_name" class="form-control" formControlName="first_name" required>
+            <input type="text" id="first_name" name="first_name" class="form-control" formControlName="first_name" required ngModel>
+            <small *ngIf="ApplyNowForm.controls.person_details.controls.first_name.errors">This field is required</small>
           </div>
-          <div class="form-group">
+          <div class="form-group" [ngClass]="{'has-error': ApplyNowForm.controls.person_details.controls.last_name.valid || (ApplyNowForm.controls.person_details.controls.last_name.pristine && submitted)}">
             <label for="last_name">Last Name</label>
             <input type="text" id="last_name" name="last_name" class="form-control" formControlName="last_name" required>
           </div>
-          <div class="form-group">
+          <div class="form-group" [ngClass]="{'has-error': ApplyNowForm.controls.person_details.controls.contact_number.valid || (ApplyNowForm.controls.person_details.controls.contact_number.pristine && submitted)}">
             <label for="best_contact_number">Contact Number</label>
             <input type="text" id="best_contact_number" name="best_contact_number" class="form-control" formControlName="contact_number" required>
           </div>
-          <div class="form-group" [ngClass]="{'has-error': ApplyNowForm.controls.person_details.controls.email_address.valid || (ApplyNowForm.controls.person_details.controls.email_address.pristine && !submitted)}">
+          <div class="form-group" [ngClass]="{'has-error': ApplyNowForm.controls.person_details.controls.email_address.valid || (ApplyNowForm.controls.person_details.controls.email_address.pristine && submitted)}">
             <label for="email_address">Email Address</label>
             <input type="text" id="email_address" name="email_address" class="form-control" formControlName="email_address" required>
           </div>
         </fieldset>
         <hr>
-        <div class="form-group">
+        <div class="form-group" [ngClass]="{'has-error': ApplyNowForm.controls.person_details.controls.email_address.valid || (ApplyNowForm.controls.person_details.controls.email_address.pristine && submitted)}">
           <label for="how_did_you_hear_about_us">How did you hear about us?</label>
           <input type="text" id="how_did_you_hear_about_us" name="how_did_you_hear_about_us" class="form-control" formControlName="how_did_you_hear_about_us">
           <small [hidden]="ApplyNowForm.controls.how_did_you_hear_about_us.valid || (ApplyNowForm.controls.how_did_you_hear_about_us.pristine && !submitted)" class="has-error">Please tell us who did you here about us!</small>
         </div>
-        <!--<hr>
-        <div class="form-group">
-          <label for="first_name">First Name</label>
-          <input type="text" id="first_name" name="first_name" class="form-control" [(ngModel)]="details.first_name" required>
-        </div>
-        <div class="form-group">
-          <label for="last_name">Last Name</label>
-          <input type="text" id="last_name" name="last_name" class="form-control" [(ngModel)]="details.last_name" required>
-        </div>
-        <div class="form-group">
-          <label for="best_contact_number">Contact Number</label>
-          <input type="text" id="best_contact_number" name="best_contact_number" class="form-control" [(ngModel)]="details.best_contact_number" required>
-        </div>
-        <hr>
-        <div class="form-group">
-          <label for="how_did_you_hear_about_this">How did you hear about us?</label>
-          <input type="text" id="how_did_you_hear_about_this" name="how_did_you_hear_about_this" class="form-control" [(ngModel)]="details.how_did_you_hear_about_this">
-        </div>
-        <hr>
-        <div class="form-group">
-          <label for="email_address">Email Address</label>
-          <input type="password" id="email_address" name="email_address" class="form-control" [(ngModel)]="details.email_address" required>
-        </div>
-        <div class="form-group">
-          <label for="confirm_email_address">Confirm Email address</label>
-          <input type="password" id="confirm_email_address" name="confirm_email_address" class="form-control" [(ngModel)]="details.confirm_email_address" required>
-        </div>-->
+
+
+        <pre>{{ ApplyNowForm.value | json }}</pre>
+        <pre>{{ApplyNowForm.controls.person_details.controls.email_address.valid }}</pre>
+        <pre>{{ApplyNowForm.controls.person_details.controls.email_address.pristine }}</pre>
+        <pre>{{submitted }}</pre>
+        <pre>{{ApplyNowForm.valid }}</pre>
+
 
         <div class="form-group">
           <button class="btn" role="submit" type="submit">Continue</button>

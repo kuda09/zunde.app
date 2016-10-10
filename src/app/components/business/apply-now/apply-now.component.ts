@@ -35,10 +35,10 @@ export class ApplyNowComponent implements OnInit {
                 loan_use: ['', [Validators.required, Validators.minLength(5)]],
             }),
             person_details: this._fb.group({
-                first_name: ['', [Validators.required, Validators.minLength(5)]],
-                last_name: ['', [Validators.required, Validators.minLength(5)]],
-                contact_number: ['', [Validators.required, Validators.minLength(5)]],
-                email_address: ['', [Validators.required, Validators.minLength(5)]],
+                first_name: ['', [Validators.required]],
+                last_name: ['', [Validators.required]],
+                contact_number: ['', [Validators.required]],
+                email_address: ['', [Validators.required]],
 
             }),
             how_did_you_hear_about_us: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)])
