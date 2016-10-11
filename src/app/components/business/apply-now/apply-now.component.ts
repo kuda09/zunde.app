@@ -1,10 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule} from '@angular/forms';
+
+import {FIREBASE_PROVIDERS, defaultFirebase, AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
+
 import {UserService} from "../../../services/user-service.service";
 import {AuthService} from "../../../services/auth-service.service";
-import {ApplyNowModel} from "../../../models/apply-now";
 import {ApplyNowService} from "../../../services/apply-now.service";
+
+import {ApplyNowModel} from "../../../models/apply-now";
 
 
 @Component({
@@ -15,6 +19,7 @@ import {ApplyNowService} from "../../../services/apply-now.service";
 export class ApplyNowComponent implements OnInit {
 
     details: Object = {};
+    data: FirebaseObjectObservable;
     public ApplyNowForm: FormGroup;
     public submitted: boolean = false;
     public events: any[] = [];
@@ -23,7 +28,17 @@ export class ApplyNowComponent implements OnInit {
     constructor(private _userService: UserService,
                 private _authService: AuthService,
                 private _fb: FormBuilder,
-                private router: Router, private _applyNowService: ApplyNowService) {
+                private router: Router,
+                private _applyNowService: ApplyNowService,
+                private af: AngularFire) {
+
+        /*af.database.ref('user/1').set({
+            username: 'kuda09',
+            email: 'ku-da@hotmail.co.uk'
+        })*/
+
+
+        console.log(this.details);
     }
 
     ngOnInit() {

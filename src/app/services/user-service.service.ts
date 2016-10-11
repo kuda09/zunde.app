@@ -25,6 +25,24 @@ export class UserService {
     return null;
   }
 
+  public isUserVerified() {
+
+    if(this.authService.isLoggedIn()) {
+
+      var profile = JSON.parse(localStorage.getItem('profile'));
+
+      if(profile.email_verified) {
+
+        return true;
+      }
+
+      return false;
+    }
+
+    return null;
+
+  }
+
 
 
 }

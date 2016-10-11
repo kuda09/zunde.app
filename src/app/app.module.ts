@@ -9,6 +9,8 @@ import {MockBackend, MockConnection} from '@angular/http/testing';
 import {BaseRequestOptions} from '@angular/http';
 
 import {AUTH_PROVIDERS} from 'angular2-jwt';
+import {AngularFireModule} from 'angularfire2';
+import * as firebase from 'firebase';
 
 import {AppComponent} from './app.component';
 import {MenuComponent} from './components/shared/menu/menu.component';
@@ -33,56 +35,60 @@ import {Ng2BootstrapModule} from "ng2-bootstrap";
 import {ModalModule} from "ng2-modal";
 import {ProfileComponent} from "./components/business/profile/profile.component";
 import {ApplyNowService} from "./services/apply-now.service";
+import {ProfileResolver} from "./resolvers/profile.resolver";
+import {EditprofileComponent} from './components/business/editprofile/editprofile.component';
 
 const config = {
-  apiKey: "AIzaSyAFne6CyxB305-nFXeQtdLzRkWVIQ0tb6A",
-  authDomain: "zunde-cdf89.firebaseapp.com",
-  databaseURL: "https://zunde-cdf89.firebaseio.com",
-  storageBucket: "",
-  messagingSenderId: "704878924305"
+    apiKey: "AIzaSyAFne6CyxB305-nFXeQtdLzRkWVIQ0tb6A",
+    authDomain: "zunde-cdf89.firebaseapp.com",
+    databaseURL: "https://zunde-cdf89.firebaseio.com",
+    storageBucket: "",
+    messagingSenderId: "704878924305"
 };
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MenuComponent,
-    BusinessLoansComponent,
-    WhyUsComponent,
-    AboutUsComponent,
-    PartnerWithUsComponent,
-    SignInComponent,
-    BusinessRegisterComponent,
-    HomeComponent,
-    FooterComponent,
-    ApplyNowComponent,
-    YourBusinessDetailsComponent,
-    YourPersonalDetailsComponent,
-    BankStatementsComponent,
-    InvestorsComponent,
-    ProfileComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    Ng2BootstrapModule,
-    ModalModule,
-    //firebase.initializeApp(config),
-    HttpModule,
-    routing
-  ],
-  providers: [
-    appRoutingProviders,
-    AuthGuardService,
-    AuthService,
-    UserService,
-    fakeBackendProvider,
-    MockBackend,
-    BaseRequestOptions,
-    ApplyNowService,
-    AUTH_PROVIDERS
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        MenuComponent,
+        BusinessLoansComponent,
+        WhyUsComponent,
+        AboutUsComponent,
+        PartnerWithUsComponent,
+        SignInComponent,
+        BusinessRegisterComponent,
+        HomeComponent,
+        FooterComponent,
+        ApplyNowComponent,
+        YourBusinessDetailsComponent,
+        YourPersonalDetailsComponent,
+        BankStatementsComponent,
+        InvestorsComponent,
+        ProfileComponent,
+        EditprofileComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
+        Ng2BootstrapModule,
+        ModalModule,
+        AngularFireModule.initializeApp(config),
+        HttpModule,
+        routing
+    ],
+    providers: [
+        appRoutingProviders,
+        AuthGuardService,
+        AuthService,
+        UserService,
+        ProfileResolver,
+        fakeBackendProvider,
+        MockBackend,
+        BaseRequestOptions,
+        ApplyNowService,
+        AUTH_PROVIDERS
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }

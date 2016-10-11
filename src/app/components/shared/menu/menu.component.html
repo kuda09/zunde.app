@@ -9,9 +9,20 @@
                 <li [hidden]="hiddenItems"><a routerLink="/about-us" routerLinkActive="active">About Us</a></li>
                 <li [hidden]="hiddenItems"><a routerLink="/investors" routerLinkActive="active">Investors</a></li>
                 <li>
-                    <a routerLink="/sign-in" routerLinkActive="active" *ngIf="!_authService.isLoggedIn()"><i class="fa fa-unlock-alt" aria-hidden="true" ></i>Sign in</a>
-                    <a routerLink="/business/profile" routerLinkActive="active"  *ngIf="_authService.isLoggedIn()"> {{user.email}}<span class="logout" (click)="logOut()">(logout)</span></a>
+                    <a routerLink="/sign-in" routerLinkActive="active" *ngIf="!_authService.isLoggedIn()">
+                        <i class="fa fa-unlock-alt" aria-hidden="true" ></i>
+                        Sign in
+                    </a>
+                    <a routerLink="/business/profile" routerLinkActive="active"  *ngIf="_authService.isLoggedIn()">
+                        {{user.email}}
+                        <i class="fa fa-caret-down" aria-hidden="true" (click)="activeDropDown()"></i>
 
+                        <ul class="dropdown-menu" [ngClass]="{'active': showDropdown}">
+                            <li><a routerLink="/business/editprofile">Edit Profile</a></li>
+                            <li><a routerLink="/business/help">Help</a></li>
+                            <li><a (click)="logOut()">Sign Out</a></li>
+                        </ul>
+                    </a>
                     <a routerLink="/apply-now" class="button">Apply Now</a>
                 </li>
             </ul>

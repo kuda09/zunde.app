@@ -82,7 +82,7 @@
           <div class="form-group" [ngClass]="{'has-error': !ApplyNowForm.controls.person_details.controls.first_name.errors}">
             <label for="first_name">First Name</label>
             <input type="text" id="first_name" name="first_name" class="form-control" formControlName="first_name" required ngModel>
-            <small *ngIf="ApplyNowForm.controls.person_details.controls.first_name.errors">This field is required</small>
+            <!--<small *ngIf="ApplyNowForm.controls.person_details.controls.first_name.errors">This field is required</small>-->
           </div>
           <div class="form-group" [ngClass]="{'has-error': ApplyNowForm.controls.person_details.controls.last_name.valid || (ApplyNowForm.controls.person_details.controls.last_name.pristine && submitted)}">
             <label for="last_name">Last Name</label>

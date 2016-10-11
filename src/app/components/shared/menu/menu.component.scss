@@ -24,7 +24,6 @@ nav {
     left: 0;
     background: transparent;
     color: #fff;
-    overflow: hidden;
     width: 100%;
     z-index: 2;
     margin: 0;
@@ -39,10 +38,10 @@ nav {
     align-items: center;
     list-style: none;
     border-bottom: 1px solid transparent;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
     -webkit-transition: background-color .3s ease, border-color .3s ease;
     transition: background-color .3s ease, border-color .3s ease;
+
+
 
     &.remove-hero {
 
@@ -90,6 +89,25 @@ nav {
             }
           }
         }
+
+        ul.dropdown-menu {
+
+
+          &.active{
+
+            display: block;
+          }
+
+          li {
+
+
+            &:last-child {
+
+              float: left;
+            }
+          }
+        }
+
       }
     }
 
@@ -102,6 +120,8 @@ nav {
     }
 
     .sticky-header--layout {
+
+
 
       ul {
         padding: 0;
@@ -118,6 +138,7 @@ nav {
             color: $white;
             cursor: pointer;
             padding-bottom: 5px;
+            position: relative;
 
             &.active {
 

@@ -16,6 +16,7 @@ export class MenuComponent implements OnInit {
 
     homePageClass: string;
     hiddenItems: boolean = false;
+    showDropdown: boolean = false;
     secureViews: string[] = ['sign-in', 'apply-now'];
     showUser: boolean = false;
     user: Object = {};
@@ -57,6 +58,11 @@ export class MenuComponent implements OnInit {
     logOut() {
 
         this._authService.logout();
+    }
+
+    activeDropDown () {
+
+        return this.showDropdown = this.showDropdown ? false : true;
     }
 
 

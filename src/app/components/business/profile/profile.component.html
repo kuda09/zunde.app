@@ -13,6 +13,10 @@
     <div class="col-md-9">
 
       <div class="overview">
+
+        <div class="alert alert-info" *ngIf="!_userService.isUserVerified()">
+          You profile is not activated please activate profile to begin the application process.
+        </div>
         <div class="congralulations">
           <h1>Profile</h1>
           <h2>Congralulations Your business is approved for up to £50,000</h2>

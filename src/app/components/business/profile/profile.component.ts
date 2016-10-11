@@ -29,7 +29,7 @@ export class ProfileComponent implements OnInit {
 
   displayTab(selectedTab) {
 
-    console.log(tab);
+    console.log(selectedTab);
 
   }
 

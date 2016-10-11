@@ -66,6 +66,7 @@ export class AuthService {
 
   public register (username, password) {
 
+    //noinspection TypeScriptValidateJSTypes
     this.auth0.signup({
       connection: 'Username-Password-Authentication',
       responseType: 'token',

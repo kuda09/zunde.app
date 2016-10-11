@@ -14,6 +14,7 @@ import {BankStatementsComponent} from "./components/business/bank-statements/ban
 import {InvestorsComponent} from "./components/investors/investors/investors.component";
 import {AuthGuardService} from "./guards/auth-guard.service";
 import {ProfileComponent} from "./components/business/profile/profile.component";
+import {ProfileResolver} from "./resolvers/profile.resolver";
 
 const appRoutes: Routes = [
   {
@@ -65,7 +66,10 @@ const appRoutes: Routes = [
   },
   {
     path: 'business/profile',
-    component: ProfileComponent
+    component: ProfileComponent,
+    resolve: {
+      profile: ProfileResolver
+    }
   },
   {
     path: '',
