@@ -30,10 +30,10 @@ export class InvestorsComponent implements OnInit {
       type_of_investment: ['', [Validators.required, Validators.minLength(5)]],
     });
 
-    this.SignInForm = new FormGroup({
+    /*this.SignInForm = new FormGroup({
       username: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
       password: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)])
-    });
+    });*/
   }
 
 

@@ -28,7 +28,7 @@ export class AuthService {
     domain: 'zunde.eu.auth0.com',
     clientID: 'HEqIwQhIWpDgdCXlU7Rinh8RrfN5ulYZ',
     responseType: 'token',
-    callbackURL: 'http://localhost:4200/business/business-profile',
+    callbackURL: 'http://localhost:4200/business/profile',
   });
 
 
@@ -44,7 +44,7 @@ export class AuthService {
 
       localStorage.setItem('id_token', result.idToken);
 
-      this.router.navigate(['business/business-profile']);
+      this.router.navigate(['business/profile']);
 
     } else if (result && result.error) {
 
@@ -64,19 +64,17 @@ export class AuthService {
     }, cb)
   }
 
-  public register (username, password) {
+  public register (details, cb) {
 
     //noinspection TypeScriptValidateJSTypes
     this.auth0.signup({
       connection: 'Username-Password-Authentication',
       responseType: 'token',
-      email: username,
-      password: password,
-    }, function(err) {
-
-      if (err) alert("something went wrong: " + err.message);
-
-    });
+      email: details.username,
+      password: details.password,
+      first_name: details.first_name,
+      last_name: details.last_name
+    }, cb);
 
   };
 

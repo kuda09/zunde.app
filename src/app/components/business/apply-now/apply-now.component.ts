@@ -19,7 +19,7 @@ import {ApplyNowModel} from "../../../models/apply-now";
 export class ApplyNowComponent implements OnInit {
 
     details: Object = {};
-    data: FirebaseObjectObservable;
+    //data: FirebaseObjectObservable;
     public ApplyNowForm: FormGroup;
     public submitted: boolean = false;
     public events: any[] = [];

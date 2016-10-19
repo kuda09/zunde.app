@@ -15,6 +15,8 @@ import {InvestorsComponent} from "./components/investors/investors/investors.com
 import {AuthGuardService} from "./guards/auth-guard.service";
 import {ProfileComponent} from "./components/business/profile/profile.component";
 import {ProfileResolver} from "./resolvers/profile.resolver";
+import {EditprofileComponent} from "./components/business/editprofile/editprofile.component";
+import {HelpComponent} from "./components/business/help/help.component";
 
 const appRoutes: Routes = [
   {
@@ -63,6 +65,14 @@ const appRoutes: Routes = [
   {
     path: 'investors',
     component: InvestorsComponent
+  },
+  {
+    path: 'business/profile-edit',
+    component: EditprofileComponent
+  },
+  {
+    path: 'business/help',
+    component: HelpComponent
   },
   {
     path: 'business/profile',

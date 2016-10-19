@@ -1,0 +1,16 @@
+@import "../../../../main";
+@import "../sign-in/sign-in.component";
+
+
+.signup_form {
+  margin-top: 50px;
+
+  .edit {
+
+    color: $blue;
+    cursor: pointer;
+  }
+}
+
+
+

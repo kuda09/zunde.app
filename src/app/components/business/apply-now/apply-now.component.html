@@ -101,16 +101,10 @@
         <div class="form-group" [ngClass]="{'has-error': ApplyNowForm.controls.person_details.controls.email_address.valid || (ApplyNowForm.controls.person_details.controls.email_address.pristine && submitted)}">
           <label for="how_did_you_hear_about_us">How did you hear about us?</label>
           <input type="text" id="how_did_you_hear_about_us" name="how_did_you_hear_about_us" class="form-control" formControlName="how_did_you_hear_about_us">
-          <small [hidden]="ApplyNowForm.controls.how_did_you_hear_about_us.valid || (ApplyNowForm.controls.how_did_you_hear_about_us.pristine && !submitted)" class="has-error">Please tell us who did you here about us!</small>
+          <!--<small [hidden]="ApplyNowForm.controls.how_did_you_hear_about_us.valid || (ApplyNowForm.controls.how_did_you_hear_about_us.pristine && !submitted)" class="has-error">Please tell us who did you here about us!</small>-->
         </div>
 
-
         <pre>{{ ApplyNowForm.value | json }}</pre>
-        <pre>{{ApplyNowForm.controls.person_details.controls.email_address.valid }}</pre>
-        <pre>{{ApplyNowForm.controls.person_details.controls.email_address.pristine }}</pre>
-        <pre>{{submitted }}</pre>
-        <pre>{{ApplyNowForm.valid }}</pre>
-
 
         <div class="form-group">
           <button class="btn" role="submit" type="submit">Continue</button>

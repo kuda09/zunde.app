@@ -37,6 +37,7 @@ import {ProfileComponent} from "./components/business/profile/profile.component"
 import {ApplyNowService} from "./services/apply-now.service";
 import {ProfileResolver} from "./resolvers/profile.resolver";
 import {EditprofileComponent} from './components/business/editprofile/editprofile.component';
+import {HelpComponent} from './components/business/help/help.component';
 
 const config = {
     apiKey: "AIzaSyAFne6CyxB305-nFXeQtdLzRkWVIQ0tb6A",
@@ -64,7 +65,8 @@ const config = {
         BankStatementsComponent,
         InvestorsComponent,
         ProfileComponent,
-        EditprofileComponent
+        EditprofileComponent,
+        HelpComponent
     ],
     imports: [
         BrowserModule,
