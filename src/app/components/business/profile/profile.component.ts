@@ -21,10 +21,8 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
 
-    if (this._authService.isLoggedIn()) {
-
       this.user = this._userService.getUser();
-    }
+
   }
 
   displayTab(selectedTab) {

@@ -22,7 +22,7 @@
     "@angular/router": "3.0.0",
     "@types/auth0": "^2.3.32",
     "@types/firebase": "^2.4.30",
-    "@types/lodash": "^4.14.36",
+    "@types/lodash": "^4.14.39",
     "angular2-jwt": "^0.1.23",
     "angularfire2": "^2.0.0-beta.5",
     "auth0-lock": "^10.4.0",

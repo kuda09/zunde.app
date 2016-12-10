@@ -36,7 +36,7 @@ export class SignInComponent implements OnInit {
 
 
     this.ForgotPasswordForm = this._fb.group({
-      email_address: ['', [Validators.required, Validators.minLength(5)]]
+      username: ['', [Validators.required, Validators.minLength(5)]]
     })
 
   }

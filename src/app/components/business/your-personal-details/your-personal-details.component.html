@@ -45,24 +45,29 @@
                     <div class="form-group">
                         <label for="home_address">Home address</label>
                         <input type="text" id="home_address" name="home_address" class="form-control" formControlName="home_address">
+                        <small class="has-error" *ngIf="ApplyNowForm.get('person_details').get('home_address').hasError('required') &&  ApplyNowForm.get('person_details').get('home_address').touched">Enter your home address!</small>
                     </div>
                     <div class="form-group">
                         <label for="post_code">Post code</label>
                         <input type="text" id="post_code" name="post_code" class="form-control" formControlName="post_code">
+                        <small class="has-error" *ngIf="ApplyNowForm.get('person_details').get('post_code').hasError('required') &&  ApplyNowForm.get('person_details').get('post_code').touched">Enter your home post code!</small>
                     </div>
                     <div class="form-group">
                         <label for="home_phone">Home phone</label>
                         <input type="text" id="home_phone" name="home_phone" class="form-control" formControlName="home_phone">
+                        <small class="has-error" *ngIf="ApplyNowForm.get('person_details').get('home_phone').hasError('required') &&  ApplyNowForm.get('person_details').get('home_phone').touched">Enter your home phone!</small>
                     </div>
                     <div class="form-group">
                         <label for="date_of_birth">Date of Birth</label>
                         <input type="text" id="date_of_birth" name="date_of_birth" class="form-control" formControlName="date_of_birth">
+                        <small class="has-error" *ngIf="ApplyNowForm.get('person_details').get('date_of_birth').hasError('required') &&  ApplyNowForm.get('person_details').get('date_of_birth').touched">Enter your date of birth!</small>
                     </div>
                 </fieldset>
                 <hr>
                 <div class="form-group">
                     <label for="business_share">How much of the business do you own?</label>
                     <input type="text" id="business_share" name="business_share" class="form-control" formControlName="business_share">
+                    <small class="has-error" *ngIf="ApplyNowForm.get('business_share').hasError('required') &&  ApplyNowForm.get('business_share').touched">Enter your business share!</small>
                 </div>
 
                 <div class="form-group">
@@ -70,6 +75,7 @@
                     <p>We need your full National Security Number. This is required so we can verify your identity.</p>
 
                     <input type="text" id="national_security_number" name="national_security_number" class="form-control" formContolName="national_security_number">
+                    <small class="has-error" *ngIf="ApplyNowForm.get('national_security_number').hasError('required') &&  ApplyNowForm.get('national_security_number').touched">Enter your national security number!</small>
                 </div>
                 <hr>
 
@@ -91,7 +97,7 @@
                 </div>
 
                 <div class="form-group">
-                    <button class="btn" role="submit" type="submit">Continue</button>
+                    <button class="btn" role="submit" type="submit" [disabled]="ApplyNowForm.invalid">Continue</button>
                 </div>
             </form>
             <pre>{{ ApplyNowForm.value | json }}</pre>

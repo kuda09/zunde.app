@@ -31,28 +31,24 @@ export class YourPersonalDetailsComponent implements OnInit {
 
         this.ApplyNowForm = this._fb.group({
             person_details: this._fb.group({
-                home_address: ['', [Validators.required, Validators.minLength(5)]],
+                home_address: ['', [Validators.required]],
                 post_code: ['', [Validators.required]],
-                home_phone: ['', [Validators.required, Validators.minLength(5)]],
+                home_phone: ['', [Validators.required]],
                 date_of_birth: ['', [Validators.required]]
             }),
-            business_share: new FormControl('', [<any>Validators.required]),
-            national_security_number: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
+            business_share: new FormControl('', [Validators.required]),
+            national_security_number: new FormControl('', [Validators.required]),
         })
     }
 
 
     applyNow(model, isValid: boolean) {
 
-        this.submitted = true;
+        if(isValid){
+            this._applyNowService.saveInformationToStorage(model);
 
-        console.log(model);
-
-        this._applyNowService.saveInformationToStorage(model);
-
-        this.router.navigate(['/apply-now/bank-statements']);
-
-
+            this.router.navigate(['/apply-now/bank-statements']);
+        }
     }
 
 

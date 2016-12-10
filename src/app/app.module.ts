@@ -10,7 +10,7 @@ import {BaseRequestOptions} from '@angular/http';
 
 import {AUTH_PROVIDERS} from 'angular2-jwt';
 import {AngularFireModule} from 'angularfire2';
-import * as firebase from 'firebase';
+//import * as firebase from 'firebase';
 
 import {AppComponent} from './app.component';
 import {MenuComponent} from './components/shared/menu/menu.component';
@@ -38,6 +38,8 @@ import {ApplyNowService} from "./services/apply-now.service";
 import {ProfileResolver} from "./resolvers/profile.resolver";
 import {EditprofileComponent} from './components/business/editprofile/editprofile.component';
 import {HelpComponent} from './components/business/help/help.component';
+import {EqualValidator} from "./directives/passwordConfirmValidator";
+import {EmailValidator} from "./directives/emailValidation";
 
 const config = {
     apiKey: "AIzaSyAFne6CyxB305-nFXeQtdLzRkWVIQ0tb6A",
@@ -66,7 +68,9 @@ const config = {
         InvestorsComponent,
         ProfileComponent,
         EditprofileComponent,
-        HelpComponent
+        HelpComponent,
+        EqualValidator,
+        EmailValidator
     ],
     imports: [
         BrowserModule,

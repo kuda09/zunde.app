@@ -22,7 +22,7 @@ export interface person_details {
 
 export interface loan_details {
 
-  desired_amout: number;
+  desired_amount: number;
   date_required: string;
   loan_use: string;
 

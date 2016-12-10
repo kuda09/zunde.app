@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule} from '@angular/forms';
 
 import {AuthService} from "../../../services/auth-service.service";
+import { User} from '../../../models/user.ts';
 
 @Component({
     selector: 'app-register',
@@ -16,6 +17,7 @@ export class BusinessRegisterComponent implements OnInit {
     public RegisterForm: FormGroup; //our model driven form
     public submitted: boolean = false; //keep track whether the form is submitted
     public events: any[] = []; //use later to display form events
+    public user: User;
 
     constructor(private _router: Router,
                 private _authService: AuthService,
@@ -28,24 +30,24 @@ export class BusinessRegisterComponent implements OnInit {
             username: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
             first_name: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
             last_name: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
-            password: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)])
+            password: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
+            confirm_password: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)])
         })
-
-        console.log(this.RegisterForm);
     }
 
 
-    register(details, isValid) {
+    register(model, isValid) {
 
         var self = this;
 
-        this.submitted = true;
+        if(isValid) {
+            this._authService.register(model, (err) => {
 
-        this._authService.register(details, (err) => {
+                if (err) if (err) self.error = err.message;
 
-            if (err) if (err) self.error = err.message;
+            });
+        }
 
-        });
     }
 
 

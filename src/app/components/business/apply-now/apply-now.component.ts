@@ -31,23 +31,20 @@ export class ApplyNowComponent implements OnInit {
                 private router: Router,
                 private _applyNowService: ApplyNowService,
                 private af: AngularFire) {
-
-        /*af.database.ref('user/1').set({
-            username: 'kuda09',
-            email: 'ku-da@hotmail.co.uk'
-        })*/
-
-
-        console.log(this.details);
     }
 
     ngOnInit() {
 
+        if(this._authService.isLoggedIn()){
+
+            this._authService.getProfile();
+        }
+
         this.ApplyNowForm = this._fb.group({
             loan_details: this._fb.group({
-                desired_amount: ['', [Validators.required, Validators.minLength(5)]],
-                date_required: ['', [Validators.required, Validators.minLength(5)]],
-                loan_use: ['', [Validators.required, Validators.minLength(5)]],
+                desired_amount: ['', [Validators.required]],
+                date_required: ['', [Validators.required]],
+                loan_use: ['', [Validators.required]],
             }),
             person_details: this._fb.group({
                 first_name: ['', [Validators.required]],
@@ -56,21 +53,17 @@ export class ApplyNowComponent implements OnInit {
                 email_address: ['', [Validators.required]],
 
             }),
-            how_did_you_hear_about_us: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)])
+            how_did_you_hear_about_us: new FormControl('')
         })
 
     }
 
     applyNow(model: ApplyNowModel, isValid: boolean) {
 
-        this.submitted = true;
-
-        console.log(model);
-
-        this._applyNowService.saveInformationToStorage(model);
-
-        this.router.navigate(['/apply-now/your-business-details']);
-
+        if(isValid){
+            this._applyNowService.saveInformationToStorage(model);
+            this.router.navigate(['/apply-now/your-business-details']);
+        }
 
     }
 

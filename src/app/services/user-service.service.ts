@@ -5,8 +5,6 @@ import 'rxjs/add/operator/map';
 import {AuthService} from "./auth-service.service";
 import {User} from "../models/user";
 
-
-
 @Injectable()
 export class UserService {
   private token: string;
@@ -16,12 +14,9 @@ export class UserService {
   public getUser() {
 
     if(this.authService.isLoggedIn()) {
-
       var profile = JSON.parse(localStorage.getItem('profile'));
-      console.log(profile);
       return profile;
     }
-
     return null;
   }
 

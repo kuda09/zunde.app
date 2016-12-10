@@ -1,71 +1,11 @@
 <div class="content-holder">
   <div class="container">
-    <div class="col-md-3">
 
-      <ul class="dashboard_list">
-        <li class="active" (click)="displayTab('overview')"><i class="fa fa-tachometer" aria-hidden="true"></i>Overview</li>
-        <li (click)="displayTab('repayments')"> <i class="fa fa-money" aria-hidden="true"></i>Repayments</li>
-        <li (click)="displayTab('company_details')"><i class="fa fa-building" aria-hidden="true"></i>Company</li>
-        <li (click)="displayTab('user_details')"><i class="fa fa-users" aria-hidden="true"></i>Personal Details</li>
-        <li (click)="displayTab('business_verification')"><i class="fa fa-user-secret" aria-hidden="true"></i>Businesss Verification</li>
-      </ul>
+    <div class="alert alert-info" *ngIf="!_userService.isUserVerified()">
+      You profile is not activated please activate profile to begin the application process.
     </div>
-    <div class="col-md-9">
+    <div class="overview">
 
-      <div class="overview">
-
-        <div class="alert alert-info" *ngIf="!_userService.isUserVerified()">
-          You profile is not activated please activate profile to begin the application process.
-        </div>
-        <div class="congralulations">
-          <h1>Profile</h1>
-          <h2>Congralulations Your business is approved for up to £50,000</h2>
-        </div>
-        <div class="repayments-table">
-          <h1>Draw down funds</h1>
-          <table class="table table-responsive table-bordered">
-            <thead>
-            <tr>
-              <th>Repayment Date</th>
-              <th>Original Loan</th>
-              <th>Interest</th>
-              <th>Monthly Total</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>Month 1</td>
-              <td>£5,000</td>
-              <td>£1,200</td>
-              <td>£6,200</td>
-            </tr>
-            <tr>
-              <td>Month 1</td>
-              <td>£5,000</td>
-              <td>£1,200</td>
-              <td>£6,200</td>
-            </tr>
-            <tr>
-              <td>Month 1</td>
-              <td>£5,000</td>
-              <td>£1,200</td>
-              <td>£6,200</td>
-            </tr>
-            <tr>
-              <td>Month 1</td>
-              <td>£5,000</td>
-              <td>£1,200</td>
-              <td>£6,200</td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div class="repayments"></div>
-      <div class="company_details"></div>
-      <div class="user_details"></div>
-      <div class="business_verification"></div>
     </div>
   </div>
 </div>

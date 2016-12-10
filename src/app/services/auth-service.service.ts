@@ -5,12 +5,9 @@ import 'rxjs/add/operator/map';
 import {Router} from "@angular/router";
 import { tokenNotExpired} from 'angular2-jwt';
 
-
 // Avoid name not found warnings
 declare var Auth0Lock: any;
 declare var Auth0: any;
-
-
 
 @Injectable()
 export class AuthService {
@@ -96,10 +93,14 @@ export class AuthService {
 
     //clear the token from the localstorage to log the user out
     // Remove token and profile from localStorage
-    localStorage.removeItem('id_token');
-    localStorage.removeItem('profile');
+    this.removeLocalData();
     this.router.navigate(['sign-in']);
     window.location.reload();
+  }
+
+  private removeLocalData() {
+    localStorage.removeItem('id_token');
+    localStorage.removeItem('profile');
   }
 
 

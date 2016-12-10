@@ -7,17 +7,21 @@
       <div class="row">
         <div class="col-md-6">
 
-          <form (ngSubmit)="login(SignInForm.value, SignInForm.valid)" name="SignInForm"  [formGroup]="SignInForm">
+          <form (ngSubmit)="login(SignInForm.value, SignInForm.valid)" name="SignInForm"  novalidate [formGroup]="SignInForm">
 
             <div class="form-group">
-              <label for="username">Username</label>
-              <input type="text" id="username" name="username" class="form-control" formControlName="username"  placeholder="yours@example.com" required>
-              <!--<small [hidden]="SignInForm.controls.username.valid || (SignInForm.controls.username.pristine && !submitted)" class="has-error">Username is required</small>-->
+              <label for="username">Email</label>
+              <input type="text" id="username" name="username" class="form-control" formControlName="username"  placeholder="yours@example.com" required validateEmail>
+              <small class="has-error" *ngIf="SignInForm.get('username').hasError('required') &&  SignInForm.get('username').touched">Enter your email</small>
+              <small class="has-error" *ngIf="SignInForm.get('username').hasError('validateEmail') &&  SignInForm.get('username').touched && !SignInForm.get('username').hasError('required')" >Please enter a valid email address</small>
+
             </div>
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" id="password" name="password" class="form-control" formControlName="password"  placeholder="Password" required>
-              <!--<small [hidden]="SignInForm.controls.password.valid || (SignInForm.controls.password.pristine && !submitted)" class="has-error">Password is required</small>-->
+              <input type="password" id="password" name="password" class="form-control" formControlName="password"  placeholder="Password" required minlength="5">
+              <small class="has-error" *ngIf="SignInForm.get('password').hasError('required') &&  SignInForm.get('password').touched">Enter your password</small>
+
+              <small class="has-error" *ngIf="SignInForm.get('password').hasError('minlength') &&  SignInForm.get('password').touched">Password should be 5 or more characters</small>
             </div>
 
             <div class="form-group">
@@ -25,13 +29,8 @@
             </div>
 
             <div class="form-group">
-              <button class="btn" role="submit" type="submit" >Sign in</button>
+              <button class="btn" role="submit" type="submit" [disabled]="SignInForm.invalid">Sign in</button>
             </div>
-
-            <pre>
-              {{SignInForm.valid}}
-            </pre>
-
           </form>
         </div>
         <div class="col-md-6 options">
@@ -62,11 +61,11 @@
       </div>
       <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" id="email_address" name="email_address" class="form-control" formControlName="email_address" required placeholder="yours@example.com">
-        <small [hidden]="ForgotPasswordForm.controls.email_address.valid || (ForgotPasswordForm.controls.email_address.pristine && !submitted)" class="has-error">Username is required</small>
+        <input type="text" id="username" name="username" class="form-control" formControlName="username" required placeholder="yours@example.com">
+        <small class="has-error" *ngIf="ForgotPasswordForm.get('username').hasError('required') &&  ForgotPasswordForm.get('username').touched">Enter your email</small>
       </div>
       <div class="form-group">
-        <button class="btn" role="submit" type="submit" >Verify</button>
+        <button class="btn" role="submit" type="submit">Retrieve Password</button>
       </div>
 
     </form>

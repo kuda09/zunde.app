@@ -1,4 +1,5 @@
 import {Component, OnInit, OnChanges} from '@angular/core';
+import {Router} from '@angular/router';
 /*
 import {ROUTER_DIRECTIVES, CanActivate, OnActivate} from '@angular/router';
 */
@@ -27,33 +28,29 @@ export class MenuComponent implements OnInit {
 
     constructor(private _currentViewService: CurrentViewService,
                 private _authService: AuthService,
-                private _userService: UserService) {
-    }
-
-    /*onActivate(next) {
-
-        /!*debugger;
-        this.message = next.params.message;*!/
-    }*/
-
-    ngOnChanges() {
+                private _userService: UserService,
+                private _router: Router) {
 
         var self = this;
 
-        self._currentViewService.getView()
-            .subscribe((_event) => {
+        _router.events.subscribe(event => {
 
-                self.homePageClass = self._currentViewService.addHeroClassToHomePage(_event.url);
+            self._currentViewService.getView()
+                .subscribe((_event) => {
 
-                self.secureViews
-                    .filter(view => this.homePageClass.indexOf(view) !== -1)
-                    .map((view) => {
+                    self.homePageClass = self._currentViewService.addHeroClassToHomePage(_event.url);
 
-                        self.hiddenItems = true;
-                    })
-            });
+                    self.secureViews
+                        .filter(view => this.homePageClass.indexOf(view) !== -1)
+                        .map((view) => {
 
+                            self.hiddenItems = true;
+                        })
+                });
+
+        })
     }
+
 
     ngOnInit() {
 
