@@ -55,7 +55,7 @@
     <h4>Forgot Password</h4>
   </modal-header>
   <modal-content>
-    <form (ngSubmit)="forgotPassword(ForgotPasswordForm.value, ForgotPasswordForm.valid)" name="ForgotPasswordForm"  [formGroup]="ForgotPasswordForm">
+    <form (ngSubmit)="forgotPassword(ForgotPasswordForm.value, ForgotPasswordForm.valid)" name="ForgotPasswordForm"  [formGroup]="ForgotPasswordForm" novalidate>
       <div class="form-group">
         <small *ngIf="error" class="alert alert-danger">{{error}}</small>
       </div>
@@ -65,7 +65,7 @@
         <small class="has-error" *ngIf="ForgotPasswordForm.get('username').hasError('required') &&  ForgotPasswordForm.get('username').touched">Enter your email</small>
       </div>
       <div class="form-group">
-        <button class="btn" role="submit" type="submit">Retrieve Password</button>
+        <button class="btn" role="submit" type="submit" [disabled]="ForgotPasswordForm.invalid">Retrieve Password</button>
       </div>
 
     </form>

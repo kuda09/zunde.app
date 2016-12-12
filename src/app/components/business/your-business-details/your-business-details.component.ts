@@ -32,31 +32,27 @@ export class YourBusinessDetailsComponent implements OnInit {
 
 
     this.ApplyNowForm = this._fb.group({
-      legal_name: ['', [Validators.required, Validators.minLength(5)]],
-      business_address: ['', [Validators.required, Validators.minLength(5)]],
-      post_code: ['', [Validators.required, Validators.minLength(5)]],
-      business_phone: ['', [Validators.required, Validators.minLength(5)]],
-      business_trading_date: ['', [Validators.required, Validators.minLength(5)]],
-      legal_entity_type: ['', [Validators.required, Validators.minLength(5)]],
-      business_tax_id: ['', [Validators.required, Validators.minLength(5)]],
-      annual_revenue: ['', [Validators.required, Validators.minLength(5)]],
-      bank_balance: ['', [Validators.required, Validators.minLength(5)]],
-
+      business_details: this._fb.group({
+        legal_name: ['', [Validators.required]],
+        business_address: ['', [Validators.required]],
+        post_code: ['', [Validators.required]],
+        business_phone: ['', [Validators.required]],
+        business_trading_date: ['', [Validators.required]],
+        legal_entity_type: ['', [Validators.required]],
+        business_tax_id: ['', [Validators.required]],
+        annual_revenue: ['', [Validators.required]],
+        bank_balance: ['', [Validators.required]]
+      })
     })
   }
 
   applyNow(model: business_details, isValid: boolean) {
 
-
-    console.log(model);
-
-    this.router.navigate(['/apply-now/your-personal-details']);
-
-    this.applyNowService.saveInformationToStorage(model);
-
     if (isValid) {
 
+      this.router.navigate(['/apply-now/your-personal-details']);
 
+      this.applyNowService.saveInformationToStorage(model);
     }
 
 

@@ -37,7 +37,9 @@ export class YourPersonalDetailsComponent implements OnInit {
                 date_of_birth: ['', [Validators.required]]
             }),
             business_share: new FormControl('', [Validators.required]),
-            national_security_number: new FormControl('', [Validators.required]),
+            national_insurance: new FormControl('', [Validators.required]),
+            password: new FormControl('', [Validators.required]),
+            confirm_password: new FormControl('', [Validators.required]),
         })
     }
 

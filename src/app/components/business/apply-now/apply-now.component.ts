@@ -2,8 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule} from '@angular/forms';
 
-import {FIREBASE_PROVIDERS, defaultFirebase, AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
-
 import {UserService} from "../../../services/user-service.service";
 import {AuthService} from "../../../services/auth-service.service";
 import {ApplyNowService} from "../../../services/apply-now.service";
@@ -29,8 +27,7 @@ export class ApplyNowComponent implements OnInit {
                 private _authService: AuthService,
                 private _fb: FormBuilder,
                 private router: Router,
-                private _applyNowService: ApplyNowService,
-                private af: AngularFire) {
+                private _applyNowService: ApplyNowService) {
     }
 
     ngOnInit() {
@@ -41,6 +38,7 @@ export class ApplyNowComponent implements OnInit {
         }
 
         this.ApplyNowForm = this._fb.group({
+            username: new FormControl(''),
             loan_details: this._fb.group({
                 desired_amount: ['', [Validators.required]],
                 date_required: ['', [Validators.required]],
@@ -49,9 +47,7 @@ export class ApplyNowComponent implements OnInit {
             person_details: this._fb.group({
                 first_name: ['', [Validators.required]],
                 last_name: ['', [Validators.required]],
-                contact_number: ['', [Validators.required]],
-                email_address: ['', [Validators.required]],
-
+                contact_number: ['', [Validators.required]]
             }),
             how_did_you_hear_about_us: new FormControl('')
         })

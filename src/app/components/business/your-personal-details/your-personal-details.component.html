@@ -71,11 +71,45 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="social_security_number">National insurance number</label>
+                    <label for="national_insurance">National insurance number</label>
                     <p>We need your full National Security Number. This is required so we can verify your identity.</p>
 
-                    <input type="text" id="national_security_number" name="national_security_number" class="form-control" formContolName="national_security_number">
-                    <small class="has-error" *ngIf="ApplyNowForm.get('national_security_number').hasError('required') &&  ApplyNowForm.get('national_security_number').touched">Enter your national security number!</small>
+                    <input type="text" id="national_insurance" name="national_insurance" class="form-control" formControlName="national_insurance">
+                    <small class="has-error" *ngIf="ApplyNowForm.get('national_insurance').hasError('required') &&  ApplyNowForm.get('national_insurance').touched">Enter your national security number!</small>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input
+                            type="password"
+                            id="password"
+                            class="form-control"
+                            name="password"
+                            required
+                            placeholder="Enter Password"
+                            formControlName="password"
+                            autocomplete="off"
+                            validateEqual="confirmPassword" reverse="true"
+                    >
+                    <small class="has-error" *ngIf="ApplyNowForm.get('password').hasError('required') &&  ApplyNowForm.get('password').touched">Please enter a password</small>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="confirm_password">Confirm Password</label>
+                    <input
+                            type="password"
+                            id="confirm_password"
+                            class="form-control"
+                            required
+                            placeholder="Confirm password"
+                            autocomplete="off"
+                            formControlName="confirm_password"
+                            validateEqual="password"
+                    >
+                    <small class="has-error" *ngIf="ApplyNowForm.get('confirm_password').hasError('validateEqual') &&  ApplyNowForm.get('confirm_password').touched">Password does not match</small>
+
+
                 </div>
                 <hr>
 
@@ -83,7 +117,7 @@
 
                     <div class="checkbox checkbox-primary">
                         <input class="agree_terms styled" id="agree_terms" name="agree_terms" type="checkbox" value="true">
-                        <label for="agree_terms"> By checking here you agree that you have read and agree to Zunde’s Application Agreement</label>
+                        <label for="agree_terms"> By checking here you agree that you have read and agree to <a href="">Zunde’s Application Agreement</a></label>
                     </div>
                 </div>
 
@@ -91,13 +125,13 @@
 
                     <div class="checkbox checkbox-primary">
                         <input class="agree_consent" id="agree_consent" name="agree_consent" type="checkbox" value="true">
-                        <label for="agree_consent">By checking here you agree that you have read and agree to Zunde’s E-sign Consent Agreement</label>
+                        <label for="agree_consent">By checking here you agree that you have read and agree to <a href="">Zunde’s E-sign Consent Agreement</a></label>
                     </div>
 
                 </div>
 
                 <div class="form-group">
-                    <button class="btn" role="submit" type="submit" [disabled]="ApplyNowForm.invalid">Continue</button>
+                    <button class="btn" role="submit" type="submit">Continue</button>
                 </div>
             </form>
             <pre>{{ ApplyNowForm.value | json }}</pre>
