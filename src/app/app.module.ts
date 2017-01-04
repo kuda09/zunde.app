@@ -1,16 +1,15 @@
+
+
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
+import {HttpModule, JsonpModule} from '@angular/http';
 
 // used to create fake backend
-import {fakeBackendProvider} from './helpers/index';
 import {MockBackend, MockConnection} from '@angular/http/testing';
 import {BaseRequestOptions} from '@angular/http';
 
 import {AUTH_PROVIDERS} from 'angular2-jwt';
-import {AngularFireModule} from 'angularfire2';
-//import * as firebase from 'firebase';
 
 import {AppComponent} from './app.component';
 import {MenuComponent} from './components/shared/menu/menu.component';
@@ -40,6 +39,7 @@ import {EditprofileComponent} from './components/business/editprofile/editprofil
 import {HelpComponent} from './components/business/help/help.component';
 import {EqualValidator} from "./directives/passwordConfirmValidator";
 import {EmailValidator} from "./directives/emailValidation";
+import {HttpService} from "./services/http.service";
 
 const config = {
     apiKey: "AIzaSyAFne6CyxB305-nFXeQtdLzRkWVIQ0tb6A",
@@ -78,8 +78,8 @@ const config = {
         ReactiveFormsModule,
         Ng2BootstrapModule,
         ModalModule,
-        AngularFireModule.initializeApp(config),
         HttpModule,
+        JsonpModule,
         routing
     ],
     providers: [
@@ -88,10 +88,10 @@ const config = {
         AuthService,
         UserService,
         ProfileResolver,
-        fakeBackendProvider,
         MockBackend,
         BaseRequestOptions,
         ApplyNowService,
+        HttpService,
         AUTH_PROVIDERS
     ],
     bootstrap: [AppComponent]

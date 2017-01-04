@@ -1,10 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-//import {MenuComponent} from './components/shared/menu/menu.component';
 import 'rxjs/add/operator/filter';
 import {CurrentViewService} from "./services/current-view.service";
 import {AuthService} from "./services/auth-service.service";
 import {UserService} from "./services/user-service.service";
-import {Router} from "@angular/router";
 
 
 @Component({
@@ -18,9 +16,7 @@ export class AppComponent implements OnInit {
     homePageClass: string;
 
     constructor(private _currentViewService: CurrentViewService,
-                private router: Router,
-                private _authService: AuthService,
-                private _userService: UserService) {
+                private _authService: AuthService) {
 
     }
 

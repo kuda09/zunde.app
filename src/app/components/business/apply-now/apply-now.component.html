@@ -40,14 +40,14 @@
     <div class="applyComponent">
       <form (ngSubmit)="applyNow(ApplyNowForm.value, ApplyNowForm.valid)" name="ApplyNowForm" [formGroup]="ApplyNowForm" method="post">
         <div class="form-group">
-          <label for="email_address">Email Address</label>
+          <label for="email_address">Email Address *</label>
           <input type="text" id="email_address" name="email_address" class="form-control" formControlName="username" required>
           <small class="has-error" *ngIf="ApplyNowForm.get('username').hasError('required') &&  ApplyNowForm.get('username').touched">Enter your email address</small>
         </div>
 
         <fieldset formGroupName="loan_details">
           <div class="form-group">
-            <label for="desired_amount">How much would you like to borrow</label>
+            <label for="desired_amount">How much would you like to borrow*</label>
             <select class="form-control" id="desired_amount" name="desired_amount" tabindex="1" data-validate="true" formControlName="desired_amount" required>
               <option value="$5000_to_$10000" selected>$5,000 - $10,000</option>
               <option value="$10000_to_$15000">$10,000 - $15,000</option>
@@ -64,7 +64,7 @@
             <small class="has-error" *ngIf="ApplyNowForm.get('loan_details').get('desired_amount').hasError('required') &&  ApplyNowForm.get('loan_details').get('desired_amount').touched">Please select how much would you like to borrow!</small>
           </div>
           <div class="form-group">
-            <label for="date_required">How soon do you need the money?</label>
+            <label for="date_required">How soon do you need the money?*</label>
             <select class="form-control" id="date_required" include_blank="false" name="date_required" tabindex="2" data-validate="true" formControlName="date_required" required>
               <option value="IMMEDIATLEY" selected>Immediately</option>
               <option value="ONE_WEEK">1 week</option>
@@ -74,7 +74,7 @@
             <small class="has-error" *ngIf="ApplyNowForm.get('loan_details').get('date_required').hasError('required') &&  ApplyNowForm.get('loan_details').get('date_required').touched">Please select when you want to use the loan!</small>
           </div>
           <div class="form-group">
-            <label for="loan_use">How will you use the loan?</label>
+            <label for="loan_use">How will you use the loan?*</label>
             <div class="checkboxes">
               <div class="media">
                 <input type="radio" value="BUYING_EQUIPMENT" data-validate="true" formControlName="loan_use" id="BUYING_EQUIPMENT">
@@ -117,17 +117,17 @@
         <hr>
         <fieldset formGroupName="person_details" novalidate>
           <div class="form-group">
-            <label for="first_name">First Name</label>
+            <label for="first_name">First Name*</label>
             <input type="text" id="first_name" name="first_name" class="form-control" formControlName="first_name" required>
             <small class="has-error" *ngIf="ApplyNowForm.get('person_details').get('first_name').hasError('required') &&  ApplyNowForm.get('person_details').get('first_name').touched">Enter your name</small>
           </div>
           <div class="form-group">
-            <label for="last_name">Last Name</label>
+            <label for="last_name">Last Name*</label>
             <input type="text" id="last_name" name="last_name" class="form-control" formControlName="last_name" required>
             <small class="has-error" *ngIf="ApplyNowForm.get('person_details').get('last_name').hasError('required') &&  ApplyNowForm.get('person_details').get('last_name').touched">Enter your last name</small>
           </div>
           <div class="form-group">
-            <label for="contact_number">Contact Number</label>
+            <label for="contact_number">Contact Number*</label>
             <input type="text" id="contact_number" name="contact_number" class="form-control" formControlName="contact_number" required>
             <small class="has-error" *ngIf="ApplyNowForm.get('person_details').get('contact_number').hasError('required') &&  ApplyNowForm.get('person_details').get('contact_number').touched">Enter your best contact number</small>
           </div>

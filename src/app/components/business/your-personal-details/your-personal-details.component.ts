@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule} from '@angular/forms';
-import {UserService} from "../../../services/user-service.service";
-import {AuthService} from "../../../services/auth-service.service";
-import {ApplyNowModel} from "../../../models/apply-now";
+import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
+import {person_details} from "../../../models/apply-now";
 import {ApplyNowService} from "../../../services/apply-now.service";
+import {HttpService} from "../../../services/http.service";
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 @Component({
     selector: 'app-your-personal-details',
@@ -19,11 +20,10 @@ export class YourPersonalDetailsComponent implements OnInit {
     public events: any[] = [];
 
 
-    constructor(private _userService: UserService,
-                private _authService: AuthService,
-                private _fb: FormBuilder,
+    constructor(private _fb: FormBuilder,
                 private router: Router,
-                private _applyNowService: ApplyNowService) {
+                private _applyNowService: ApplyNowService,
+                private httpModule: HttpService) {
     }
 
 
@@ -38,18 +38,29 @@ export class YourPersonalDetailsComponent implements OnInit {
             }),
             business_share: new FormControl('', [Validators.required]),
             national_insurance: new FormControl('', [Validators.required]),
-            password: new FormControl('', [Validators.required]),
-            confirm_password: new FormControl('', [Validators.required]),
-        })
+            password: new FormControl('', [Validators.required, Validators.minLength(5)]),
+            confirm_password: new FormControl('', [Validators.required, Validators.minLength(5)]),
+        });
+
+
+        this.httpModule.getData('/users')
+            .subscribe(data => console.log(data));
+
     }
 
 
-    applyNow(model, isValid: boolean) {
+    applyNow(model: person_details, isValid: boolean) {
 
-        if(isValid){
+        if (isValid) {
             this._applyNowService.saveInformationToStorage(model);
 
-            this.router.navigate(['/apply-now/bank-statements']);
+            //this.router.navigate(['/apply-now/bank-statements']);
+
+            this.httpModule.postData('user/register',model)
+                .subscribe( data => {
+
+                    console.log(data);
+                });
         }
     }
 
