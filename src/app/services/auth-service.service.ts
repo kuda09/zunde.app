@@ -3,109 +3,62 @@ import {Http, Headers, Response} from '@angular/http';
 import {Observable} from 'rxjs';
 import 'rxjs/add/operator/map';
 import {Router} from "@angular/router";
-import { tokenNotExpired} from 'angular2-jwt';
+import {tokenNotExpired} from 'angular2-jwt';
+import {HttpService} from "./http.service";
 
-// Avoid name not found warnings
-declare var Auth0Lock: any;
-declare var Auth0: any;
 
 @Injectable()
 export class AuthService {
 
-  public token: string;
-  loggedIn: boolean = false;
-  currentUser: Object = null;
 
-  // Configure Auth0
-  lock = new Auth0Lock('HEqIwQhIWpDgdCXlU7Rinh8RrfN5ulYZ', 'zunde.eu.auth0.com', {});
+    constructor(private http: Http,
+                private router: Router,
+                private _httpService: HttpService) {
 
-  userProfile: Object;
+    }
 
-  auth0 = new Auth0({
-    domain: 'zunde.eu.auth0.com',
-    clientID: 'HEqIwQhIWpDgdCXlU7Rinh8RrfN5ulYZ',
-    responseType: 'token',
-    callbackURL: 'http://localhost:4200/business/profile',
-  });
+    login(data): Observable<any> {
+        return this._httpService.postData('/user/login', data);
+    }
 
+    register(details, cb) {
 
-  constructor(private http: Http, private router: Router) {
+    };
 
-    this.token = localStorage.getItem('id_token');
-    var result = this.auth0.parseHash(window.location.hash);
+    getProfile() {
 
-    // Set userProfile attribute of already saved profile
-    //this.userProfile = JSON.parse(localStorage.getItem('profile'));
-
-    if (result && result.idToken) {
-
-      localStorage.setItem('id_token', result.idToken);
-
-      this.router.navigate(['business/profile']);
-
-    } else if (result && result.error) {
-
-      console.log('error: ' + result.error);
     }
 
 
-  }
+    saveProfile(data){
 
-  public login(username, password, cb) {
+        if(localStorage.getItem('profile') === null) {
+            localStorage.setItem('profile', JSON.stringify(data));
+        }
 
-    return this.auth0.login({
-      connection: 'Username-Password-Authentication',
-      responseType: 'token',
-      email: username,
-      password: password,
-    }, cb)
-  }
+    }
 
-  public register (details, cb) {
+    logout(): void {
 
-    //noinspection TypeScriptValidateJSTypes
-    this.auth0.signup({
-      connection: 'Username-Password-Authentication',
-      responseType: 'token',
-      email: details.username,
-      password: details.password,
-      first_name: details.first_name,
-      last_name: details.last_name
-    }, cb);
+    }
 
-  };
+     saveToken(token: string) {
 
-  public getProfile () {
+        if(localStorage.getItem('token') === null) {
+            localStorage.setItem('token', token);
+        }
 
-    if(this.token === null)  return false;
+    }
 
-    this.lock.getProfile(this.token, (error, profile) => {
+    removeLocalData() {
 
-      if(error === null) {
+        localStorage.removeItem('token');
 
-        console.log(profile);
-        localStorage.setItem('profile', JSON.stringify(profile));
-      }
-    });
-  }
-
-  public logout(): void {
-
-    //clear the token from the localstorage to log the user out
-    // Remove token and profile from localStorage
-    this.removeLocalData();
-    this.router.navigate(['sign-in']);
-    window.location.reload();
-  }
-
-  private removeLocalData() {
-    localStorage.removeItem('id_token');
-    localStorage.removeItem('profile');
-  }
+    }
 
 
-  isLoggedIn(): boolean {
-    return tokenNotExpired();
-  }
+    isLoggedIn(): boolean {
+        return tokenNotExpired();
+    }
 
 }
