@@ -1,0 +1,32 @@
+{
+  "person_details": {
+    "home_address": "126 lexham road",
+    "post_code": "mk64aq",
+    "home_phone": "07896582805",
+    "date_of_birth": "25/03/1992",
+    "first_name": "thomas",
+    "last_name": " cook",
+    "contact_number": "07896582805"
+  },
+  "business_share": "20",
+  "national_insurance": "etegdg",
+  "password": "pass",
+  "business_details": {
+    "legal_name": "zesa",
+    "business_address": "126 lexham road",
+    "post_code": "mk6 4aq",
+    "business_phone": "07896582805",
+    "business_trading_date": "2006",
+    "legal_entity_type": "Limited Partnership (LP)",
+    "business_tax_id": "13131313",
+    "annual_revenue": "200,000",
+    "bank_balance": "50,000"
+  },
+  "username": "kuda09@gmail.com",
+  "loan_details": {
+    "desired_amount": "$15000_to_$20000",
+    "date_required": "MORE_THAN_THIRTY_DAYS",
+    "loan_use": "BUYING_EQUIPMENT"
+  },
+  "how_did_you_hear_about_us": "online"
+}
