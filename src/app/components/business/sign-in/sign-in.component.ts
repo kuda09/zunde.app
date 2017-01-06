@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule} from '@angular/forms';
-import {AuthService} from "../../../services/auth-service.service";
+import {AuthService} from "../../../services/auth.service";
 import {ModalModule} from "ng2-bootstrap/components/modal";
 
 import {SignInModel} from '../../../models/sign-in';
@@ -14,13 +14,10 @@ import {SignInModel} from '../../../models/sign-in';
     providers: [AuthService]
 })
 export class SignInComponent implements OnInit {
-    loading: boolean = false;
     error: string;
 
-    public SignInForm: FormGroup; //our model driven form
-    public ForgotPasswordForm: FormGroup; //our model driven form
-    public submitted: boolean; //keep track whether the form is submitted
-    public events: any[] = []; //use later to display form events
+    public SignInForm: FormGroup;
+    public ForgotPasswordForm: FormGroup;
 
     constructor(private router: Router,
                 private authService: AuthService,
@@ -52,11 +49,13 @@ export class SignInComponent implements OnInit {
 
                         console.log(data);
 
-                        this.authService.saveToken(data.token);
-                        this.authService.saveProfile(data.data);
+                        //noinspection TypeScriptUnresolvedVariable
+                      this.authService.saveToken(data.token);
+                        //noinspection TypeScriptUnresolvedVariable
+                      this.authService.saveProfile(data.data);
                         this.router.navigate(['/business/profile']);
                     },
-                    (err) => {
+                    () => {
 
                         self.error = 'Incorrect Username or Password';
                     })

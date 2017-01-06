@@ -1,7 +1,5 @@
-import {Component, OnInit, Output} from '@angular/core';
-import {AuthService} from "../../../services/auth-service.service";
-import {UserService} from "../../../services/user-service.service";
-import * as _ from 'lodash';
+import {Component, OnInit} from '@angular/core';
+import {UserService} from "../../../services/user.service";
 
 @Component({
   selector: 'app-profile',
@@ -11,25 +9,13 @@ import * as _ from 'lodash';
 export class ProfileComponent implements OnInit {
 
   user: Object = null;
-  show: boolean = false;
-  tabs: string[] = ['overview', 'repayments', 'company_details', 'user_details', 'business_verification'];
 
-  constructor(private _authService: AuthService,
-              private _userService: UserService) {
-
-  }
+  constructor(private _userService: UserService) {}
 
   ngOnInit() {
 
       this.user = this._userService.getUser();
 
   }
-
-  displayTab(selectedTab) {
-
-    console.log(selectedTab);
-
-  }
-
 
 }

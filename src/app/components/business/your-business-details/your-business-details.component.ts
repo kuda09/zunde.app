@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule} from '@angular/forms';
-import {UserService} from "../../../services/user-service.service";
-import {AuthService} from "../../../services/auth-service.service";
+import {FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {AuthService} from "../../../services/auth.service";
 import {business_details} from '../../../models/apply-now'
 import {ApplyNowService} from "../../../services/apply-now.service";
 
@@ -14,14 +13,9 @@ import {ApplyNowService} from "../../../services/apply-now.service";
 })
 export class YourBusinessDetailsComponent implements OnInit {
 
-  details: Object = {};
   public ApplyNowForm: FormGroup;
-  public submitted: boolean = false;
-  public events: any[] = [];
-
-
-  constructor(private _userService: UserService,
-              private _authService: AuthService,
+  constructor(
+              public _authService: AuthService,
               private _fb: FormBuilder,
               private router: Router,
               private applyNowService: ApplyNowService) {
@@ -29,7 +23,6 @@ export class YourBusinessDetailsComponent implements OnInit {
 
 
   ngOnInit() {
-
 
     this.ApplyNowForm = this._fb.group({
       business_details: this._fb.group({
@@ -52,11 +45,19 @@ export class YourBusinessDetailsComponent implements OnInit {
 
       this.router.navigate(['/apply-now/your-personal-details']);
 
+
+
+      this._authService.register(model)
+        .subscribe((data) => {
+
+
+          console.log(data);
+        })
+
       this.applyNowService.saveInformationToStorage(model);
     }
 
 
   }
-
 
 }

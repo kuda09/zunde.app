@@ -11,23 +11,20 @@ export class HttpService {
 
     API_URL = `http://localhost:3000/api`;
 
-    constructor(private http: Http) {
-    };
+    constructor(private http: Http,) {
+};
 
     createAuthorizationHeader(headers: Headers) {
+
 
     }
 
     getData(url: string) {
-
         url = this.API_URL + url;
-
-
         return this.http.get(url)
             .map(mapResponse)
             .catch(observableError);
     }
-
 
     postData(url: string, data: Object) {
 
@@ -37,6 +34,7 @@ export class HttpService {
             .map(mapResponse)
             .catch(observableError);
     }
+
 
     patchData(url: string, data: Object) {
 

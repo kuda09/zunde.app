@@ -1,4 +1,4 @@
-import {Component, OnInit, OnChanges} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 /*
 import {ROUTER_DIRECTIVES, CanActivate, OnActivate} from '@angular/router';
@@ -6,9 +6,8 @@ import {ROUTER_DIRECTIVES, CanActivate, OnActivate} from '@angular/router';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 import {CurrentViewService} from "../../../services/current-view.service";
-import {UserService} from "../../../services/user-service.service";
-import {User} from "../../../models/user";
-import {AuthService} from "../../../services/auth-service.service";
+import {AuthService} from "../../../services/auth.service";
+import {UserService} from "../../../services/user.service";
 
 
 @Component({
@@ -23,7 +22,6 @@ export class MenuComponent implements OnInit {
     hiddenItems: boolean = false;
     showDropdown: boolean = false;
     secureViews: string[] = ['sign-in', 'apply-now'];
-    showUser: boolean = false;
     user: Object = {};
 
     constructor(private _currentViewService: CurrentViewService,

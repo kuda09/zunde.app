@@ -1,15 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions, Response } from '@angular/http';
-import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
-import {AuthService} from "./auth-service.service";
-import {User} from "../models/user";
+import {AuthService} from "./auth.service";
 
 @Injectable()
 export class UserService {
-  private token: string;
 
-  constructor(private http: Http, private authService: AuthService) { }
+  constructor(private authService: AuthService) { }
 
   public getUser() {
 
@@ -24,7 +20,7 @@ export class UserService {
 
     if(this.authService.isLoggedIn()) {
 
-      var profile = JSON.parse(localStorage.getItem('profile'));
+      const profile = this.getUser();
 
       if(profile.email_verified) {
 
@@ -37,7 +33,5 @@ export class UserService {
     return null;
 
   }
-
-
 
 }

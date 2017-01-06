@@ -6,6 +6,7 @@ import {ApplyNowService} from "../../../services/apply-now.service";
 import {HttpService} from "../../../services/http.service";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import {UtilsService} from "../../../services/utils.service";
 
 @Component({
     selector: 'app-your-personal-details',
@@ -22,6 +23,7 @@ export class YourPersonalDetailsComponent implements OnInit {
 
     constructor(private _fb: FormBuilder,
                 private router: Router,
+                private _utils: UtilsService,
                 private _applyNowService: ApplyNowService,
                 private httpModule: HttpService) {
     }
@@ -36,15 +38,18 @@ export class YourPersonalDetailsComponent implements OnInit {
                 home_phone: ['', [Validators.required]],
                 date_of_birth: ['', [Validators.required]]
             }),
-            business_share: new FormControl('', [Validators.required]),
-            national_insurance: new FormControl('', [Validators.required]),
-            password: new FormControl('', [Validators.required, Validators.minLength(5)]),
-            confirm_password: new FormControl('', [Validators.required, Validators.minLength(5)]),
+            business_share: ['', [Validators.required]],
+            national_insurance: ['', [Validators.required]],
+            password: ['', [Validators.required, Validators.minLength(5)]],
+            confirm_password: ['', [Validators.required, Validators.minLength(5)]],
+            checkboxes: this._fb.group({
+              agree_terms: [false],
+              read_application_consent: [false]
+            }, {validator: this._utils.checkBoxRequired})
         });
 
 
-        this.httpModule.getData('/users')
-            .subscribe(data => console.log(data));
+      console.log(this.ApplyNowForm);
 
     }
 

@@ -1,7 +1,8 @@
-/* tslint:disable:no-unused-variable */
+/*
+/!* tslint:disable:no-unused-variable *!/
 
 import { TestBed, async, inject } from '@angular/core/testing';
-import { AuthService } from './auth-service.service';
+import { AuthService } from './auth.service';
 
 describe('Service: AuthService', () => {
   beforeEach(() => {
@@ -14,3 +15,4 @@ describe('Service: AuthService', () => {
     expect(service).toBeTruthy();
   }));
 });
+*/

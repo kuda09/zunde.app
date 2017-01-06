@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {AuthService} from "./auth-service.service";
-import {UserService} from "./user-service.service";
+import {AuthService} from "./auth.service";
+import {UserService} from "./auth.service";
 
 @Injectable()
 export class ProfileService {
@@ -10,10 +10,5 @@ export class ProfileService {
 
   }
 
-  getProfile () {
-
-
-
-  }
 
 }
