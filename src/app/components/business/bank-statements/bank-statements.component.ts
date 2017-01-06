@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import * as moment from "moment";
 
-
+const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 
 @Component({
   selector: 'app-bank-statements',
   templateUrl: './bank-statements.component.html',
   styleUrls: ['./bank-statements.component.scss']
 })
+
+
 export class BankStatementsComponent implements OnInit {
 
   requiredMonths = [];
