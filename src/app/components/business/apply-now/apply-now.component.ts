@@ -1,11 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule} from '@angular/forms';
-
-import {UserService} from "../../../services/user-service.service";
-import {AuthService} from "../../../services/auth-service.service";
+import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
+import {UserService} from "../../../services/user.service";
+import {AuthService} from "../../../services/auth.service";
 import {ApplyNowService} from "../../../services/apply-now.service";
-
 import {ApplyNowModel} from "../../../models/apply-now";
 
 
@@ -16,12 +14,7 @@ import {ApplyNowModel} from "../../../models/apply-now";
 })
 export class ApplyNowComponent implements OnInit {
 
-    details: Object = {};
-    //data: FirebaseObjectObservable;
     public ApplyNowForm: FormGroup;
-    public submitted: boolean = false;
-    public events: any[] = [];
-
 
     constructor(private _userService: UserService,
                 private _authService: AuthService,
@@ -32,10 +25,6 @@ export class ApplyNowComponent implements OnInit {
 
     ngOnInit() {
 
-        if(this._authService.isLoggedIn()){
-
-            this._authService.getProfile();
-        }
 
         this.ApplyNowForm = this._fb.group({
             username: new FormControl(''),
