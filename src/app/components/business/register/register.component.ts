@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {AuthService} from "../../../services/auth-service.service";
+import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
+
+import {AuthService} from "../../../services/auth.service";
+import {User} from '../../../models/user.ts';
 
 @Component({
   selector: 'app-register',
@@ -11,24 +14,48 @@ import {AuthService} from "../../../services/auth-service.service";
 export class BusinessRegisterComponent implements OnInit {
 
   error: string = '';
+  public RegisterForm: FormGroup; //our model driven form
+  public user: User;
 
-  constructor(private _router: Router, private _authService: AuthService) { }
+  constructor(private _router: Router,
+              private _authService: AuthService,
+              private _fb: FormBuilder) {}
 
   ngOnInit() {
+
+    this.RegisterForm = this._fb.group({
+      username: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
+      first_name: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
+      last_name: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
+      password: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
+      confirm_password: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)])
+    })
   }
 
 
-  /*register(username, password) {
+  register(model, isValid) {
 
-    var self = this;
+    if (isValid) {
 
-    this._authService.register(username,password, (err) => {
+      this._authService.register(model)
+        .subscribe(this.successResponse, this.errorResponse);
+    }
 
-      if(err) if (err) self.error = err.message;
+  }
 
-    });
-  }*/
+  successResponse(data) {
 
+    //noinspection TypeScriptUnresolvedVariable
+    this._authService.saveToken(data.token);
+    //noinspection TypeScriptUnresolvedVariable
+    this._authService.saveProfile(data.data);
+    this._router.navigate(['/business/profile']);
+  };
+
+  errorResponse(err) {
+
+    this.error = err.message;
+  }
 
 
 }

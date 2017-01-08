@@ -1,10 +1,9 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
+import {HttpModule, JsonpModule} from '@angular/http';
 
 // used to create fake backend
-import {fakeBackendProvider} from './helpers/index';
 import {MockBackend, MockConnection} from '@angular/http/testing';
 import {BaseRequestOptions} from '@angular/http';
 
@@ -27,12 +26,19 @@ import {YourPersonalDetailsComponent} from './components/business/your-personal-
 import {BankStatementsComponent} from './components/business/bank-statements/bank-statements.component';
 import {InvestorsComponent} from './components/investors/investors/investors.component';
 import {AuthGuardService} from "./guards/auth-guard.service";
-import {AuthService} from "./services/auth-service.service";
-import {UserService} from "./services/user-service.service";
+import {AuthService} from "./services/auth.service";
+import {UserService} from "./services/user.service";
 import {Ng2BootstrapModule} from "ng2-bootstrap";
 import {ModalModule} from "ng2-modal";
 import {ProfileComponent} from "./components/business/profile/profile.component";
 import {ApplyNowService} from "./services/apply-now.service";
+import {ProfileResolver} from "./resolvers/profile.resolver";
+import {EditprofileComponent} from './components/business/editprofile/editprofile.component';
+import {HelpComponent} from './components/business/help/help.component';
+import {EqualValidator} from "./directives/passwordConfirmValidator";
+import {EmailValidator} from "./directives/emailValidation";
+import {HttpService} from "./services/http.service";
+import {UtilsService} from "./services/utils.service";
 
 const config = {
   apiKey: "AIzaSyAFne6CyxB305-nFXeQtdLzRkWVIQ0tb6A",
@@ -59,7 +65,11 @@ const config = {
     YourPersonalDetailsComponent,
     BankStatementsComponent,
     InvestorsComponent,
-    ProfileComponent
+    ProfileComponent,
+    EditprofileComponent,
+    HelpComponent,
+    EqualValidator,
+    EmailValidator
   ],
   imports: [
     BrowserModule,
@@ -67,8 +77,8 @@ const config = {
     ReactiveFormsModule,
     Ng2BootstrapModule,
     ModalModule,
-    //firebase.initializeApp(config),
     HttpModule,
+    JsonpModule,
     routing
   ],
   providers: [
@@ -76,10 +86,12 @@ const config = {
     AuthGuardService,
     AuthService,
     UserService,
-    fakeBackendProvider,
+    ProfileResolver,
     MockBackend,
+    UtilsService,
     BaseRequestOptions,
     ApplyNowService,
+    HttpService,
     AUTH_PROVIDERS
   ],
   bootstrap: [AppComponent]

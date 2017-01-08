@@ -28,6 +28,11 @@
   background-color: $lightergrey;
   margin-bottom: 20px;
 
+  label {
+
+    font-weight: 100;
+  }
+
   .breadcrumb-box {
 
     border-top: 1px solid $lightgrey;
@@ -71,6 +76,8 @@
     .form-control {
 
       width: 50%;
+
+
     }
 
     .checkboxes {
@@ -86,6 +93,7 @@
         label {
 
           padding-left: 10px;
+          font-weight: 100;
         }
       }
     }

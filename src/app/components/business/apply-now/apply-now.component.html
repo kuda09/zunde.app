@@ -39,81 +39,110 @@
     </div>
     <div class="applyComponent">
       <form (ngSubmit)="applyNow(ApplyNowForm.value, ApplyNowForm.valid)" name="ApplyNowForm" [formGroup]="ApplyNowForm" method="post">
+        <div class="form-group">
+          <label for="email_address">Email Address *</label>
+          <input type="text" id="email_address" name="email_address" class="form-control" formControlName="username" required>
+          <small class="has-error" *ngIf="ApplyNowForm.get('username').hasError('required') &&  ApplyNowForm.get('username').touched">Enter your email address</small>
+        </div>
 
         <fieldset formGroupName="loan_details">
-          <div class="form-group" [ngClass]="{'has-error': !ApplyNowForm.controls.loan_details.controls.desired_amount.valid && submitted}">
-            <label for="desired_amount">How much would you like to borrow</label>
+          <div class="form-group">
+            <label for="desired_amount">How much would you like to borrow*</label>
             <select class="form-control" id="desired_amount" name="desired_amount" tabindex="1" data-validate="true" formControlName="desired_amount" required>
-              <option value="$5000_to_$10000">$5,000-$10,000</option>
-              <option value="$10000_to_$15000">$10,000-$15,000</option>
-              <option value="$15000_to_$20000">$15,000-$20,000</option>
-              <option value="$20000_to_$25000">$20,000-$25,000</option>
-              <option value="$25000_to_$30000">$25,000-$30,000</option>
-              <option value="$30000_to_$35000">$30,000-$35,000</option>
-              <option value="$35000_to_$50000">$35,000-$50,000</option>
-              <option value="$50000_to_$75000">$50,000-$75,000</option>
-              <option value="$75000_to_$150000">$75,000-$150,000</option>
-              <option value="$150000_to_$250000">$150,000-$250,000</option>
+              <option value="$5000_to_$10000" selected>$5,000 - $10,000</option>
+              <option value="$10000_to_$15000">$10,000 - $15,000</option>
+              <option value="$15000_to_$20000">$15,000 - $20,000</option>
+              <option value="$20000_to_$25000">$20,000 - $25,000</option>
+              <option value="$25000_to_$30000">$25,000 - $30,000</option>
+              <option value="$30000_to_$35000">$30,000 - $35,000</option>
+              <option value="$35000_to_$50000">$35,000 - $50,000</option>
+              <option value="$50000_to_$75000">$50,000 - $75,000</option>
+              <option value="$75000_to_$150000">$75,000 - $150,000</option>
+              <option value="$150000_to_$250000">$150,000 - $250,000</option>
               <option value="$250000_plus">More than $250,000</option>
             </select>
-            <!--<small [hidden]="ApplyNowForm.controls.loan_details.controls.desired_amount.valid || (ApplyNowForm.controls.loan_details.controls.desired_amount.pristine && !submitted)" class="has-error">Please select how much would you like to borrow!</small>-->
+            <small class="has-error" *ngIf="ApplyNowForm.get('loan_details').get('desired_amount').hasError('required') &&  ApplyNowForm.get('loan_details').get('desired_amount').touched">Please select how much would you like to borrow!</small>
           </div>
           <div class="form-group">
-            <label for="date_required">How soon do you need the money?</label>
+            <label for="date_required">How soon do you need the money?*</label>
             <select class="form-control" id="date_required" include_blank="false" name="date_required" tabindex="2" data-validate="true" formControlName="date_required" required>
-              <option value="IMMEDIATLEY">Immediately</option>
+              <option value="IMMEDIATLEY" selected>Immediately</option>
               <option value="ONE_WEEK">1 week</option>
               <option value="THIRTY_DAYS">30 days</option>
               <option value="MORE_THAN_THIRTY_DAYS">More than 30 days</option>
             </select>
+            <small class="has-error" *ngIf="ApplyNowForm.get('loan_details').get('date_required').hasError('required') &&  ApplyNowForm.get('loan_details').get('date_required').touched">Please select when you want to use the loan!</small>
           </div>
           <div class="form-group">
-            <label for="loan_use">How will you use the loan?</label>
+            <label for="loan_use">How will you use the loan?*</label>
             <div class="checkboxes">
               <div class="media">
-                <input name="loan_use" tabindex="3" type="radio" value="BUYING_EQUIPMENT" data-validate="true" formControlName="loan_use">
-                <label>Buying equipment</label>
+                <input type="radio" value="BUYING_EQUIPMENT" data-validate="true" formControlName="loan_use" id="BUYING_EQUIPMENT">
+                <label for="BUYING_EQUIPMENT">Buying equipment</label>
               </div>
+              <div class="media">
+                <input type="radio" value="REMODELING/EXPANSION" data-validate="true" formControlName="loan_use" id="REMODELING/EXPANSION">
+                <label for="REMODELING/EXPANSION">Remodeling/Expansion</label>
+              </div>
+
+              <div class="media">
+                <input type="radio" value="REFINANCING_DEBT" data-validate="true" formControlName="loan_use" id="REFINANCING_DEBT">
+                <label for="REFINANCING_DEBT">Refinancing debt</label>
+              </div>
+
+              <div class="media">
+                <input type="radio" value="HIRING_EMPLOYEES" data-validate="true" formControlName="loan_use" id="HIRING_EMPLOYEES">
+                <label for="HIRING_EMPLOYEES">Hiring employees</label>
+              </div>
+
+              <div class="media">
+                <input type="radio" value="PURCHASING_INVENTORY" data-validate="true" formControlName="loan_use" id="PURCHASING_INVENTORY">
+                <label for="PURCHASING_INVENTORY">Purchasing inventory</label>
+              </div>
+
+              <div class="media">
+                <input type="radio" value="MARKETING" data-validate="true"  id="MARKETING" formControlName="loan_use">
+                <label for="MARKETING">Marketing</label>
+              </div>
+
+              <div class="media">
+                <input type="radio" value="OTHER" id="OTHER" data-validate="true" formControlName="loan_use">
+                <label for="OTHER">Other</label >
+              </div>
+              
             </div>
+            <small class="has-error" *ngIf="ApplyNowForm.get('loan_details').get('loan_use').hasError('required') &&  ApplyNowForm.get('loan_details').get('loan_use').touched">Please select when would you use the loan!</small>
           </div>
         </fieldset>
         <hr>
         <fieldset formGroupName="person_details" novalidate>
-          <div class="form-group" [ngClass]="{'has-error': !ApplyNowForm.controls.person_details.controls.first_name.errors}">
-            <label for="first_name">First Name</label>
-            <input type="text" id="first_name" name="first_name" class="form-control" formControlName="first_name" required ngModel>
-            <small *ngIf="ApplyNowForm.controls.person_details.controls.first_name.errors">This field is required</small>
+          <div class="form-group">
+            <label for="first_name">First Name*</label>
+            <input type="text" id="first_name" name="first_name" class="form-control" formControlName="first_name" required>
+            <small class="has-error" *ngIf="ApplyNowForm.get('person_details').get('first_name').hasError('required') &&  ApplyNowForm.get('person_details').get('first_name').touched">Enter your name</small>
           </div>
-          <div class="form-group" [ngClass]="{'has-error': ApplyNowForm.controls.person_details.controls.last_name.valid || (ApplyNowForm.controls.person_details.controls.last_name.pristine && submitted)}">
-            <label for="last_name">Last Name</label>
+          <div class="form-group">
+            <label for="last_name">Last Name*</label>
             <input type="text" id="last_name" name="last_name" class="form-control" formControlName="last_name" required>
+            <small class="has-error" *ngIf="ApplyNowForm.get('person_details').get('last_name').hasError('required') &&  ApplyNowForm.get('person_details').get('last_name').touched">Enter your last name</small>
           </div>
-          <div class="form-group" [ngClass]="{'has-error': ApplyNowForm.controls.person_details.controls.contact_number.valid || (ApplyNowForm.controls.person_details.controls.contact_number.pristine && submitted)}">
-            <label for="best_contact_number">Contact Number</label>
-            <input type="text" id="best_contact_number" name="best_contact_number" class="form-control" formControlName="contact_number" required>
+          <div class="form-group">
+            <label for="contact_number">Contact Number*</label>
+            <input type="text" id="contact_number" name="contact_number" class="form-control" formControlName="contact_number" required>
+            <small class="has-error" *ngIf="ApplyNowForm.get('person_details').get('contact_number').hasError('required') &&  ApplyNowForm.get('person_details').get('contact_number').touched">Enter your best contact number</small>
           </div>
-          <div class="form-group" [ngClass]="{'has-error': ApplyNowForm.controls.person_details.controls.email_address.valid || (ApplyNowForm.controls.person_details.controls.email_address.pristine && submitted)}">
-            <label for="email_address">Email Address</label>
-            <input type="text" id="email_address" name="email_address" class="form-control" formControlName="email_address" required>
-          </div>
+
         </fieldset>
         <hr>
-        <div class="form-group" [ngClass]="{'has-error': ApplyNowForm.controls.person_details.controls.email_address.valid || (ApplyNowForm.controls.person_details.controls.email_address.pristine && submitted)}">
+        <div class="form-group">
           <label for="how_did_you_hear_about_us">How did you hear about us?</label>
           <input type="text" id="how_did_you_hear_about_us" name="how_did_you_hear_about_us" class="form-control" formControlName="how_did_you_hear_about_us">
-          <small [hidden]="ApplyNowForm.controls.how_did_you_hear_about_us.valid || (ApplyNowForm.controls.how_did_you_hear_about_us.pristine && !submitted)" class="has-error">Please tell us who did you here about us!</small>
         </div>
 
-
         <pre>{{ ApplyNowForm.value | json }}</pre>
-        <pre>{{ApplyNowForm.controls.person_details.controls.email_address.valid }}</pre>
-        <pre>{{ApplyNowForm.controls.person_details.controls.email_address.pristine }}</pre>
-        <pre>{{submitted }}</pre>
-        <pre>{{ApplyNowForm.valid }}</pre>
-
 
         <div class="form-group">
-          <button class="btn" role="submit" type="submit">Continue</button>
+          <button class="btn" role="submit" type="submit" [disabled]="ApplyNowForm.invalid">Continue</button>
         </div>
       </form>
 

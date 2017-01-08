@@ -14,6 +14,9 @@ import {BankStatementsComponent} from "./components/business/bank-statements/ban
 import {InvestorsComponent} from "./components/investors/investors/investors.component";
 import {AuthGuardService} from "./guards/auth-guard.service";
 import {ProfileComponent} from "./components/business/profile/profile.component";
+import {ProfileResolver} from "./resolvers/profile.resolver";
+import {EditprofileComponent} from "./components/business/editprofile/editprofile.component";
+import {HelpComponent} from "./components/business/help/help.component";
 
 const appRoutes: Routes = [
   {
@@ -64,8 +67,19 @@ const appRoutes: Routes = [
     component: InvestorsComponent
   },
   {
+    path: 'business/profile-edit',
+    component: EditprofileComponent
+  },
+  {
+    path: 'business/help',
+    component: HelpComponent
+  },
+  {
     path: 'business/profile',
-    component: ProfileComponent
+    component: ProfileComponent,
+    resolve: {
+      profile: ProfileResolver
+    }
   },
   {
     path: '',

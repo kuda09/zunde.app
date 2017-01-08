@@ -1,102 +1,141 @@
 <div class="container">
-    <!--<section class="progress">
-        <div class="row">
-            <progress id="progress-bar" min="1" max="100" value="0"></progress>
-            <span class="first border-change"></span>
-            <span class="second"></span>
-            <span class="third"></span>
-            <span class="fourth"></span>
-            <p class="percent">0% Complete</p>
+  <section class="page-content">
+    <div class="breadcrumb-box">
+      <div class="blueArrowCrumb">
+        <div><i class="fa fa-caret-right" aria-hidden="true"></i>Basics</div>
+      </div>
+      <div class="greyArrowCrumb">
+        <div><i class="fa fa-caret-right" aria-hidden="true"></i>Your Business</div>
+      </div>
+      <div class="greyArrowCrumb">
+        <div class="active"><i class="fa fa-caret-right" aria-hidden="true"></i>About You</div>
+      </div>
+      <div class="greyArrowCrumb">
+        <div><i class="fa fa-caret-right" aria-hidden="true"></i>Bank Statements</div>
+      </div>
+    </div>
+    <div class="pageHeader--inner">
+
+      <div class="hero">
+        <h1>
+          About You
+        </h1>
+        <p>We’ll use this information to review your personal credit report. Not the owner? Contact Us.</p>
+      </div>
+
+      <div class="country-selector">
+
+      </div>
+    </div>
+    <div class="applyComponent">
+      <form (ngSubmit)="applyNow(ApplyNowForm.value, ApplyNowForm.valid)" name="ApplyNowForm" [formGroup]="ApplyNowForm" method="post" novalidate>
+        <hr>
+
+        <fieldset formGroupName="person_details">
+          <div class="form-group">
+            <label for="home_address">Home address</label>
+            <input type="text" id="home_address" name="home_address" class="form-control" formControlName="home_address">
+            <small class="has-error" *ngIf="ApplyNowForm.get('person_details').get('home_address').hasError('required') &&  ApplyNowForm.get('person_details').get('home_address').touched">Enter your home address!</small>
+          </div>
+          <div class="form-group">
+            <label for="post_code">Post code</label>
+            <input type="text" id="post_code" name="post_code" class="form-control" formControlName="post_code">
+            <small class="has-error" *ngIf="ApplyNowForm.get('person_details').get('post_code').hasError('required') &&  ApplyNowForm.get('person_details').get('post_code').touched">Enter your home post code!</small>
+          </div>
+          <div class="form-group">
+            <label for="home_phone">Home phone</label>
+            <input type="text" id="home_phone" name="home_phone" class="form-control" formControlName="home_phone">
+            <small class="has-error" *ngIf="ApplyNowForm.get('person_details').get('home_phone').hasError('required') &&  ApplyNowForm.get('person_details').get('home_phone').touched">Enter your home phone!</small>
+          </div>
+          <div class="form-group">
+            <label for="date_of_birth">Date of Birth</label>
+            <input type="text" id="date_of_birth" name="date_of_birth" class="form-control" formControlName="date_of_birth">
+            <small class="has-error" *ngIf="ApplyNowForm.get('person_details').get('date_of_birth').hasError('required') &&  ApplyNowForm.get('person_details').get('date_of_birth').touched">Enter your date of birth!</small>
+          </div>
+        </fieldset>
+        <hr>
+        <div class="form-group">
+          <label for="business_share">How much of the business do you own?</label>
+          <input type="text" id="business_share" name="business_share" class="form-control" formControlName="business_share">
+          <small class="has-error" *ngIf="ApplyNowForm.get('business_share').hasError('required') &&  ApplyNowForm.get('business_share').touched">Enter your business share!</small>
         </div>
-    </section>-->
-    <section class="page-content">
-        <div class="breadcrumb-box">
-            <div class="blueArrowCrumb">
-                <div><i class="fa fa-caret-right" aria-hidden="true"></i>Basics</div>
-            </div>
-            <div class="greyArrowCrumb">
-                <div><i class="fa fa-caret-right" aria-hidden="true"></i>Your Business</div>
-            </div>
-            <div class="greyArrowCrumb">
-                <div class="active"><i class="fa fa-caret-right" aria-hidden="true"></i>About You</div>
-            </div>
-            <div class="greyArrowCrumb">
-                <div><i class="fa fa-caret-right" aria-hidden="true"></i>Bank Statements</div>
-            </div>
+
+        <div class="form-group">
+          <label for="national_insurance">National insurance number</label>
+          <p>We need your full National Security Number. This is required so we can verify your identity.</p>
+
+          <input type="text" id="national_insurance" name="national_insurance" class="form-control" formControlName="national_insurance">
+          <small class="has-error" *ngIf="ApplyNowForm.get('national_insurance').hasError('required') &&  ApplyNowForm.get('national_insurance').touched">Enter your national security number!</small>
         </div>
-        <div class="pageHeader--inner">
+        <hr>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            name="password"
+            required
+            placeholder="Enter Password"
+            formControlName="password"
+            autocomplete="off"
+            validateEqual="confirmPassword" reverse="true"
+          >
+          <small class="has-error" *ngIf="ApplyNowForm.get('password').hasError('required') &&  ApplyNowForm.get('password').touched">Please enter a password</small>
+        </div>
 
-            <div class="hero">
-                <h1>
-                    About You
-                </h1>
-                <p>We’ll use this information to review your personal credit report. Not the owner? Contact Us.</p>
+
+        <div class="form-group">
+          <label for="confirm_password">Confirm Password</label>
+          <input
+            type="password"
+            id="confirm_password"
+            class="form-control"
+            required
+            placeholder="Confirm password"
+            autocomplete="off"
+            formControlName="confirm_password"
+            validateEqual="password"
+          >
+          <small class="has-error" *ngIf="ApplyNowForm.get('confirm_password').hasError('validateEqual') &&  ApplyNowForm.get('confirm_password').touched">Password does not match</small>
+
+
+        </div>
+        <hr>
+
+
+        <fieldset formGroupName="checkboxes">
+          <div class="form-group">
+
+            <div class="checkbox checkbox-primary">
+              <input class="agree_terms styled" id="agree_terms" name="agree_terms" type="checkbox" value="true" formControlName="agree_terms">
+              <label for="agree_terms"> By checking here you agree that you have read and agree to <a href="">Zunde’s Application Agreement</a></label>
+
+              <small class="has-error" *ngIf="ApplyNowForm.get('checkboxes').get('agree_terms').hasError('checkBoxRequired') &&  ApplyNowForm.get('checkboxes').get('agree_terms').touched">Please read and agree with the terms and conditions before you can continue</small>
+            </div>
+          </div>
+
+          <div class="form-group">
+
+            <div class="checkbox checkbox-primary">
+              <input class="agree_consent" id="agree_consent" name="agree_consent" type="checkbox" value="true" formControlName="read_application_consent">
+              <label for="agree_consent">By checking here you agree that you have read and agree to <a href="read_application_consent">Zunde’s E-sign Consent Agreement</a></label>
             </div>
 
-            <div class="country-selector">
+            <small class="has-error" *ngIf="ApplyNowForm.get('checkboxes').get('read_application_consent').hasError('checkBoxRequired') &&  ApplyNowForm.get('checkboxes').get('read_application_consent').touched">Please read and agree with the terms and conditions before you can continue</small>
 
-            </div>
+          </div>
+        </fieldset>
+
+
+
+        <div class="form-group">
+          <button class="btn" role="submit" type="submit" [disabled]="ApplyNowForm.invalid">Continue</button>
         </div>
-        <div class="applyComponent">
-            <form (ngSubmit)="applyNow(ApplyNowForm.value, ApplyNowForm.valid)" name="ApplyNowForm" [formGroup]="ApplyNowForm" method="post">
-                <hr>
+      </form>
+      <pre>{{ ApplyNowForm.value | json }}</pre>
 
-                <fieldset formGroupName="person_details">
-                    <div class="form-group">
-                        <label for="home_address">Home address</label>
-                        <input type="text" id="home_address" name="home_address" class="form-control" formControlName="home_address">
-                    </div>
-                    <div class="form-group">
-                        <label for="post_code">Post code</label>
-                        <input type="text" id="post_code" name="post_code" class="form-control" formControlName="post_code">
-                    </div>
-                    <div class="form-group">
-                        <label for="home_phone">Home phone</label>
-                        <input type="text" id="home_phone" name="home_phone" class="form-control" formControlName="home_phone">
-                    </div>
-                    <div class="form-group">
-                        <label for="date_of_birth">Date of Birth</label>
-                        <input type="text" id="date_of_birth" name="date_of_birth" class="form-control" formControlName="date_of_birth">
-                    </div>
-                </fieldset>
-                <hr>
-                <div class="form-group">
-                    <label for="business_share">How much of the business do you own?</label>
-                    <input type="text" id="business_share" name="business_share" class="form-control" formControlName="business_share">
-                </div>
-
-                <div class="form-group">
-                    <label for="social_security_number">National insurance number</label>
-                    <p>We need your full National Security Number. This is required so we can verify your identity.</p>
-
-                    <input type="text" id="national_security_number" name="national_security_number" class="form-control" formContolName="national_security_number">
-                </div>
-                <hr>
-
-                <div class="form-group">
-
-                    <div class="checkbox checkbox-primary">
-                        <input class="agree_terms styled" id="agree_terms" name="agree_terms" type="checkbox" value="true">
-                        <label for="agree_terms"> By checking here you agree that you have read and agree to Zunde’s Application Agreement</label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-
-                    <div class="checkbox checkbox-primary">
-                        <input class="agree_consent" id="agree_consent" name="agree_consent" type="checkbox" value="true">
-                        <label for="agree_consent">By checking here you agree that you have read and agree to Zunde’s E-sign Consent Agreement</label>
-                    </div>
-
-                </div>
-
-                <div class="form-group">
-                    <button class="btn" role="submit" type="submit">Continue</button>
-                </div>
-            </form>
-            <pre>{{ ApplyNowForm.value | json }}</pre>
-
-            <p class="terms">By clicking “Continue”, you (i) consent to receiving calls and messages, including autodialed calls for marketing purposes, from Zunde or its representatives or agents at the telephone number provided above (including mobile telephone number), and acknowledge that no purchase of credit or services is contingent upon such consent; and (ii) acknowledge that you have read Zunde’s Application Agreement and Zunde’s Privacy Policy and understand that you may opt out of receiving communications of your choice from Zunde as provided in the Privacy Policy.</p>
-        </div>
-    </section>
+      <p class="terms">By clicking “Continue”, you (i) consent to receiving calls and messages, including autodialed calls for marketing purposes, from Zunde or its representatives or agents at the telephone number provided above (including mobile telephone number), and acknowledge that no purchase of credit or services is contingent upon such consent; and (ii) acknowledge that you have read Zunde’s Application Agreement and Zunde’s Privacy Policy and understand that you may opt out of receiving communications of your choice from Zunde as provided in the Privacy Policy.</p>
+    </div>
+  </section>
 </div>

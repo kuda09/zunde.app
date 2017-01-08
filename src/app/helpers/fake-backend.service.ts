@@ -7,7 +7,7 @@ export let fakeBackendProvider = {
     provide: Http,
     useFactory: (backend, options) => {
         // configure fake backend
-        backend.connections.subscribe((connection: MockConnection) => {
+        /*backend.connections.subscribe((connection: MockConnection) => {
             let testUser = { username: 'test', password: 'test', firstName: 'Test', lastName: 'User' };
 
             // wrap in timeout to simulate server api call
@@ -50,7 +50,7 @@ export let fakeBackendProvider = {
 
         });
 
-        return new Http(backend, options);
+        return new Http(backend, options);*/
     },
     deps: [MockBackend, BaseRequestOptions]
 };

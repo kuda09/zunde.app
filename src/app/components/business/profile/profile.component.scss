@@ -2,66 +2,14 @@
 @import "../sign-in/sign-in.component";
 
 
-.content-holder {
+.overview {
 
-  .col-md-9 {
+  background-color: $lightergrey;
+  padding: 20px;
+  width: 60%;
 
-    background-color: $white;
-    padding: 0;
+  h5 {
+
+    font-size: 20px;
   }
-
-  .congralulations {
-
-    border: 1px solid $lightergrey;
-    padding: 10px;
-    background-color: $purple;
-    color: $white;
-  }
-
-
-  .repayments-table {
-
-    margin: 10px 0;
-
-    h1 {
-
-      width: 100%;
-      background-color: $blue;
-      color: $white;
-      padding: 10px;
-      margin: 0;
-    }
-  }
-}
-
-.dashboard_list {
-
-  padding: 0;
-  margin: 0;
-  list-style: none;
-
-  li {
-
-    padding: 10px 0 10px 10px;
-
-
-    &.active {
-
-      background-color: $blue;
-      color: $white;
-
-      i{
-        color: $white;
-
-      }
-    }
-
-    i {
-
-      margin-right: 20px;
-      font-size: 30px;
-
-    }
-  }
-
 }

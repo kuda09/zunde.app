@@ -39,71 +39,82 @@
         <div class="applyComponent">
             <form (ngSubmit)="applyNow(ApplyNowForm.value, ApplyNowForm.valid)" name="ApplyNowForm" [formGroup]="ApplyNowForm" method="post">
                 <hr>
-                <div class="form-group">
-                    <label for="legal_name">Legal Business Name</label>
-                    <input type="text" id="legal_name" name="legal_name" class="form-control" formControlName="legal_name">
-                </div>
-                <div class="form-group">
-                    <label for="business_address">Business Address</label>
-                    <input type="text" id="business_address" name="business_address" class="form-control" formControlName="business_address">
-                </div>
-                <div class="form-group">
-                    <label for="post_code">Post code</label>
-                    <input type="text" id="post_code" name="post_code" class="form-control" formControlName="post_code">
-                </div>
-                <div class="form-group">
-                    <label for="business_phone">Business Phone</label>
-                    <input type="text" id="business_phone" name="business_phone" class="form-control" formControlName="business_phone">
-                </div>
-                <div class="form-group">
-                    <label for="business_trading_date">What year did you start your business?</label>
-                    <input type="text" id="business_trading_date" name="business_trading_date" class="form-control" formControlName="business_trading_date">
-                </div>
-                <div class="form-group">
-                    <label for="legal_type">Legal Entity Type</label>
-                    <select class="form-control" id="legal_entity_type" name="legal_type" formControlName="legal_entity_type">
-                        <option value="Sole Proprietor">Sole Proprietor</option>
-                        <option value="Limited Liability Company (LLC)">Limited Liability Company (LLC)</option>
-                        <option value="Corporation">Corporation</option>
-                        <option value="General Partnership">General Partnership</option>
-                        <option value="Limited Partnership (LP)">Limited Partnership (LP)</option>
-                        <option value="Limited Liability Partnership (LLP)">Limited Liability Partnership (LLP)</option>
-                        <option value="Non-Profit">Non-Profit</option>
-                    </select>
-                </div>
-                <hr>
-                <div class="form-group">
-                    <label for="business_tax_id">Business Tax ID</label>
-                    <p>We use this to confirm your business' identity and that you are the owner.</p>
 
-                    <ul>
-                        <li>Can be found at the top right of your tax return.</li>
-                    </ul>
-                    <input type="text" id="business_tax_id" name="business_tax_id" class="form-control" formControlName="business_tax_id">
-                </div>
-                <hr>
-                <div class="form-group">
-                    <label for="annual_revenue">Estimated Gross Annual Revenue</label>
-                    <p>We use this to determine your overall business performance</p>
-                    <input type="text" id="annual_revenue" name="annual_revenue" class="form-control" formControlName="annual_revenue">
-                </div>
-                <hr>
+                <fieldset formGroupName="business_details">
+                    <div class="form-group">
+                        <label for="legal_name">Legal Business Name</label>
+                        <input type="text" id="legal_name" name="legal_name" class="form-control" formControlName="legal_name">
+                        <small class="has-error" *ngIf="ApplyNowForm.get('business_details').get('legal_name').hasError('required') &&  ApplyNowForm.get('business_details').get('legal_name').touched">Enter your business legal name!</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="business_address">Business Address</label>
+                        <input type="text" id="business_address" name="business_address" class="form-control" formControlName="business_address">
+                        <small class="has-error" *ngIf="ApplyNowForm.get('business_details').get('business_address').hasError('required') &&  ApplyNowForm.get('business_details').get('business_address').touched">Enter your business address!</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="post_code">Post code</label>
+                        <input type="text" id="post_code" name="post_code" class="form-control" formControlName="post_code">
+                        <small class="has-error" *ngIf="ApplyNowForm.get('business_details').get('post_code').hasError('required') &&  ApplyNowForm.get('business_details').get('post_code').touched">Enter your business post code!</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="business_phone">Business Phone</label>
+                        <input type="text" id="business_phone" name="business_phone" class="form-control" formControlName="business_phone">
+                        <small class="has-error" *ngIf="ApplyNowForm.get('business_details').get('business_phone').hasError('required') &&  ApplyNowForm.get('business_details').get('business_phone').touched">Enter your business business phone!</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="business_trading_date">What year did you start your business?</label>
+                        <input type="text" id="business_trading_date" name="business_trading_date" class="form-control" formControlName="business_trading_date">
+                        <small class="has-error" *ngIf="ApplyNowForm.get('business_details').get('business_trading_date').hasError('required') &&  ApplyNowForm.get('business_details').get('business_trading_date').touched">Enter when your business started trading!</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="legal_entity_type">Legal Entity Type</label>
+                        <select class="form-control" id="legal_entity_type" name="legal_entity_type" formControlName="legal_entity_type">
+                            <option value="Sole Proprietor">Sole Proprietor</option>
+                            <option value="Limited Liability Company (LLC)">Limited Liability Company (LLC)</option>
+                            <option value="Corporation">Corporation</option>
+                            <option value="General Partnership">General Partnership</option>
+                            <option value="Limited Partnership (LP)">Limited Partnership (LP)</option>
+                            <option value="Limited Liability Partnership (LLP)">Limited Liability Partnership (LLP)</option>
+                            <option value="Non-Profit">Non-Profit</option>
+                        </select>
+                        <small class="has-error" *ngIf="ApplyNowForm.get('business_details').get('legal_entity_type').hasError('required') &&  ApplyNowForm.get('business_details').get('legal_entity_type').touched">Enter your business legal entity type</small>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <label for="business_tax_id">Business Tax ID</label>
+                        <p>We use this to confirm your business' identity and that you are the owner.</p>
 
-                <div class="form-group">
-                    <label for="bank_balance">Average Bank Balance</label>
-                    <p>We use this to determine what you can afford to pay back.</p>
+                        <ul>
+                            <li>Can be found at the top right of your tax return.</li>
+                        </ul>
+                        <input type="text" id="business_tax_id" name="business_tax_id" class="form-control" formControlName="business_tax_id">
+                        <small class="has-error" *ngIf="ApplyNowForm.get('business_details').get('business_tax_id').hasError('required') &&  ApplyNowForm.get('business_details').get('business_tax_id').touched">Enter your business tax id</small>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <label for="annual_revenue">Estimated Gross Annual Revenue</label>
+                        <p>We use this to determine your overall business performance</p>
+                        <input type="text" id="annual_revenue" name="annual_revenue" class="form-control" formControlName="annual_revenue">
+                        <small class="has-error" *ngIf="ApplyNowForm.get('business_details').get('annual_revenue').hasError('required') &&  ApplyNowForm.get('business_details').get('annual_revenue').touched">Enter your annual revenue</small>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <label for="bank_balance">Average Bank Balance</label>
+                        <p>We use this to determine what you can afford to pay back.</p>
 
-                    <ul>
-                        <li>At the end of a typical day, what do you expect to see in your primary business account?</li>
-                        <li>One way to estimate this is by looking at the ending balance from your previous bank statement.</li>
-                    </ul>
-                    <input type="text" id="bank_balance" name="bank_balance" class="form-control" formControlName="bank_balance">
-                </div>
+                        <ul>
+                            <li>At the end of a typical day, what do you expect to see in your primary business account?</li>
+                            <li>One way to estimate this is by looking at the ending balance from your previous bank statement.</li>
+                        </ul>
+                        <input type="text" id="bank_balance" name="bank_balance" class="form-control" formControlName="bank_balance">
+                        <small class="has-error" *ngIf="ApplyNowForm.get('business_details').get('bank_balance').hasError('required') &&  ApplyNowForm.get('business_details').get('bank_balance').touched">Enter your average bank balance</small>
+                    </div>
+                </fieldset>
 
               <pre>{{ ApplyNowForm.value | json }}</pre>
 
                 <div class="form-group">
-                    <button class="btn" role="submit" type="submit">Continue</button>
+                    <button class="btn" role="submit" type="submit" [disabled]="ApplyNowForm.invalid">Continue</button>
                 </div>
             </form>
 

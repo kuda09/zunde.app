@@ -6,32 +6,96 @@
       <hr>
 
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-8">
 
-          <form (ngSubmit)="f.form.valid && register(username.value, password.value)" novalidate name="RegisterForm" #f="ngForm">
+          <form (ngSubmit)="register(RegisterForm.value, RegisterForm.valid)" novalidate name="RegisterForm" [formGroup]="RegisterForm">
             <div class="form-group">
-              <label for="username">Username</label>
-              <input type="text" id="username" name="username" class="form-control" #username required placeholder="yours@example.com">
-              <div *ngIf="f.submitted && !username.valid" class="has-error">Username is required</div>
+              <label for="username">Email</label>
+              <input
+                      type="text"
+                      id="username"
+                      name="username"
+                      class="form-control"
+                      #username
+                      required
+                      placeholder="yours@example.com"
+                      formControlName="username"
+                      validateEmail
+              >
+              <small class="has-error" *ngIf="RegisterForm.get('username').hasError('required') &&  RegisterForm.get('username').touched">Enter your email</small>
+              <br>
+              <small class="has-error" *ngIf="RegisterForm.get('username').hasError('validateEmail') &&  RegisterForm.get('username').touched">Please enter a valid email address</small>
+            </div>
+
+            <hr>
+            <div class="form-group">
+              <label for="first_name">First Name</label>
+              <input
+                      type="first_name"
+                      id="first_name"
+                      class="form-control"
+                      required
+                      placeholder="John"
+                      formControlName="first_name"
+              >
+              <small class="has-error" *ngIf="RegisterForm.get('first_name').hasError('required') &&  RegisterForm.get('first_name').touched">Enter your first name</small>
+            </div>
+            <div class="form-group">
+              <label for="last_name">Last Name</label>
+              <input
+                      type="text"
+                      id="last_name"
+                      class="form-control"
+                      required
+                      placeholder="Doe"
+                      formControlName="last_name"
+              >
+              <small class="has-error" *ngIf="RegisterForm.get('last_name').hasError('required') &&  RegisterForm.get('last_name').touched">Enter your last name</small>
             </div>
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" id="password" name="password" class="form-control" name="password" #password required placeholder="Enter Password">
-              <div *ngIf="f.submitted && !password.valid" class="has-error">Password is required</div>
+              <input
+                      type="password"
+                      id="password"
+                      class="form-control"
+                      name="password"
+                      required
+                      placeholder="Enter Password"
+                      formControlName="password"
+                      autocomplete="off"
+                      validateEqual="confirmPassword" reverse="true"
+              >
+              <small class="has-error" *ngIf="RegisterForm.get('password').hasError('required') &&  RegisterForm.get('password').touched">Please enter a password</small>
             </div>
+
 
             <div class="form-group">
               <label for="confirm_password">Confirm Password</label>
-              <input type="confirm_password" id="confirm_password" name="confirm_password" class="form-control" #confirm_password required placeholder="Confirm password">
-              <div *ngIf="f.submitted && !password.valid" class="has-error">Password is required</div>
+              <input
+                      type="password"
+                      id="confirm_password"
+                      class="form-control"
+                      required
+                      placeholder="Confirm password"
+                      autocomplete="off"
+                      formControlName="confirm_password"
+                      validateEqual="password"
+              >
+              <small class="has-error" *ngIf="RegisterForm.get('confirm_password').hasError('validateEqual') &&  RegisterForm.get('confirm_password').touched">Password does not match</small>
+
+
             </div>
             <div class="form-group">
-              <button class="btn" role="submit" type="submit" >Register</button>
+              <button class="btn" role="submit" type="submit" [disabled]="RegisterForm.invalid">Register</button>
             </div>
+
+            <pre>
+              {{RegisterForm.value | json}}
+            </pre>
             <div *ngIf="error" class="alert alert-danger">{{error}}</div>
           </form>
         </div>
-        <div class="col-md-6 options">
+        <div class="col-md-4 options">
         </div>
       </div>
     </div>

@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule} from '@angular/forms';
-import {UserService} from "../../../services/user-service.service";
-import {AuthService} from "../../../services/auth-service.service";
-import {ApplyNowModel} from "../../../models/apply-now";
+import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
+import {person_details} from "../../../models/apply-now";
 import {ApplyNowService} from "../../../services/apply-now.service";
+import {HttpService} from "../../../services/http.service";
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import {UtilsService} from "../../../services/utils.service";
 
 @Component({
     selector: 'app-your-personal-details',
@@ -19,11 +21,11 @@ export class YourPersonalDetailsComponent implements OnInit {
     public events: any[] = [];
 
 
-    constructor(private _userService: UserService,
-                private _authService: AuthService,
-                private _fb: FormBuilder,
+    constructor(private _fb: FormBuilder,
                 private router: Router,
-                private _applyNowService: ApplyNowService) {
+                private _utils: UtilsService,
+                private _applyNowService: ApplyNowService,
+                private httpModule: HttpService) {
     }
 
 
@@ -31,28 +33,40 @@ export class YourPersonalDetailsComponent implements OnInit {
 
         this.ApplyNowForm = this._fb.group({
             person_details: this._fb.group({
-                home_address: ['', [Validators.required, Validators.minLength(5)]],
+                home_address: ['', [Validators.required]],
                 post_code: ['', [Validators.required]],
-                home_phone: ['', [Validators.required, Validators.minLength(5)]],
+                home_phone: ['', [Validators.required]],
                 date_of_birth: ['', [Validators.required]]
             }),
-            business_share: new FormControl('', [<any>Validators.required]),
-            national_security_number: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
-        })
+            business_share: ['', [Validators.required]],
+            national_insurance: ['', [Validators.required]],
+            password: ['', [Validators.required, Validators.minLength(5)]],
+            confirm_password: ['', [Validators.required, Validators.minLength(5)]],
+            checkboxes: this._fb.group({
+              agree_terms: [false],
+              read_application_consent: [false]
+            }, {validator: this._utils.checkBoxRequired})
+        });
+
+
+      console.log(this.ApplyNowForm);
+
     }
 
 
-    applyNow(model, isValid: boolean) {
+    applyNow(model: person_details, isValid: boolean) {
 
-        this.submitted = true;
+        if (isValid) {
+            this._applyNowService.saveInformationToStorage(model);
 
-        console.log(model);
+            //this.router.navigate(['/apply-now/bank-statements']);
 
-        this._applyNowService.saveInformationToStorage(model);
+            this.httpModule.postData('user/register',model)
+                .subscribe( data => {
 
-        this.router.navigate(['/apply-now/bank-statements']);
-
-
+                    console.log(data);
+                });
+        }
     }
 
 

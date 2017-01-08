@@ -1,0 +1,9 @@
+{
+  "firebase": {
+    "apiKey": "AIzaSyAFne6CyxB305-nFXeQtdLzRkWVIQ0tb6A",
+    "authDomain": "zunde-cdf89.firebaseapp.com",
+    "databaseUrl": "https://zunde-cdf89.firebaseio.com",
+    "storageBucket": "",
+    "messagingSenderId": "704878924305"
+  }
+}
