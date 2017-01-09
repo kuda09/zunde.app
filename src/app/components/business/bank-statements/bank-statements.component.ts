@@ -1,8 +1,10 @@
+declare const require: any;
+
 import { Component, OnInit } from '@angular/core';
-import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
+import { FileUploader} from 'ng2-file-upload/ng2-file-upload';
 import * as moment from "moment";
 
-const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
+const URL = 'https://zundeapi/api/user/bankstatements';
 
 @Component({
   selector: 'app-bank-statements',

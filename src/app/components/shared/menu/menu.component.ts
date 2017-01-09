@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 /*
-import {ROUTER_DIRECTIVES, CanActivate, OnActivate} from '@angular/router';
-*/
+ import {ROUTER_DIRECTIVES, CanActivate, OnActivate} from '@angular/router';
+ */
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 import {CurrentViewService} from "../../../services/current-view.service";
@@ -11,83 +11,92 @@ import {UserService} from "../../../services/user.service";
 
 
 @Component({
-    selector: 'app-menu',
-    templateUrl: './menu.component.html',
-    styleUrls: ['./menu.component.scss'],
-    providers: [CurrentViewService,]
+  selector: 'app-menu',
+  templateUrl: './menu.component.html',
+  styleUrls: ['./menu.component.scss'],
+  providers: [CurrentViewService,]
 })
 export class MenuComponent implements OnInit {
 
-    homePageClass: string;
-    hiddenItems: boolean = false;
-    showDropdown: boolean = false;
-    secureViews: string[] = ['sign-in', 'apply-now'];
-    user: Object = {};
+  homePageClass: string;
+  hiddenItems: boolean = false;
+  showDropdown: boolean = false;
+  secureViews: string[] = ['sign-in', 'apply-now'];
+  user: Object = {};
+  public menuItems: any[];
+  public brandMenu: any;
+  isCollapsed = false;
 
-    constructor(private _currentViewService: CurrentViewService,
-                private _authService: AuthService,
-                private _userService: UserService,
-                private _router: Router) {
+  constructor(private _currentViewService: CurrentViewService,
+              private _authService: AuthService,
+              private _userService: UserService,
+              private _router: Router) {
 
-        var self = this;
+    var self = this;
 
-        _router.events.subscribe(event => {
+    _router.events.subscribe(event => {
 
-            self._currentViewService.getView()
-                .subscribe((_event) => {
+      self._currentViewService.getView()
+        .subscribe((_event) => {
 
-                    self.homePageClass = self._currentViewService.addHeroClassToHomePage(_event.url);
+          self.homePageClass = self._currentViewService.addHeroClassToHomePage(_event.url);
 
-                    self.secureViews
-                        .filter(view => this.homePageClass.indexOf(view) !== -1)
-                        .map((view) => {
+          self.secureViews
+            .filter(view => this.homePageClass.indexOf(view) !== -1)
+            .map((view) => {
 
-                            self.hiddenItems = true;
-                        })
-                });
+              self.hiddenItems = true;
+            })
+        });
 
-        })
+    })
+  }
+
+
+  ngOnInit() {
+
+    var self = this;
+
+    self._currentViewService.getView()
+      .subscribe((_event) => {
+
+        self.homePageClass = self._currentViewService.addHeroClassToHomePage(_event.url);
+
+        self.secureViews
+          .filter(view => this.homePageClass.indexOf(view) !== -1)
+          .map((view) => {
+
+            self.hiddenItems = true;
+          })
+      });
+
+
+    if (self._authService.isLoggedIn()) {
+
+      if (self._userService.getUser() !== null) {
+
+        self.user = self._userService.getUser();
+      }
+
     }
 
+  }
 
-    ngOnInit() {
+  logOut() {
 
-        var self = this;
+    this._authService.logout();
+  }
 
-        self._currentViewService.getView()
-            .subscribe((_event) => {
+  activeDropDown() {
 
-                self.homePageClass = self._currentViewService.addHeroClassToHomePage(_event.url);
-
-                self.secureViews
-                    .filter(view => this.homePageClass.indexOf(view) !== -1)
-                    .map((view) => {
-
-                        self.hiddenItems = true;
-                    })
-            });
+    return this.showDropdown = this.showDropdown ? false : true;
+  }
 
 
-        if (self._authService.isLoggedIn()) {
+  public get menuIcon(): string {
+    return this.isCollapsed ? '<i class="fa fa-bars" aria-hidden="true"></i>' : '<i class="fa fa-times" aria-hidden="true"></i>';
+  }
 
-            if (self._userService.getUser() !== null) {
-
-                self.user = self._userService.getUser();
-            }
-
-        }
-
-    }
-
-    logOut() {
-
-        this._authService.logout();
-    }
-
-    activeDropDown() {
-
-        return this.showDropdown = this.showDropdown ? false : true;
-    }
 
 
 }

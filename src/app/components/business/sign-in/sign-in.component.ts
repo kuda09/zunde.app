@@ -29,7 +29,7 @@ export class SignInComponent implements OnInit {
         this.SignInForm = new FormGroup({
             username: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
             password: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)])
-        })
+        });
 
 
         this.ForgotPasswordForm = this._fb.group({

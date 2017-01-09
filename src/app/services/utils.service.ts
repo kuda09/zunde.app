@@ -4,14 +4,14 @@ import {Injectable} from '@angular/core';
 export class UtilsService {
 
 
-  constructor()
+  constructor(){}
 
 
   checkBoxRequired(group){
 
     var valid = false;
 
-    for (name in group.controls) {
+    for (const name in group.controls) {
 
       var val = group.controls[name].value;
 
