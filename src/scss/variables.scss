@@ -1,3 +1,6 @@
+
+
+//colours
 $white: #fff;
 $green: #15d245;
 $blue: #488FDD;
@@ -8,6 +11,21 @@ $darkBlue: #0e52a2;
 $lightBlue: #4f9dcc;
 $lightgrey: #b5b5b5;
 $lightergrey: #f1f2f2;
+
+
+/* Smartphones (portrait and landscape) ----------- */
+$mobilePortrait: (min-device-width 320px) (max-device-width  480px);
+/* Smartphones (landscape) ----------- */
+$mobileLandscape: (min-device-width 321px);
+/* iPads (portrait and landscape) ----------- */
+$tabletPortrait: (min-device-width  768px)  (max-device-width  1024px);
+/* iPads (landscape) ----------- */
+$tabletPortrait: (min-device-width  768px)  (max-device-width  1024px) (orientation  landscape);
+/* iPads (portrait) ----------- */
+$tabletPortrait: (min-device-width  768px) (max-device-width  1024px) (orientation portrait);
+/* Desktops and laptops ----------- */
+$desktop: (min-width  1224px);
+
 
 .content-holder {
 

@@ -1,3 +1,4 @@
+declare const require: any;
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule} from '@angular/forms';
@@ -11,6 +12,7 @@ import {SignUpModel} from "../../../models/sign-up";
 export class InvestorsComponent implements OnInit {
 
   public SignUp: FormGroup; //our model driven form
+  public SignInForm: FormGroup;  //our model driven form
 
   public submitted: boolean; //keep track whether the form is submitted
   public events: any[] = []; //use later to display form events
@@ -30,10 +32,10 @@ export class InvestorsComponent implements OnInit {
       type_of_investment: ['', [Validators.required, Validators.minLength(5)]],
     });
 
-    /*this.SignInForm = new FormGroup({
-      username: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
-      password: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)])
-    });*/
+    this.SignInForm = new FormGroup({
+      username: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
+      password: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)])
+    });
   }
 
 

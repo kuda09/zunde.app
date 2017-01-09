@@ -1,19 +1,29 @@
 <nav class="stickyheader {{homePageClass}}">
 
     <div class="container">
-        <div class="sticky-header--layout">
+
+      <button
+        aria-controls="bd-main-nav"
+        aria-label="Toggle navigation"
+        class="navbar-toggler pull-xs-right hidden-sm-up"
+        type="button"
+        (click)="isCollapsed = !isCollapsed">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+      </button>
+        <div class="sticky-header--layout" [ngClass]="{collapsed: isCollapsed}">
+
             <ul>
-                <li><a routerLink="">Home</a></li>
-                <li><a routerLink="/business-loans" routerLinkActive="active">Business Loans</a></li>
-                <li><a routerLink="/why-us" routerLinkActive="active">Why Zunde</a></li>
-                <li><a routerLink="/about-us" routerLinkActive="active">About Us</a></li>
-                <li><a routerLink="/investors" routerLinkActive="active">Investors</a></li>
+                <li><a routerLink="" (click)="isCollapsed = false">Home</a></li>
+                <li><a routerLink="/business-loans" routerLinkActive="active" (click)="isCollapsed = false">Business Loans</a></li>
+                <li><a routerLink="/why-us" routerLinkActive="active" (click)="isCollapsed = false">Why Zunde</a></li>
+                <li><a routerLink="/about-us" routerLinkActive="active" (click)="isCollapsed = false">About Us</a></li>
+                <li><a routerLink="/investors" routerLinkActive="active" (click)="isCollapsed = false">Investors</a></li>
                 <li>
-                    <a routerLink="/sign-in" routerLinkActive="active" *ngIf="!_authService.isLoggedIn()">
+                    <a routerLink="/sign-in" routerLinkActive="active" *ngIf="!_authService.isLoggedIn()" (click)="isCollapsed = false">
                         <i class="fa fa-unlock-alt" aria-hidden="true" ></i>
                         Sign in
                     </a>
-                    <a routerLink="/business/profile" routerLinkActive="active"  *ngIf="_authService.isLoggedIn()">
+                    <a routerLink="/business/profile" routerLinkActive="active"  *ngIf="_authService.isLoggedIn()" (click)="isCollapsed = false">
                         {{user.email}}
                         <i class="fa fa-caret-down" aria-hidden="true" (click)="activeDropDown()"></i>
 
@@ -23,7 +33,7 @@
                             <li><a (click)="logOut()">Sign Out</a></li>
                         </ul>
                     </a>
-                    <a routerLink="/apply-now" class="button">Apply Now</a>
+                    <a routerLink="/apply-now" class="button" (click)="isCollapsed = false">Apply Now</a>
                 </li>
             </ul>
         </div>

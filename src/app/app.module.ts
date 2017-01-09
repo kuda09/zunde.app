@@ -1,3 +1,6 @@
+import {FileSelectDirective} from "ng2-file-upload";
+declare const require: any;
+
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
@@ -69,7 +72,8 @@ const config = {
     EditprofileComponent,
     HelpComponent,
     EqualValidator,
-    EmailValidator
+    FileSelectDirective,
+
   ],
   imports: [
     BrowserModule,

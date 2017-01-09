@@ -2,6 +2,14 @@
 
 nav {
 
+  .container {
+
+    @include breakpoint($mobilePortrait) {
+
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
   &.affix {
     border-color: #e0e0e0;
     background: #fff;
@@ -41,12 +49,22 @@ nav {
     -webkit-transition: background-color .3s ease, border-color .3s ease;
     transition: background-color .3s ease, border-color .3s ease;
 
+    @include breakpoint($mobilePortrait) {
 
+      height:  auto;
+      display: block;
+
+    }
 
     &.remove-hero {
 
       position: static;
       background-color: $white;
+
+      .navbar-toggler {
+
+        color: $darkgrey;
+      }
 
       .sticky-header--layout {
 
@@ -59,6 +77,11 @@ nav {
               color: $darkgrey;
               cursor: pointer;
               padding-bottom: 5px;
+
+              @include breakpoint($mobilePortrait) {
+
+                color: $white;
+              }
 
               .logout {
 
@@ -74,6 +97,11 @@ nav {
               &:link {
 
                 color: $darkgrey;
+
+                @include breakpoint($mobilePortrait) {
+
+                  color: $white;
+                }
               }
 
               &:hover {
@@ -111,17 +139,67 @@ nav {
       }
     }
 
+
+    button {
+      border: none;
+      background: inherit;
+
+    }
+
     .button {
 
       padding: 10px 10px !important;
       border: 1px solid $white;
       margin-left: 10px;
 
+      @include breakpoint($mobilePortrait) {
+
+        display: block;
+        margin-top: 10px;
+        border: none;
+        margin-left: 0;
+      }
+
     }
+
+
+    .navbar-toggler {
+
+      font-size: 35px;
+      float: right;
+      z-index: 999;
+      position: absolute;
+      right: 0;
+      top: -2px;
+      display: none;
+
+      @include breakpoint($mobilePortrait) {
+
+        display: block;
+      }
+    }
+
+
 
     .sticky-header--layout {
 
+      @include breakpoint($mobilePortrait) {
 
+        background-color: #222222;
+        padding: 10px;
+        text-align: left;
+
+        display: none;
+        position: absolute;
+
+
+        &.collapsed {
+
+          display: block;
+          width: 100%;
+          z-index: 997;
+        }
+      }
 
       ul {
         padding: 0;
@@ -132,6 +210,13 @@ nav {
           display: inline-block;
           margin: 5px 0;
           padding: 5px;
+
+
+          @include breakpoint($mobilePortrait){
+
+            display: block;
+            border-bottom: 1px dashed #4d4d4d;
+          }
 
           a {
 
@@ -159,6 +244,12 @@ nav {
           &:last-child {
 
             float: right;
+
+
+            @include breakpoint($mobilePortrait){
+
+              float: none;
+            }
 
             i {
 
